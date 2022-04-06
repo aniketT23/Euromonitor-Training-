@@ -4,16 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="../css/Create_Account.css">
-    
+    <link rel="stylesheet" href="../css/Create_Account.css" />
     <title>Banking System</title>
   </head>
   <body>
     <header><h1>Create your Bank Account</h1></header>
     <main>
-      <form>
+      <form onsubmit="OnSubmit(event)">
         <fieldset>
-          <legend>Fill the Form</legend>
+          <legend>Enter your Personal Details</legend>
           <label>Name:</label>
           <input type="text" placeholder="Enter your Name" />
           <label>Age:</label>
@@ -75,16 +74,18 @@
           <input type="email" placeholder="Enter your Email ID" />
           <label>Password:</label>
           <input type="password" placeholder="Enter your Password" />
+        </fieldset>
+        <fieldset>
+          <legend>Bank Details</legend>
           <label>Account Type</label>
-          <select>
+          <select id="accountType">
             <option>Saving</option>
             <option>Current</option>
           </select>
-          <input type="submit" value="Create" />
+          <label>Initial Deposit Amount:</label>
+          <input type="number" />
         </fieldset>
-
-        <label>Initial Deposit Amount:</label>
-        <input type="number"/>
+        <input type="submit" value="Create" id="submit" />
       </form>
     </main>
 
