@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../css/Create_Account.css">
+    
+    <title>Banking System</title>
+  </head>
+  <body>
+    <header><h1>Create your Bank Account</h1></header>
+    <main>
+      <form>
+        <fieldset>
+          <legend>Fill the Form</legend>
+          <label>Name:</label>
+          <input type="text" placeholder="Enter your Name" />
+          <label>Age:</label>
+          <input type="number" placeholder="Enter your Age" />
+          <label>Location:</label>
+          <input type="text" placeholder="Enter your Location" />
+          <label>State:</label>
+          <input list="State" name="State" placeholder="Select your State" />
+          <datalist id="State">
+            <option value="Andaman and Nicobar Islands">
+              Andaman and Nicobar Islands
+            </option>
+            <option value="Andhra Pradesh"></option>
+            <option value="Arunachal Pradesh"></option>
+            <option value="Assam"></option>
+            <option value="Bihar"></option>
+            <option value="Chandigarh"></option>
+            <option value="Chhattisgarh"></option>
+            <option value="Dadra and Nagar Haveli"></option>
+            <option value="Daman and Diu"></option>
+            <option value="Delhi"></option>
+            <option value="Goa"></option>
+            <option value="Gujarat"></option>
+            <option value="Haryana"></option>
+            <option value="Himachal Pradesh"></option>
+            <option value="Jammu and Kashmir"></option>
+            <option value="Jharkhand"></option>
+            <option value="Karnataka"></option>
+            <option value="Kerala"></option>
+            <option value="Lakshadweep"></option>
+            <option value="Madhya Pradesh"></option>
+            <option value="Maharashtra"></option>
+            <option value="Manipur"></option>
+            <option value="Meghalaya"></option>
+            <option value="Mizoram"></option>
+            <option value="Nagaland"></option>
+            <option value="Orissa"></option>
+            <option value="Pondicherry"></option>
+            <option value="Punjab"></option>
+            <option value="Rajasthan"></option>
+            <option value="Sikkim"></option>
+            <option value="Tamil Nadu"></option>
+            <option value="”Tripura”"></option>
+            <option value="Uttaranchal"></option>
+            <option value="Uttar Pradesh"></option>
+            <option value="West Bengal"></option>
+          </datalist>
+          <label>Country:</label>
+          <input list="countries" id="country" name="country" />
+          <datalist id="countries">
+            <option value="France"></option>
+            <option value="Norway"></option>
+            <option value="Germany"></option>
+            <option value="Australia"></option>
+            <option value="India"></option>
+            <option value="United Kingdom"></option>
+          </datalist>
+          <label>Email ID:</label>
+          <input type="email" placeholder="Enter your Email ID" />
+          <label>Password:</label>
+          <input type="password" placeholder="Enter your Password" />
+          <label>Account Type</label>
+          <select>
+            <option>Saving</option>
+            <option>Current</option>
+          </select>
+          <input type="submit" value="Create" />
+        </fieldset>
+
+        <label>Initial Deposit Amount:</label>
+        <input type="number"/>
+      </form>
+    </main>
+
+    <!-- JavaScript for Validation of Account Creation-->
+    <script src="../js/Account_Creation.js"></script>
+  </body>
+</html>
