@@ -1,8 +1,59 @@
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Fira Sans', sans-serif;
+}
+header > h1 {
+  margin: 20px 38% 20px;
+}
+form {
+  display: flex;
+  width: 50%;
+  border: 2px solid blue;
+  padding: 2%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.personalInfo {
+  border: 5px dotted rebeccapurple;
+  width: 70%;
+  padding: 2% 2% 15%;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap:5%;
+}
+.personalInfo:nth-child(3){
+    margin: 5% 0% ;
+    border-color: green;
+}
+
+.infoHeading{
+    border: 1px solid black;
+    
+}
+label{
+    /* border: 1px solid red; */
+    font-size: 18px;
+}
+input{
+    /* border: 1px solid yellow; */
+    font-size: 18x;
+    padding: 2%;
+    
+}
+
+input:focus{
+   border-color: aqua;
+}

@@ -23,7 +23,8 @@ function OnSubmit(event) {
       if (accountType == "Saving") {
         if (deposit < 500) {
           alert("Minimum Amount should be greater than 500");
-        }else{let arr1 = [name, age, location, email, password, accountType, deposit];
+        }else{
+          let arr1 = [name, age, location, email, password, accountType, deposit];
             console.log(arr1);}
      
       } else {

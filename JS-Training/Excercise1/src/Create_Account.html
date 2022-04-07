@@ -5,14 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/Create_Account.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>Banking System</title>
   </head>
   <body>
     <header><h1>Create your Bank Account</h1></header>
     <main>
       <form onsubmit="OnSubmit(event)">
-        <fieldset>
-          <legend>Enter your Personal Details</legend>
+        <h1>Registration Form</h1>
+        <fieldset class="personalInfo">
+          <legend class="infoHeading">Enter your Personal Details</legend>
           <label>Name:</label>
           <input type="text" placeholder="Enter your Name" />
           <label>Age:</label>
@@ -75,7 +82,7 @@
           <label>Password:</label>
           <input type="password" placeholder="Enter your Password" />
         </fieldset>
-        <fieldset>
+        <fieldset  class="personalInfo">
           <legend>Bank Details</legend>
           <label>Account Type</label>
           <select id="accountType">
