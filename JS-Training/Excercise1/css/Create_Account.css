@@ -6,6 +6,10 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+body{
+    background: rgb(131,58,180);
+background: linear-gradient(57deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 53%, rgba(252,176,69,1) 100%);
+}
 *{
     box-sizing: border-box;
     margin: 0px;
@@ -14,46 +18,52 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 header > h1 {
   margin: 20px 38% 20px;
+  color: white;
 }
 form {
   display: flex;
   width: 50%;
-  border: 2px solid blue;
   padding: 2%;
   margin: auto;
+  background-color: white;
+  border-radius: 1%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
 .personalInfo {
-  border: 5px dotted rebeccapurple;
+  border: 1px solid grey;
   width: 70%;
-  padding: 2% 2% 15%;
-  display: grid;
+  padding: 2% 2% ;
+  display: flex;
+  flex-direction: column;
+  /* display: grid;
   grid-template-columns: 1fr 5fr;
-  gap:5%;
+  gap:5%; */
 }
 .personalInfo:nth-child(3){
     margin: 5% 0% ;
     border-color: green;
 }
 
-.infoHeading{
-    border: 1px solid black;
-    
-}
 label{
     /* border: 1px solid red; */
-    font-size: 18px;
+    font-size: 16px;
+    margin: 2% 0%;
+
 }
 input{
     /* border: 1px solid yellow; */
     font-size: 18x;
     padding: 2%;
-    
+    border: 0px solid;
+    color: black;
+    background-color: #f7faf7;  
+    outline: none;
 }
 
 input:focus{
-   border-color: aqua;
+  border: 3px solid #2f91e0;
+  border-radius: 4px;
 }
