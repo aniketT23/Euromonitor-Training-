@@ -20,14 +20,17 @@
         <h1>Registration Form</h1>
         <fieldset class="personalInfo">
           <legend class="infoHeading">Enter your Personal Details</legend>
-          <label>Name</label>
+          <label>Name<span>*</span></label>
           <input type="text" placeholder="Enter your Name" />
-          <label>Age</label>
-          <input type="number" placeholder="Enter your Age" />
+          <span></span>
+          <label>Age<span>*</span></label>
+          <input type="number" placeholder="Enter your Age" onchange="ageValidate()" />
+          <span></span>
           <label>Location</label>
           <input type="text" placeholder="Enter your Location" />
-          <label>State</label>
+          <label>State<span>*</span></label>
           <input list="State" name="State" placeholder="Select your State" />
+          <span></span>
           <datalist id="State">
             <option value="Andaman and Nicobar Islands">
               Andaman and Nicobar Islands
@@ -67,8 +70,9 @@
             <option value="Uttar Pradesh"></option>
             <option value="West Bengal"></option>
           </datalist>
-          <label>Country</label>
+          <label>Country<span>*</span></label>
           <input list="countries" id="country" name="country" />
+          <span></span>
           <datalist id="countries">
             <option value="France"></option>
             <option value="Norway"></option>
@@ -77,10 +81,12 @@
             <option value="India"></option>
             <option value="United Kingdom"></option>
           </datalist>
-          <label>Email ID</label>
+          <label>Email ID<span>*</span></label>
           <input type="email" placeholder="Enter your Email ID" />
-          <label>Password</label>
+          <span></span>
+          <label>Password<span>*</span></label>
           <input type="password" placeholder="Enter your Password" />
+          <span></span>
         </fieldset>
         <fieldset  class="personalInfo">
           <legend>Bank Details</legend>
@@ -89,8 +95,9 @@
             <option>Saving</option>
             <option>Current</option>
           </select>
-          <label>Initial Deposit Amount</label>
+          <label>Initial Deposit Amount<span>*</span></label>
           <input type="number" />
+          <span></span>
         </fieldset>
         <input type="submit" value="Create" id="submit" />
       </form>
