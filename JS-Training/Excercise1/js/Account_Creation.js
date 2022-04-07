@@ -5,7 +5,7 @@ function ageValidate() {
   let age = inputs[1].value;
   let spans = document.getElementsByTagName("span");
   let ageSpan = spans[3];
-  if (age > 68) {
+  if (age > 68 || age <= 0) {
     ageSpan.innerHTML = "You are not eligible for account";
   } else {
     ageSpan.innerHTML = null;
@@ -38,6 +38,7 @@ function OnSubmit(event) {
       "(?=.*[@#$%^&+=])" +
       "(?=\\S+$).{8,20}$"
   );
+  let count=0;
   if (name == "") {
     nameSpan.innerHTML = "Please enter your name";
   }
@@ -53,32 +54,22 @@ function OnSubmit(event) {
   if (email == "") {
     emailSpan.innerHTML = "Please enter a valid email";
   }
-  if (regex.test(password)) {
-    if (accountType == "Saving") {
-      if (deposit < 500) {
-        depositSpan.innerHTML = "Minimum Amount should be greater than 500";
-      } else {
-        let arr1 = [name, age, location, email, password, accountType, deposit];
-        console.log(arr1);
-        depositSpan.innerHTML=null;
-        window.location.href="../src/dashboard.html"
-      }
-    } else {
-      if (deposit < 800) {
-        depositSpan.innerHTML = "Minimum Amount should be greater than 800";
-      }
-      else{
-        depositSpan.innerHTML=null;
-        let arr1 = [name, age, location, email, password, accountType, deposit];
-      console.log(arr1);
-      window.location.href="../src/dashboard.html"
-    
-      }
-      
-    }
-  } else {
+  if (!regex.test(password)) {
     passwordSpan.innerHTML =
       "Password must conatin minimum eight characters, at least one letter, one number and one special character";
   }
-
+  if (accountType == "Saving") {
+    if (deposit < 500) {
+      depositSpan.innerHTML = "Minimum Amount should be greater than 500";
+    }
+  }
+  if (accountType == "Current") {
+    if (deposit < 800) {
+      depositSpan.innerHTML = "Minimum Amount should be greater than 800";
+    }
+  }
+    else if ((name, age, state, country, password, email, deposit)) {
+      window.location.href = "../src/dashboard.html";
+    }
+  
 }
