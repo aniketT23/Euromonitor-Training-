@@ -86,12 +86,13 @@ span{
     outline: none;
 }
 
+
 #submit{
     background-color: #166ee0;
-    padding: 2% 4%;
     border-radius: 6px;
+    padding: 10px 20px;
     color: #fff;
-    font-size: 18px;
+    font-size: 18px; 
 }
 
 #submit:hover{

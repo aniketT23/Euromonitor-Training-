@@ -61,6 +61,7 @@ function OnSubmit(event) {
         let arr1 = [name, age, location, email, password, accountType, deposit];
         console.log(arr1);
         depositSpan.innerHTML=null;
+        window.location.href="../src/dashboard.html"
       }
     } else {
       if (deposit < 800) {
@@ -68,12 +69,16 @@ function OnSubmit(event) {
       }
       else{
         depositSpan.innerHTML=null;
-      }
-      let arr1 = [name, age, location, email, password, accountType, deposit];
+        let arr1 = [name, age, location, email, password, accountType, deposit];
       console.log(arr1);
+      window.location.href="../src/dashboard.html"
+    
+      }
+      
     }
   } else {
     passwordSpan.innerHTML =
       "Password must conatin minimum eight characters, at least one letter, one number and one special character";
   }
+
 }
