@@ -1,4 +1,4 @@
-let main=document.getElementsByTagName("main");
+let main=document.getElementById("cont1");
 let container=document.getElementById("info");
 const displayDetails=()=>{
     let data=JSON.parse(localStorage.getItem("showDetails"));
@@ -18,3 +18,23 @@ container.append(name,email,account,accountType,balance)
 }
 
 displayDetails();
+
+
+const withDraw=()=>{
+
+    let amountField=document.createElement("input");
+    let btn=document.createElement("button");
+    btn.innerHTML="Withdraw"
+   amountField.setAttribute("type", "number");
+    main.append(amountField,btn)
+
+    
+}
+
+const deposit=()=>{
+    let amountField=document.createElement("input");
+    let btn=document.createElement("button");
+    btn.innerHTML="Deposit"
+   amountField.setAttribute("type", "number");
+    main.append(amountField,btn)
+}
