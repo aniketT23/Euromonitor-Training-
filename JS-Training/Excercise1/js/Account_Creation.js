@@ -1,13 +1,11 @@
 let btn = document.getElementById("submit").value;
 let Year = new Date();
 let currYear = Year.getFullYear();
-
 function ageValidate() {
   let inputs = document.getElementsByTagName("input");
   let age = inputs[1].value;
   let spans = document.getElementsByTagName("span");
   let ageSpan = spans[3];
-  console.log(age, age.length);
   let newYear = "";
   let enteredDate = new Date(age);
   let enteredYear = enteredDate.getFullYear();
@@ -66,17 +64,13 @@ function OnSubmit(event) {
     passwordSpan.innerHTML =
       "Password must conatin minimum eight characters, at least one letter, one number and one special character";
   }
-  if (accountType == "Saving") {
-    if (deposit < 500) {
-      depositSpan.innerHTML = "Minimum Amount should be greater than 500";
-      return;
-    }
+  if (accountType == "Current" && deposit < 800) {
+    depositSpan.innerHTML = "Minimum Amount should be greater than 800";
+    return;
   }
-  if (accountType == "Current") {
-    if (deposit < 800) {
-      depositSpan.innerHTML = "Minimum Amount should be greater than 800";
-      return;
-    }
+  if (accountType == "Saving" && deposit < 500) {
+    depositSpan.innerHTML = "Minimum Amount should be greater than 500";
+    return;
   } else if (
     name &&
     age &&
@@ -87,10 +81,13 @@ function OnSubmit(event) {
     state &&
     country
   ) {
-    if (accountType == "Saving") {
-      accountNo = "Sav" + Math.floor(Math.random() * 9999999999);
-    } else {
+    if(accountType=="Current"){
       accountNo = "Curr" + Math.floor(Math.random() * 9999999999);
+      console.log(accountNo,deposit)
+    }
+    if(accountType=="Saving"){
+      accountNo = "Sav" + Math.floor(Math.random() * 9999999999);
+      console.log(accountNo,deposit)
     }
     let details = {
       name: name,
@@ -100,7 +97,7 @@ function OnSubmit(event) {
       accountType: accountType,
       deposit: deposit,
     };
-    localStorage.setItem("showDetails",JSON.stringify(details))
+    localStorage.setItem("showDetails", JSON.stringify(details));
     addDeatils(details);
     window.location.href = "../src/dashboard.html";
   }

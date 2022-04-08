@@ -1,12 +1,13 @@
 * {
+  box-sizing: border-box;
   font-family: "Fira Sans", sans-serif;
 }
-body{
+body {
   background: rgb(131, 58, 180);
-  background: linear-gradient(
-    57deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 53%,
+  background: radial-gradient(
+    circle,
+    rgba(180, 58, 180, 1) 0%,
+    rgba(222, 29, 29, 1) 53%,
     rgba(252, 176, 69, 1) 100%
   );
 }
@@ -47,29 +48,32 @@ button {
   transition: all 0.5s;
 }
 
-main{
-    background-color: white;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: auto;
+main {
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  /* height: 50rem; */
+  margin: auto;
+  margin-top: 2%;
+  padding-bottom: 2%;
 }
-main>h2{
-text-align: center;
-}
-
-section{
-    display: flex;  
-    justify-content: space-around;
+main > h2 {
+  text-align: center;
 }
 
-aside{
-    width: 25%;
+section {
+  display: flex;
+  justify-content: space-around;
 }
-aside>img{
-    width: 100%;
+
+aside {
+  width: 25%;
 }
-article{
-    font-size: 18px;
+aside > img {
+  width: 100%;
+}
+article {
+  font-size: 18px;
 }
