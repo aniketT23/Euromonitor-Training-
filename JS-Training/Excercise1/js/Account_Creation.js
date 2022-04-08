@@ -1,11 +1,18 @@
 let btn = document.getElementById("submit").value;
+let Year = new Date();
+let currYear = Year.getFullYear();
 
 function ageValidate() {
   let inputs = document.getElementsByTagName("input");
   let age = inputs[1].value;
   let spans = document.getElementsByTagName("span");
   let ageSpan = spans[3];
-  if (age > 68 || age <= 0) {
+  console.log(age, age.length);
+  let newYear = "";
+  let enteredDate = new Date(age);
+  let enteredYear = enteredDate.getFullYear();
+
+  if (currYear - enteredYear > 68 || currYear - enteredYear <= 0) {
     ageSpan.innerHTML = "You are not eligible for account";
   } else {
     ageSpan.innerHTML = null;
@@ -38,12 +45,13 @@ function OnSubmit(event) {
       "(?=.*[@#$%^&+=])" +
       "(?=\\S+$).{8,20}$"
   );
-  let count=0;
+  let accountNo = "";
+
   if (name == "") {
     nameSpan.innerHTML = "Please enter your name";
   }
   if (age == "") {
-    ageSpan.innerHTML = "Please enter your age";
+    ageSpan.innerHTML = "Please enter your D.O.B";
   }
   if (state == "") {
     stateSpan.innerHTML = "Please select your State";
@@ -61,15 +69,49 @@ function OnSubmit(event) {
   if (accountType == "Saving") {
     if (deposit < 500) {
       depositSpan.innerHTML = "Minimum Amount should be greater than 500";
+      return;
     }
   }
   if (accountType == "Current") {
     if (deposit < 800) {
       depositSpan.innerHTML = "Minimum Amount should be greater than 800";
+      return;
     }
+  } else if (
+    name &&
+    age &&
+    email &&
+    password &&
+    deposit &&
+    regex.test(password) &&
+    state &&
+    country
+  ) {
+    if (accountType == "Saving") {
+      accountNo = "Sav" + Math.floor(Math.random() * 9999999999);
+    } else {
+      accountNo = "Curr" + Math.floor(Math.random() * 9999999999);
+    }
+    let details = {
+      name: name,
+      email: email,
+      password: password,
+      accountNo: accountNo,
+      accountType: accountType,
+      deposit: deposit,
+    };
+    localStorage.setItem("showDetails",JSON.stringify(details))
+    addDeatils(details);
+    window.location.href = "../src/dashboard.html";
   }
-    else if ((name, age, state, country, password, email, deposit)) {
-      window.location.href = "../src/dashboard.html";
-    }
-  
+}
+
+function addDeatils(details) {
+  if (localStorage.getItem("accountDetails") == null) {
+    localStorage.setItem("accountDetails", JSON.stringify([details]));
+  } else {
+    let data = JSON.parse(localStorage.getItem("accountDetails"));
+    data.push(details);
+    localStorage.setItem("accountDetails", JSON.stringify(data));
+  }
 }

@@ -1,0 +1,24 @@
+body{
+    background: rgb(131,58,180);
+    background: linear-gradient(57deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 53%, rgba(252,176,69,1) 100%);
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    border: 2px solid wheat;
+
+}
+header>h1{
+    flex-grow: 2;
+}
+header>nav{
+ 
+    margin: 2% ;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 0px;
+  
+}
+
