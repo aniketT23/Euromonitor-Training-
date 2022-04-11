@@ -14,6 +14,7 @@ function ageValidate() {
     ageSpan.innerHTML = "You are not eligible for account";
   } else {
     ageSpan.innerHTML = null;
+    return true;
   }
 }
 
@@ -48,7 +49,7 @@ function OnSubmit(event) {
   if (name == "") {
     nameSpan.innerHTML = "Please enter your name";
   }
-  if (age == "") {
+  if (age == "" || ageValidate()) {
     ageSpan.innerHTML = "Please enter your D.O.B";
   }
   if (state == "") {
