@@ -1,0 +1,17 @@
+
+h1{
+    text-align: center;
+}
+main{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+}
+
+.container{
+    flex-grow: 2;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
