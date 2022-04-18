@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+}
+#main{
+    margin: auto;
+}
+.userSection{
+    border: 1px solid grey;
+    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userSection>img{
+    width: 15%;
+    height: 15%;
+}
