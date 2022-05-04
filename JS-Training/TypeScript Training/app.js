@@ -1,12 +1,13 @@
+"use strict";
 // export {};
 console.log("TypeScript Starting!!");
 // export {};
 function add(no1, no2) {
     return no1 + no2;
 }
-var num1 = 10;
-var num2 = 14;
-var res = add(num1, num2);
+const num1 = 10;
+const num2 = 14;
+const res = add(num1, num2);
 console.log(res);
 // for getting of the error 'redeclaration blocked scope'
 // enum Role {

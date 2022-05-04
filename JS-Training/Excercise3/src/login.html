@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="Stylesheet" href="../css/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Banking System</title>
+  </head>
+  <body>
+    <header><h1>Banking System</h1></header>
+    <main>
+        <form onsubmit="OnSubmit(event)">
+            <h2>Enter your Login Details </h2>
+            <label>Account Number</label>
+            <input type="text" placeholder="Enter your account number"/>
+            <span></span>
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password"/>
+            <span></span>
+            <input type="submit" id="submit" value="Login">
+        </form>
+    </main>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

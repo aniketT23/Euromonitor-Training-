@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/Create_Account.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Banking System</title>
+  </head>
+  <body>
+    <header><h1>Create your Bank Account</h1></header>
+    <main>
+      <form onsubmit="OnSubmit(event)">
+        <h1>Registration Form</h1>
+        <fieldset class="personalInfo">
+          <legend class="infoHeading">Enter your Personal Details</legend>
+          <label>Name<span>*</span></label>
+          <input type="text" placeholder="Enter your Name" />
+          <span></span>
+          <label>Birth Date<span>*</span></label>
+          <input
+            type="date"
+            placeholder="Enter your Age"
+            onchange="ageValidate()"
+          />
+          <span></span>
+          <label>Location</label>
+          <input type="text" placeholder="Enter your Location" />
+          <label>State<span>*</span></label>
+          <input list="State" name="State" placeholder="Select your State" />
+          <span></span>
+          <datalist id="State">
+            <option value="Andaman and Nicobar Islands">
+              Andaman and Nicobar Islands
+            </option>
+            <option value="Andhra Pradesh"></option>
+            <option value="Arunachal Pradesh"></option>
+            <option value="Assam"></option>
+            <option value="Bihar"></option>
+            <option value="Chandigarh"></option>
+            <option value="Chhattisgarh"></option>
+            <option value="Dadra and Nagar Haveli"></option>
+            <option value="Daman and Diu"></option>
+            <option value="Delhi"></option>
+            <option value="Goa"></option>
+            <option value="Gujarat"></option>
+            <option value="Haryana"></option>
+            <option value="Himachal Pradesh"></option>
+            <option value="Jammu and Kashmir"></option>
+            <option value="Jharkhand"></option>
+            <option value="Karnataka"></option>
+            <option value="Kerala"></option>
+            <option value="Lakshadweep"></option>
+            <option value="Madhya Pradesh"></option>
+            <option value="Maharashtra"></option>
+            <option value="Manipur"></option>
+            <option value="Meghalaya"></option>
+            <option value="Mizoram"></option>
+            <option value="Nagaland"></option>
+            <option value="Orissa"></option>
+            <option value="Pondicherry"></option>
+            <option value="Punjab"></option>
+            <option value="Rajasthan"></option>
+            <option value="Sikkim"></option>
+            <option value="Tamil Nadu"></option>
+            <option value="”Tripura”"></option>
+            <option value="Uttaranchal"></option>
+            <option value="Uttar Pradesh"></option>
+            <option value="West Bengal"></option>
+          </datalist>
+          <label>Country<span>*</span></label>
+          <input list="countries" id="country" name="country" />
+          <span></span>
+          <datalist id="countries">
+            <option value="France"></option>
+            <option value="Norway"></option>
+            <option value="Germany"></option>
+            <option value="Australia"></option>
+            <option value="India"></option>
+            <option value="United Kingdom"></option>
+          </datalist>
+          <label>Email ID<span>*</span></label>
+          <input type="email" placeholder="Enter your Email ID" />
+          <span></span>
+          <label>Password<span>*</span></label>
+          <input type="password" placeholder="Enter your Password" />
+          <span></span>
+        </fieldset>
+        <fieldset class="personalInfo">
+          <legend>Bank Details</legend>
+          <label>Account Type</label>
+          <select id="accountType">
+            <option value="Current">Current</option>
+            <option value="Saving">Saving</option>       
+          </select>
+          <label>Initial Deposit Amount<span>*</span></label>
+          <input type="number" />
+          <span></span>
+        </fieldset>
+        <input type="submit" value="Create" id="submit" />
+      </form>
+    </main>
+
+    <!-- JavaScript for Validation of Account Creation-->
+    <script src="../js/Account_Creation.js"></script>
+  </body>
+</html>
