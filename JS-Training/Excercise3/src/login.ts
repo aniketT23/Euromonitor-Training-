@@ -1,25 +1,3 @@
-// let res=localStorage.getItem("accountDetails")!;
-// let data:any = JSON.parse(res);
-
-// function OnSubmit(event:any) {
-//     event.preventDefault();
-//     let inputs = document.getElementsByTagName("input");
-//     let account:string = inputs[0].value;
-//     let password:string = inputs[1].value;
-//     let count:number = 0;
-//     for (let i = 0; i < data.length; i++) {
-//       if (account == data[i].accountNo && password == data[i].password) {
-//           let details:any=data[i];
-//         localStorage.setItem("showDetails", JSON.stringify(details));
-//         window.location.href = "../src/dashboard.html";
-//         return;
-//       } else {
-//         count++;
-//       }
-//     }
-//     alert("Invalid Details")
-//   }
-
 // Program in coonsole
 
 import * as readline from "readline";

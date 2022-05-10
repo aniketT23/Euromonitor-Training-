@@ -1,26 +1,47 @@
 "use strict";
-exports.__esModule = true;
-var readline = require("readline");
-var process_1 = require("process");
-var rl = readline.createInterface({
-    input: process_1.stdin,
-    output: process_1.stdout
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
 });
-var main = document.getElementById("cont1");
-var container = document.getElementById("info");
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const readline = __importStar(require("readline"));
+const process_1 = require("process");
+const rl = readline.createInterface({
+    input: process_1.stdin,
+    output: process_1.stdout,
+});
 // let data = JSON.parse(localStorage.getItem("showDetails")!);
-var data = {
+let data = {
     name: "Aniket Tiwari",
     email: "tiwarianiket91@gmail.com",
     password: "Aniket@123",
     accountNo: "Sav9208650280",
     accountType: "Saving",
-    deposit: 7200
+    deposit: 7200,
 };
 function BankingProcess() {
-    rl.question("Please Select a Option: \n 1.Withdraw \n 2.Deposit", function (value) {
+    rl.question("Please Select a Option: \n 1.Withdraw \n 2.Deposit", (value) => {
         if (+value == 1) {
-            rl.question("Enter Amount you want to Withdraw: ", function (amount1) {
+            rl.question("Enter Amount you want to Withdraw: ", (amount1) => {
                 if (+amount1 > data.deposit) {
                     console.log("you cannot withdraw the amount due to insufficient balance");
                 }
@@ -31,7 +52,7 @@ function BankingProcess() {
             });
         }
         if (+value == 2) {
-            rl.question("Enter Amount you want Deposit: ", function (amount2) {
+            rl.question("Enter Amount you want Deposit: ", (amount2) => {
                 if (data.accountType == "Current") {
                     if (+amount2 < 1000) {
                         console.log("Minimum balance should not be less than 1000");
