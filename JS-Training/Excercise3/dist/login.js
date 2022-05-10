@@ -1,61 +1,28 @@
 "use strict";
-// Program in coonsole
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const readline = __importStar(require("readline"));
-const process_1 = require("process");
-const rl = readline.createInterface({
-    input: process_1.stdin,
-    output: process_1.stdout,
+var readlineSync = require("readline-sync");
+const axios = require("axios").default;
+let getData = () => __awaiter(void 0, void 0, void 0, function* () {
+    let res = yield axios.get("http://localhost:3000/Users");
+    let data = res.data;
+    let accountNum = readlineSync.question("Enter your Account Number: ");
+    let pass = readlineSync.question("Enter your Password : ");
+    for (let i = 0; i < data.length; i++) {
+        if (accountNum == data[i].accountNo && pass == data[i].password) {
+            console.log("User Deatils: ", data[i]);
+            return;
+        }
+    }
+    console.log("Invalid Credentials");
+    return;
 });
-let data = [
-    {
-        name: "Aniket Tiwari",
-        email: "tiwarianiket91@gmail.com",
-        password: "Aniket@123",
-        accountNo: "Sav9208650280",
-        accountType: "Saving",
-        deposit: 7200,
-    },
-];
-function OnSubmit() {
-    let password;
-    let account;
-    let count = 0;
-    rl.question("Enter your Account Number: ", (account) => {
-        rl.question("Enter your Password : ", (password) => {
-            for (let i = 0; i < data.length; i++) {
-                if (account == data[i].accountNo && password == data[i].password) {
-                    console.log("Here is your Account Details:- ", data[i]);
-                }
-                else {
-                    count++;
-                }
-            }
-            console.log("Exit");
-        });
-    });
-}
-OnSubmit();
+getData();

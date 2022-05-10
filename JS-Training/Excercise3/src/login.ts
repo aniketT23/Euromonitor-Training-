@@ -1,41 +1,23 @@
-// Program in coonsole
+var readlineSync = require("readline-sync");
+const axios = require("axios").default;
 
-import * as readline from "readline";
+let getData = async () => {
+  let res = await axios.get("http://localhost:3000/Users");
+  let data = res.data;
 
-import { stdin, stdout } from "process";
+  let accountNum = readlineSync.question("Enter your Account Number: ");
+  let pass = readlineSync.question("Enter your Password : ");
+  for (let i: number = 0; i < data.length; i++) {
+    if (accountNum == data[i].accountNo && pass == data[i].password) {
+      console.log("User Deatils: ", data[i]);
+      return
+    }
+  }
+  console.log("Invalid Credentials");
+  
+return ;
+};
 
-const rl = readline.createInterface({
-  input: stdin,
-  output: stdout,
-});
+getData();
 
-let data: any[] = [
-  {
-    name: "Aniket Tiwari",
-    email: "tiwarianiket91@gmail.com",
-    password: "Aniket@123",
-    accountNo: "Sav9208650280",
-    accountType: "Saving",
-    deposit: 7200,
-  },
-];
-
-function OnSubmit(): void {
-  let password: string;
-  let account: string;
-  let count: number = 0;
-  rl.question("Enter your Account Number: ", (account) => {
-    rl.question("Enter your Password : ", (password) => {
-      for (let i: number = 0; i < data.length; i++) {
-        if (account == data[i].accountNo && password == data[i].password) {
-          console.log("Here is your Account Details:- ", data[i]);
-        } else {
-          count++;
-        }
-      }
-      console.log("Exit");
-    });
-  });
-}
-
-OnSubmit();
+export {};

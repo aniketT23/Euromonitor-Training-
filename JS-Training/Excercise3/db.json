@@ -1,6 +1,5 @@
 {
   "Users": [
-
     {
       "firstName": "Aniket",
       "lastName": "Tiwari",
@@ -8,7 +7,7 @@
       "password": "Aniet@12",
       "age": "23/01/2000",
       "account": "Saving",
-      "amount": "5000",
+      "amount": 8000,
       "accountNo": "Sav5702133211",
       "id": 1
     }
