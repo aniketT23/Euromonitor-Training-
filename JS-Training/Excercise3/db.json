@@ -1,12 +1,15 @@
 {
   "Users": [
+
     {
-      "name": "Aniket Tiwari",
-      "email": "tiwarianiket91@gmail.com",
-      "password": "Aniket@123",
-      "accountNo": "Sav9208650280",
-      "accountType": "Saving",
-      "deposit": 7200,
+      "firstName": "Aniket",
+      "lastName": "Tiwari",
+      "email": "tiwarianiket@gmail.com",
+      "password": "Aniet@12",
+      "age": "23/01/2000",
+      "account": "Saving",
+      "amount": "5000",
+      "accountNo": "Sav5702133211",
       "id": 1
     }
   ]

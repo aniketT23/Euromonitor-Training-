@@ -122,3 +122,5 @@ const newUser = new FormCreation(
 );
 newUser.validate();
 newUser.updateData();
+
+export{}
