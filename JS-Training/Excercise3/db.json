@@ -10,6 +10,17 @@
       "amount": 8000,
       "accountNo": "Sav5702133211",
       "id": 1
+    },
+    {
+      "firstName": "Vishnu",
+      "lastName": "Sankara",
+      "email": "vishnu@mone.com",
+      "password": "Vishnu@444",
+      "age": "22/03/1995",
+      "account": "Current",
+      "amount": "100000",
+      "accountNo": "Curr7397323497",
+      "id": 2
     }
   ]
 }
