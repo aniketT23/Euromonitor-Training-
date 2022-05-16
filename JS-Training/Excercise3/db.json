@@ -21,6 +21,17 @@
       "amount": "100000",
       "accountNo": "Curr7397323497",
       "id": 2
+    },
+    {
+      "firstName": "Rambhuk",
+      "lastName": "Mukhia",
+      "email": "rambhuMukhia@gmail.com",
+      "password": "Rambhu@321",
+      "age": "18/09/1996",
+      "account": "Saving",
+      "amount": "25000",
+      "accountNo": "Sav2767531055",
+      "id": 3
     }
   ]
 }
