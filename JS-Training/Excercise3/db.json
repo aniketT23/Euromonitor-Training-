@@ -1,17 +1,6 @@
 {
   "Users": [
     {
-      "firstName": "Aniket",
-      "lastName": "Tiwari",
-      "email": "tiwarianiket@gmail.com",
-      "password": "Aniet@12",
-      "age": "23/01/2000",
-      "account": "Saving",
-      "amount": 8000,
-      "accountNo": "Sav5702133211",
-      "id": 1
-    },
-    {
       "firstName": "Vishnu",
       "lastName": "Sankara",
       "email": "vishnu@mone.com",
@@ -29,9 +18,31 @@
       "password": "Rambhu@321",
       "age": "18/09/1996",
       "account": "Saving",
-      "amount": "25000",
+      "amount": 29000,
       "accountNo": "Sav2767531055",
       "id": 3
+    },
+    {
+      "firstName": "Aniket",
+      "lastName": "Tiwari",
+      "email": "amiket@321",
+      "password": "Aniket@123",
+      "age": "26/02/2000",
+      "account": "Saving",
+      "amount": "36000",
+      "accountNo": "Sav8374087394",
+      "id": 4
+    },
+    {
+      "firstName": "Shivam",
+      "lastName": "Vishvkarma",
+      "email": "shivam@321",
+      "password": "Shivam@321",
+      "age": "12/06/1995",
+      "account": "Current",
+      "amount": 80000,
+      "accountNo": "Curr7991060953",
+      "id": 5
     }
   ]
 }
