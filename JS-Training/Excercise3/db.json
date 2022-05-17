@@ -40,9 +40,31 @@
       "password": "Shivam@321",
       "age": "12/06/1995",
       "account": "Current",
-      "amount": 80000,
+      "amount": 79000,
       "accountNo": "Curr7991060953",
       "id": 5
+    },
+    {
+      "firstName": "Ram",
+      "lastName": "Sham",
+      "email": "ram@gmail.com",
+      "password": "Ram@321'",
+      "age": "12/05/1996",
+      "account": "Current",
+      "amount": "8000",
+      "accountNo": "Curr7363676494",
+      "id": 6
+    },
+    {
+      "firstName": "Babu",
+      "lastName": "Lal",
+      "email": "lalBadu@321",
+      "password": "babuLal@32142",
+      "age": "15/05/1969",
+      "account": "Current",
+      "amount": "1000000",
+      "accountNo": "Curr7885742370",
+      "id": 7
     }
   ]
 }
