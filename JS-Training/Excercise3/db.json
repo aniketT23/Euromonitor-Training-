@@ -65,6 +65,17 @@
       "amount": "1000000",
       "accountNo": "Curr7885742370",
       "id": 7
+    },
+    {
+      "firstName": "Mango",
+      "lastName": "Django",
+      "email": "mango@45django.com",
+      "password": "Mango@Django34",
+      "age": "18/07/1985",
+      "account": "Current",
+      "amount": "10000",
+      "accountNo": "Curr4086436661",
+      "id": 8
     }
   ]
 }
