@@ -67,25 +67,18 @@ class FormCreation {
 
   validate() {
     let count: number = 0;
-    if (!emailRegex.test(this.email)) {
-      console.log("Enter valid Email ID");
-      count++;
-    }
-    if (!passRegex.test(this.password)) {
-      console.log("Enter a Valid Password");
+    if (!emailRegex.test(email) ||!passRegex.test(password) ) {
+      console.log("Enter valid Credentials");
       count++;
     }
     if (!this.ageValidation()) {
       console.log("Please Enter a valid DOB");
       count++;
     }
-    if (+this.amount < 800 && this.account == "Current") {
+    if (+amount < 800 && account == "Current" ||+amount < 500 && account == "Saving" ) {
       throw "Amount you have is not valid or you have entered less amount";
     }
-    if (+this.amount < 500 && this.account == "Saving") {
-      throw "Amount you have is not valid or you have entered less amount";
-    } else if (count == 0) {
-      console.log(this.ageValidation());
+    else if (count == 0) {
       console.log(newUser);
       return true;
     }
