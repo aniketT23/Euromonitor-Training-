@@ -1,0 +1,13 @@
+button {
+  font-size: 20px;
+  margin-top: 5%;
+}
+div {
+  font-size: 4rem;
+  display: flex;
+  margin: auto 50%;
+}
+
+div:nth-child(4) {
+  margin-left: 47.5%;
+}

@@ -1,0 +1,7 @@
+<h1>Ecommerce</h1>
+<app-login-page> </app-login-page>
+<div [@openClose]="flag ? 'open' : 'closed'">{{ counter }}</div>
+<div>
+  <button (click)="startTimer()">Start</button>
+  <button (click)="stopTimer()">Stop</button>
+</div>
