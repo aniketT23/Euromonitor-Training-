@@ -1,2 +1,7 @@
 <p>login-page works!</p>
 <button (click)="sampleFun()">Login</button>
+<h2>><input type="text" [value]="message" /></h2>
+<h3>Event Binding</h3>
+<button (click)="sampleData()">Event</button>
+<h4>Two Way</h4>
+<input type="text" [(ngModel)]="text" />{{ text }}

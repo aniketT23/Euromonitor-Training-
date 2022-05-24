@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
+  message: string = 'Raw Data';
+  text: string = 'Garbage';
   constructor() {}
 
   ngOnInit(): void {}
-  sampleFun(): void {
+
+  public sampleData(): void {
+    alert('Event Binding');
+  }
+   public sampleFun(): void {
     alert('I am running!!');
   }
 }
