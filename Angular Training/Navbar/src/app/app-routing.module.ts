@@ -1,6 +1,10 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DetailsEmployeeComponent } from './details-employee/details-employee.component';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { ErrorPageComponent } from './../../../SampleAssignment/src/app/featureModule/error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +20,15 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'request', component: RequestComponent },
+  {
+    path: 'Employee',
+    component: EmployeeComponent,
+    children: [
+      { path: 'add', component: AddEmployeeComponent },
+      { path: 'edit', component: EditEmployeeComponent },
+      { path: 'details', component: DetailsEmployeeComponent },
+    ],
+  },
   { path: '**', component: ProfileComponent },
 ];
 
