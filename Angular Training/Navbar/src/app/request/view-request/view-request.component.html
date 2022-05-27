@@ -1,0 +1,10 @@
+<h2>Select Request Which you want to View</h2>
+<select [(ngModel)="info"]>
+    <option *ngFor="let data of datas" [ngValue]="data">{{data.request}}</option>
+</select>
+<div [ngSwitch]="info.id">
+    <p *ngSwitchCase="1">{{info.status}}</p>
+    <p *ngSwitchCase="2">{{info.status}}</p>
+    <p *ngSwitchCase="3">{{info.status}}</p>
+    <p *ngSwitchCase="">Nothing is selected</p>
+</div>

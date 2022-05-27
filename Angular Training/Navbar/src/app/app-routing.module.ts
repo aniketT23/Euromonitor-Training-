@@ -9,8 +9,6 @@ import { ErrorPageComponent } from './../../../SampleAssignment/src/app/featureM
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
-import { ProfileComponent } from './profile/profile.component';
-import { RequestComponent } from './request/request.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,8 +16,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'home', redirectTo: '/login', pathMatch: 'prefix' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'request', component: RequestComponent },
   {
     path: 'Employee',
     component: EmployeeComponent,
@@ -29,7 +25,8 @@ const routes: Routes = [
       { path: 'details', component: DetailsEmployeeComponent },
     ],
   },
-  { path: '**', component: ProfileComponent },
+  {path:"request",loadChildren:()=>import('./request/request.module').then(m=>m.RequestModule)},
+  { path: '**', component: ErrorPageComponent},
 ];
 
 @NgModule({
