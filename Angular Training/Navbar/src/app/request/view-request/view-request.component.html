@@ -1,5 +1,5 @@
 <h2>Select Request Which you want to View</h2>
-<select [(ngModel)="info"]>
+<select [(ngModel)]="info">
     <option *ngFor="let data of datas" [ngValue]="data">{{data.request}}</option>
 </select>
 <div [ngSwitch]="info.id">
