@@ -1,11 +1,12 @@
 <h1>Custom Directives</h1>
-<button appSampleDir>Hover Over Me!!</button>
-<p [appSecondDir]="color" >Go On!!!</p>
+<!-- <button appSampleDir>Hover Over Me!!</button> -->
+<div class="box1" appSampleDir>Hover here !!</div>
+<p [appSecondDir]="color">Go On!!!</p>
 <p [appSecondDir]="color" defaultSize="blue">Binding Second Property</p>
 
 <h2>Pick a highlight color</h2>
 <div>
-  <input type="radio" name="colors" (click)="color='lightgreen'">Green
-  <input type="radio" name="colors" (click)="color='yellow'">Yellow
-  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+  <input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+  <input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+  <input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
 </div>

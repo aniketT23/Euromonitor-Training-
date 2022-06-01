@@ -1,0 +1,10 @@
+.box1 {
+  width: 200px;
+  display: flex;
+  height: 200px;
+  background-color: red;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
