@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { DetailEmpComponent } from './Components/detail-emp/detail-emp.component';
+import { EmpWorkComponent } from './Components/emp-work/emp-work.component';
 import { EmployeesComponent } from './Components/employees/employees.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'emp', component: EmployeesComponent },
   { path: 'login', component: LoginComponent },
   {path:'route',component:RoutingComponent},
+  {path:'work',component:EmpWorkComponent},
   {path:'empRoute/:id',component:DetailEmpComponent},
   { path: '**', component: LoginComponent },
 ];
