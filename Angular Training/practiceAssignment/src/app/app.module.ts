@@ -1,6 +1,7 @@
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AssignInitialPipe } from './SharedMpdule/assign-initial.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { DetailEmpComponent } from './Components/detail-emp/detail-emp.component';
 import { EmployeesComponent } from './Components/employees/employees.component';
@@ -19,7 +20,8 @@ import { RoutingComponent } from './Components/routing/routing.component';
     RoutingComponent,
     LoginComponent,
     EmployeesComponent,
-    DetailEmpComponent
+    DetailEmpComponent,
+    AssignInitialPipe
   ],
   imports: [
     BrowserModule,

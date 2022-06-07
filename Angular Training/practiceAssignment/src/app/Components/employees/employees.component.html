@@ -17,7 +17,7 @@
           
             <tr *ngFor="let user of details | filter:term">
               <td>{{user.id}}</td>
-              <td>{{user.name|uppercase}}</td>
+              <td>{{user.name|uppercase|assignInitial:user.gender}}</td>
               <td>{{user.location|titlecase}}</td>
               <td>{{user.gender|lowercase}}</td>
               <td>{{user.isActive?'Yes':'No'}}</td>
