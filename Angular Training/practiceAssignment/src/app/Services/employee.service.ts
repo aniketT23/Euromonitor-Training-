@@ -23,7 +23,7 @@ export class EmployeeService {
   }
   public getEmployeeByID(id: number): Observable<Employee> {
     const emp:any = this.empDetails.find((x) => x.id === id);
-    console.log(emp);    
+    console.log("EmP",emp);    
     return of(emp);
   }
 }
