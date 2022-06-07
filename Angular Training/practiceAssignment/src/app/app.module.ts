@@ -15,6 +15,8 @@ import { NgModule } from '@angular/core';
 import { RoutingComponent } from './Components/routing/routing.component';
 import { StoreComponent } from './Components/store/store.component';
 import { EmpWorkComponent } from './Components/emp-work/emp-work.component';
+import { ShowEmpDataComponent } from './Components/show-emp-data/show-emp-data.component';
+import { ShowEmpComponent } from './Components/show-emp/show-emp.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { EmpWorkComponent } from './Components/emp-work/emp-work.component';
     DetailEmpComponent,
     AssignInitialPipe,
     StoreComponent,
-    EmpWorkComponent
+    EmpWorkComponent,
+    ShowEmpDataComponent,
+    ShowEmpComponent
   ],
   imports: [
     BrowserModule,

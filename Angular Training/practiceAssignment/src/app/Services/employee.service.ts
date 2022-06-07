@@ -1,7 +1,8 @@
 import { Observable, of } from 'rxjs';
 
+import { EmpDetails } from '../Models/emp-details';
 import { Employee } from '../Models/employee.model';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,8 +10,8 @@ import { Injectable } from '@angular/core';
 })
 export class EmployeeService {
   empDetails: Employee[] = [];
-
-  constructor() {
+  private url = '/assets/employee.json';
+  constructor(private httpClient: HttpClient) {
     this.empDetails = [
       new Employee(1, 'Rambhu', 'Pune', 'Male', true),
       new Employee(2, 'Vishnu', 'Bangalore', 'Male', false),
@@ -19,12 +20,15 @@ export class EmployeeService {
     ];
   }
   public getEmployees(): Observable<Employee[]> {
-
     return of(this.empDetails);
   }
   public getEmployeeByID(id: number): Observable<Employee> {
-    const emp:any = this.empDetails.find((x) => x.id === id);
-    
+    const emp: any = this.empDetails.find((x) => x.id === id);
+
     return emp;
+  }
+  public getDetails(): Observable<EmpDetails[]> {
+    const data: any = this.httpClient.get<Employee[]>(this.url);
+    return data;
   }
 }

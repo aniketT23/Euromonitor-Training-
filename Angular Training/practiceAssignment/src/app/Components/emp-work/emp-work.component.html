@@ -1,1 +1,12 @@
-<p>emp-work works!</p>
+<div>
+  <label>Employee ID</label>
+  <input type="text" name="id" [(ngModel)]="employee.id" />
+  <label>Employee name</label>
+  <input type="text" name="id" [(ngModel)]="employee.employeeName" />
+  <label>ProjectID</label>
+  <input type="text" name="id" [(ngModel)]="employee.projectId" />
+  <label>Angular Proficiency</label>
+  <input type="text" name="id" [(ngModel)]="employee.angularProficiency" />
+</div>
+<button type="button" (click)="addEmployee()">Add Data</button>
+
