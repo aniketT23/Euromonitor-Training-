@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+// id:number;
 
-  constructor() { }
+  constructor(private activeroute: ActivatedRoute, private router: Router) {
+    // this.id= +this.activeroute.snapshot.paramMap.get('id');
+
+ 
+
+    // console.log(this.id);
+ 
+ 
+   }
 
   ngOnInit(): void {
   }

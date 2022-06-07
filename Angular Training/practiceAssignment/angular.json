@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "emiTree": {
+    "practiceAssignment": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/emi-tree",
+            "outputPath": "dist/practice-assignment",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,8 +58,8 @@
               "optimization": false,
               "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": false,
-              "namedChunks": false
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "emiTree:build:production"
+              "browserTarget": "practiceAssignment:build:production"
             },
             "development": {
-              "browserTarget": "emiTree:build:development"
+              "browserTarget": "practiceAssignment:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "emiTree:build"
+            "browserTarget": "practiceAssignment:build"
           }
         },
         "test": {
@@ -102,5 +102,5 @@
       }
     }
   },
-  "defaultProject": "emiTree"
+  "defaultProject": "practiceAssignment"
 }
