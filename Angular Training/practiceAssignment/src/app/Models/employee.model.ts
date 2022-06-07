@@ -1,4 +1,4 @@
-export class Employee{
+export class Employee {
     id:number;
     name:string;
     location:string;
@@ -14,3 +14,4 @@ export class Employee{
         this.isActive=isActive;
     }
 }
+

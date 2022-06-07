@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+empName:any='';
+location:string='';
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  public OnSubmit():void{
+    // alert("Entered Data:" + data.empName)
   }
 
 }
