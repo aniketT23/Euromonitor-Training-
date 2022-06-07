@@ -13,9 +13,9 @@
         <tbody>
             <tr *ngFor="let user of details">
               <td>{{user.id}}</td>
-              <td>{{user.nameS}}</td>
-              <td>{{user.location}}</td>
-              <td>{{user.gender}}</td>
+              <td>{{user.name|uppercase}}</td>
+              <td>{{user.location|titlecase}}</td>
+              <td>{{user.gender|lowercase}}</td>
               <td>{{user.isActive?'Yes':'No'}}</td>
             </tr>
           </tbody>

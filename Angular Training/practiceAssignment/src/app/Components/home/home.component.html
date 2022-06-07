@@ -1,11 +1,11 @@
 <h3>Add Employee Details</h3>
   <div class="form-group">
     <label>Name</label>
-    <input type="text" placeholder="enter your Name" />
+    <input type="text" name="name" placeholder="enter your Name" [(ngModel)]="empName"/>
     <label>Location</label>
     <input type="text" placeholder="enter your Name" />
     <label>Gender:</label>
-    <input type="radio"> Male <input type="radio"> Female
+    <input name="gender" type="radio" > Male <input type="radio"> Female
     <label>Present</label>
     <input type="checkbox">
     <button (click)="OnSubmit()" >Submit</button>

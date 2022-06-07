@@ -15,6 +15,8 @@ location:string='';
   }
   public OnSubmit():void{
     // alert("Entered Data:" + data.empName)
+    console.log(this.empName);
+    
   }
 
 }

@@ -12,7 +12,7 @@ export class EmployeesComponent implements OnInit {
   ID: string = '';
   name: string = '';
   location: string = '';
-  details:any[]=[];
+  details: any[] = [];
 
   constructor(
     private empServices: EmployeeService,
@@ -21,11 +21,12 @@ export class EmployeesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.empServices.getEmployees().subscribe(data=>{
-this.details.push(JSON.stringify(data))
-// this.details=data
-console.log("Employess Data:-"+this.details);
-    })
+    this.empServices.getEmployees().subscribe((data) => {
+      this.details = data;
+      console.log('Employess Data:-' + this.details);
+    });
+    console.log('Employess Data:-' + JSON.stringify(this.details[0]));
+
     // this.empServices.getEmployeeByID(2)
   }
 }
