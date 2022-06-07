@@ -7,6 +7,7 @@
             <th>Location</th>
             <th>Gender</th>
             <th>Present</th>
+            <th>Show Details</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +18,7 @@
               <td>{{user.location|titlecase}}</td>
               <td>{{user.gender|lowercase}}</td>
               <td>{{user.isActive?'Yes':'No'}}</td>
+              <button class="btn btn-dark" (click)="showData(user.id)">Show </button>
             </tr>
           </tbody>
     

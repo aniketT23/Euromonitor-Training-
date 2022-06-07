@@ -9,7 +9,7 @@ import { EmployeeService } from 'src/app/Services/employee.service';
   styleUrls: ['./employees.component.css'],
 })
 export class EmployeesComponent implements OnInit {
-  ID: string = '';
+  ID: any = '';
   name: string = '';
   location: string = '';
   details: any[] = [];
@@ -25,8 +25,15 @@ export class EmployeesComponent implements OnInit {
       this.details = data;
       console.log('Employess Data:-' + this.details);
     });
-    console.log('Employess Data:-' + JSON.stringify(this.details[0]));
+    // console.log('Employess Data:-' + JSON.stringify(this.details[0]));
 
     // this.empServices.getEmployeeByID(2)
+  }
+  public showData(id:any): void {
+    this.ID=id;
+    // this.ID=this.activate.snapshot.paramMap.get('id');
+    console.log("Working"+ this.ID);
+    
+// this.router.navigate(['empRoute/:id'])
   }
 }
