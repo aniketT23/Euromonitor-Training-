@@ -16,11 +16,10 @@ empDetails:any;
 
   ngOnInit(): void {
     this.empId=this.activate.snapshot.paramMap.get('id');
-    console.log(this.empId);
-    
-    this.empDetails=this.empService.getEmployeeByID(this.empId);
-    this.empDetails=JSON.stringify(this.empDetails)
-    console.log("EMp Details:-"+ this.empDetails);
+ 
+    this.empDetails=this.empService.getEmployeeByID(+this.empId);
+    // this.empDetails=JSON.stringify(this.empDetails)
+    // console.log("EMp Details:-"+ this.empDetails);
     
   }
 

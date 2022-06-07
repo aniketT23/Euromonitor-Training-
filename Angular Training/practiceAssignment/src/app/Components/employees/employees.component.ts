@@ -29,12 +29,8 @@ export class EmployeesComponent implements OnInit {
 
     // this.empServices.getEmployeeByID(2)
   }
-  public showData(id:any): void {
-    this.ID=this.activate.snapshot.paramMap.get('id');
-    this.empServices.getEmployeeByID(id)
-    // this.ID=this.activate.snapshot.paramMap.get('id');
-    console.log("Working"+ this.ID);
-    
-// this.router.navigate(['empRoute/:id'])
+  public showData(id: any): void {
+    this.empServices.getEmployeeByID(id);
+    this.router.navigate([`empRoute/${id}`]);
   }
 }
