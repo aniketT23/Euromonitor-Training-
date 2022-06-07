@@ -1,5 +1,7 @@
 <h3>Employee List</h3>
+<input type="text" placeholder="search here" [(ngModel)]="term"/>
 <table class="table-bordered">
+   
     <thead>
         <tr>
             <th>Employee ID</th>
@@ -12,7 +14,8 @@
     </thead>
     <tbody>
         <tbody>
-            <tr *ngFor="let user of details">
+          
+            <tr *ngFor="let user of details | filter:term">
               <td>{{user.id}}</td>
               <td>{{user.name|uppercase}}</td>
               <td>{{user.location|titlecase}}</td>

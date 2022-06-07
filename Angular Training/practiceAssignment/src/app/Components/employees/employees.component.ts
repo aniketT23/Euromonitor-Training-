@@ -13,6 +13,7 @@ export class EmployeesComponent implements OnInit {
   name: string = '';
   location: string = '';
   details: any[] = [];
+  term='';
 
   constructor(
     private empServices: EmployeeService,
