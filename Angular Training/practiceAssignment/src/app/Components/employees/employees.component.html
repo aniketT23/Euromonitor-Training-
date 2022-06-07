@@ -1,1 +1,24 @@
 <h3>Employee List</h3>
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Gender</th>
+            <th>Present</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tbody>
+            <tr *ngFor="let user of details">
+              <td>{{user.id}}</td>
+              <td>{{user.nameS}}</td>
+              <td>{{user.location}}</td>
+              <td>{{user.gender}}</td>
+              <td>{{user.isActive?'Yes':'No'}}</td>
+            </tr>
+          </tbody>
+    
+</table>
+

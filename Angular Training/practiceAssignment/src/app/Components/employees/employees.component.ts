@@ -23,6 +23,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.empServices.getEmployees().subscribe(data=>{
 this.details.push(JSON.stringify(data))
+// this.details=data
 console.log("Employess Data:-"+this.details);
     })
     // this.empServices.getEmployeeByID(2)
