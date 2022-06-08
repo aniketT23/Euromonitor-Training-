@@ -19,9 +19,11 @@ export class EmpWorkComponent implements OnInit {
       id: this.employee.id,
       employeeName: this.employee.employeeName,
       projectId: this.employee.projectId,
-      angularProficiency: this.employee.angularProficiency,
+      angularProficiency: +this.employee.angularProficiency,
     };
-    if (data.angularProficiency > 5) {
+ 
+    
+    if (data.angularProficiency > 5 ) {
       alert('Enter a valid Information');
       return;
     }

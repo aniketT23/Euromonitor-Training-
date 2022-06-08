@@ -9,10 +9,16 @@ export class ProficiencyPipe implements PipeTransform {
     if(angularProficiency==5){
       return "Excellent"
     }
-    else if(angularProficiency<5){
+    else if(angularProficiency<5 && angularProficiency>3){
       return "Good"
     }
-    return null;
+    else if(angularProficiency<3 && angularProficiency >2){
+      return "Average"
+    }else
+    {
+      return "Bad"
+    }
+   
   }
 
 }
