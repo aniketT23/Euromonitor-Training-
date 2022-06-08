@@ -6,17 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AssignInitialPipe } from './SharedMpdule/assign-initial.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { DetailEmpComponent } from './Components/detail-emp/detail-emp.component';
+import { EmpWorkComponent } from './Components/emp-work/emp-work.component';
 import { EmployeesComponent } from './Components/employees/employees.component';
 import { HomeComponent } from './Components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgModule } from '@angular/core';
+import { ProficiencyPipe } from './SharedMqdule/proficiency.pipe';
 import { RoutingComponent } from './Components/routing/routing.component';
-import { StoreComponent } from './Components/store/store.component';
-import { EmpWorkComponent } from './Components/emp-work/emp-work.component';
-import { ShowEmpDataComponent } from './Components/show-emp-data/show-emp-data.component';
 import { ShowEmpComponent } from './Components/show-emp/show-emp.component';
+import { ShowEmpDataComponent } from './Components/show-emp-data/show-emp-data.component';
+import { StoreComponent } from './Components/store/store.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ShowEmpComponent } from './Components/show-emp/show-emp.component';
     StoreComponent,
     EmpWorkComponent,
     ShowEmpDataComponent,
-    ShowEmpComponent
+    ShowEmpComponent,
+    ProficiencyPipe
   ],
   imports: [
     BrowserModule,

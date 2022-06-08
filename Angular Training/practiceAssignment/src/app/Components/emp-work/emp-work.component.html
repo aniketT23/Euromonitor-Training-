@@ -6,7 +6,7 @@
   <label>ProjectID</label>
   <input type="text" name="id" [(ngModel)]="employee.projectId" />
   <label>Angular Proficiency</label>
-  <input type="text" name="id" [(ngModel)]="employee.angularProficiency" />
+  <input type="text" min="0" max="5" name="id" [(ngModel)]="employee.angularProficiency" />
 </div>
 <button type="button" (click)="addEmployee()">Add Data</button>
 
