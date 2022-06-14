@@ -16,7 +16,7 @@ export class EmpWorkComponent implements OnInit {
   }
   public addEmployee() {
     const data = {
-      id: this.employee.id,
+      employeeId: this.employee.employeeId,
       employeeName: this.employee.employeeName,
       projectId: this.employee.projectId,
       angularProficiency: +this.employee.angularProficiency,

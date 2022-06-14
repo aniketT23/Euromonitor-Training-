@@ -1,1 +1,22 @@
 <p>show-emp-data works!</p>
+
+<table class="table-bordered">
+    <thead>
+    <tr>
+        <th> Employee ID</th>
+        <th>Name</th>
+        <th>Project</th>
+        <th>Proficiency</th>
+       
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let emp of employee;let i=index" >
+        <td>{{emp.employeeId}}  </td>
+        <td>{{emp.employeeName}}</td>
+        <td>{{emp.projectId}}</td>
+        <td>{{emp.angularProficiency}}</td>
+
+    </tr>
+</tbody>
+</table>

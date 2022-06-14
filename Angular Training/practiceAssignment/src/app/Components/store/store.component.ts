@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { EmployeeService } from 'src/app/Services/employee.service';
+
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 empRecord:any=[];
-  constructor() { }
+  constructor(private empService:EmployeeService) { }
 
   ngOnInit(): void {
+    this.empService.getDetails().subscribe(response=>this.empRecord=response);
   }
   public storedRecord(event: any)
   {

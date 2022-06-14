@@ -1,5 +1,5 @@
 export class EmpDetails {
-    id:number;
+    employeeId:number;
     employeeName:string;
     projectId:number;
     angularProficiency:number;

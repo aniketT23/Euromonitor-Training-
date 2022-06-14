@@ -12,7 +12,7 @@
 </thead>
 <tbody>
     <tr *ngFor="let emp of employee;let i=index" >
-        <td>{{emp.id}}  </td>
+        <td>{{emp.employeeId}}  </td>
         <td>{{emp.employeeName}}</td>
         <td>{{emp.projectId}}</td>
         <td>{{emp.angularProficiency | proficiency}}</td>
@@ -20,3 +20,4 @@
     </tr>
 </tbody>
 </table>
+<!-- <app-show-emp-data></app-show-emp-data> -->

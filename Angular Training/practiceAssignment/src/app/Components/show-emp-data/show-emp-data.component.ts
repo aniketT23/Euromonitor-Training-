@@ -14,6 +14,8 @@ employee:EmpDetails[];
 
   ngOnInit(): void {
     this.empService.getDetails().subscribe(response=>this.employee=response);
+    console.log("DAtaaa"+this.empService.getDetails());
+    
   }
 
 }

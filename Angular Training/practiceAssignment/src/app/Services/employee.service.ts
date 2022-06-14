@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 })
 export class EmployeeService {
   empDetails: Employee[] = [];
+
   private url = '/assets/employee.json';
   constructor(private httpClient: HttpClient) {
     this.empDetails = [
@@ -28,7 +29,8 @@ export class EmployeeService {
     return emp;
   }
   public getDetails(): Observable<EmpDetails[]> {
-    const data: any = this.httpClient.get<Employee[]>(this.url);
+    const data: any = this.httpClient.get<EmpDetails[]>(this.url);
+    
     return data;
   }
 }
