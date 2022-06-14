@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { EmpDetails } from 'src/app/Models/emp-details';
 import { EmployeeService } from 'src/app/Services/employee.service';
@@ -10,11 +10,14 @@ import { EmployeeService } from 'src/app/Services/employee.service';
 })
 export class ShowEmpDataComponent implements OnInit {
 employee:EmpDetails[];
+@Output() checkProf: EventEmitter<Function>=new EventEmitter<Function>();
+
   constructor(private empService:EmployeeService) { }
 
   ngOnInit(): void {
-    this.empService.getDetails().subscribe(response=>this.employee=response);
-    console.log("DAtaaa"+this.empService.getDetails());
+    // this.empService.getDetails().subscribe(response=>this.employee=response);
+    // console.log("DAtaaa"+this.empService.getDetails());
+
     
   }
 
