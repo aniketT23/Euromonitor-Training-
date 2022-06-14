@@ -15,7 +15,8 @@
         <td>{{emp.employeeId}}  </td>
         <td>{{emp.employeeName}}</td>
         <td>{{emp.projectId}}</td>
-        <td>{{emp.angularProficiency | proficiency}}</td>
+        <!-- <td>{{emp.angularProficiency | proficiency}}</td> -->
+        <app-show-emp-data [rating]="emp.angularProficiency"></app-show-emp-data>
 
     </tr>
 </tbody>
