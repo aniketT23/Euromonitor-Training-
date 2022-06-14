@@ -21,4 +21,8 @@ employee:EmpDetails[];
     
   }
 
+  check(data:any):void{
+
+  }
+
 }
