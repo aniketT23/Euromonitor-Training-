@@ -6,7 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./show-emp.component.css']
 })
 export class ShowEmpComponent implements OnInit {
-@Input() employee:any=[];
+@Input() employee:any=[] ;
+@Input() check:any;
+
   constructor() { }
 
   ngOnInit(): void {
