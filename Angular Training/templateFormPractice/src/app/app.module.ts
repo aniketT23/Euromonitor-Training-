@@ -6,13 +6,15 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RecativeFormComponent } from './recative-form/recative-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateFormComponent,
     RecativeFormComponent,
-    ErrorComponentComponent
+    ErrorComponentComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
