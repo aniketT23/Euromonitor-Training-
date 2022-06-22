@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card'
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon'
 import {MatInputModule} from '@angular/material/input';
@@ -16,7 +17,8 @@ import { NgModule } from '@angular/core';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   exports:[
     MatTableModule,
@@ -24,7 +26,8 @@ import { NgModule } from '@angular/core';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ]
 })
 export class AngularMaterialModule { }

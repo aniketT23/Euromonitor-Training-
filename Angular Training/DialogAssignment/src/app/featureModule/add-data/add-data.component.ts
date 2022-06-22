@@ -10,6 +10,8 @@ export class AddDataComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    alert('adding Data')
+    
   }
 
 }
