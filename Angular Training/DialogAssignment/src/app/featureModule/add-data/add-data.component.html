@@ -1,6 +1,46 @@
 
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+
+<h1 mat-dialog-title>Add your Data</h1>
+<div mat-dialog-content>
+  <mat-card class="example-card">
+    <form [formGroup]="newData" (ngSubmit)="OnFormSubmit(newData.value)">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter your ID" formControlName="id">
+        <mat-error>
+           <span *ngIf="!newData.get('id').valid && newData.get('id').touched">Please Enter Name</span>
+        </mat-error>
+     </mat-form-field>
+     <mat-form-field class="example-full-width">
+      <input matInput placeholder="Form" formControlName="form">
+      <mat-error>
+         <span *ngIf="!newData.get('form').valid && newData.get('from').touched">Please Enter Name</span>
+      </mat-error>
+   </mat-form-field>
+   <mat-form-field class="example-full-width">
+    <input matInput placeholder="TO" formControlName="to">
+    <mat-error>
+       <span *ngIf="!newData.get('to').valid && newData.get('to').touched">Please Enter Name</span>
+    </mat-error>
+ </mat-form-field>
+ <mat-form-field class="example-full-width">
+  <input matInput placeholder=" Current Date" formControlName="dateCreated" type="date">
+  <mat-error>
+     <span *ngIf="!newData.get('dateCreated').valid && newData.get('dateCreated').touched">Please Enter Name</span>
+  </mat-error>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Link" formControlName="permanentLink" >
+  <mat-error>
+     <span *ngIf="!newData.get('permanentLink').valid && newData.get('permanentLink').touched">Please Enter Name</span>
+  </mat-error>
+</mat-form-field>
+      </form>
+  </mat-card>
+
+  <div class="button-row">
+    <button mat-flat-button color="primary" type="submit" [disabled]="!newData.valid"><mat-icon>save</mat-icon></button>
+ </div>
 </div>
+<!-- <div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div> -->
