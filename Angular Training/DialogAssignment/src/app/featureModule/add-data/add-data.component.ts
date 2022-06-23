@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Data } from 'src/app/models/data.model';
@@ -6,28 +6,30 @@ import { Data } from 'src/app/models/data.model';
 @Component({
   selector: 'app-add-data',
   templateUrl: './add-data.component.html',
-  styleUrls: ['./add-data.component.css']
+  styleUrls: ['./add-data.component.css'],
 })
 export class AddDataComponent implements OnInit {
-data:Data;
-newData:FormGroup;
-
-  constructor(private form:FormBuilder) { }
+  data: Data;
+  newData: FormGroup;
+  @Output() postData: EventEmitter<Data>;
+  constructor(private form: FormBuilder) {}
 
   ngOnInit(): void {
-    this.newData=this.form.group({
-      id:['1',Validators.required],
-      form:['2',Validators.required],
-      to:['3',Validators.required],
-      dateCreated:['',Validators.required],
-      permanentLink:['true',Validators.required]
-    })
-  
-    
+    this.newData = this.form.group({
+      id: ['', Validators.required],
+      form: ['', Validators.required],
+      to: ['', Validators.required],
+      dateCreated: ['', Validators.required],
+      permanentLink: ['', Validators.required],
+    });
   }
 
-  OnFormSubmit(form:NgForm){
-    
+  OnFormSubmit(res: NgForm) {
+    console.log('Form Data:', res.value);
   }
 
+  getData() {
+    console.log('data:', this.newData.value);
+    this.postData.emit(this.newData.value);
+  }
 }
