@@ -3,10 +3,10 @@
     <mat-spinner *ngIf="isDataLoading"></mat-spinner>
   </div>
   <div class="button-row">
-    <div class="mat-elevation-z4">
+    <div class="mat-elevation-z8">
       <table
         mat-table
-        [dataSource]="list"
+        [dataSource]="pageData"
         class="example-table"
         matSort
         matSortActive="ID"
@@ -46,7 +46,7 @@
       <button  mat-flat-button color="primary"  (click)="addData()"><mat-icon>add</mat-icon></button>
     </div>
 
-    <mat-paginator [length]="200" [pageSizeOptions]="[5, 50, 100]" aria-label="Select page">
+    <mat-paginator #paginator [length]="100" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
     </mat-paginator>
 
   </div>
