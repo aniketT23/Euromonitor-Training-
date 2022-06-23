@@ -28,12 +28,17 @@
      <span *ngIf="!newData.get('dateCreated').valid && newData.get('dateCreated').touched">Please Enter Name</span>
   </mat-error> -->
 </mat-form-field>
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="Link" formControlName="permanentLink" >
-  <!-- <mat-error>
-     <span *ngIf="!newData.get('permanentLink').valid && newData.get('permanentLink').touched">Please Enter Name</span>
-  </mat-error> -->
+
+
+<mat-form-field appearance="fill">
+  <mat-label>Link</mat-label>
+  <mat-select formControlName="permanentLink">
+    <mat-option *ngFor="let links of link" [value]="links">
+      {{links}}
+    </mat-option>
+  </mat-select>
 </mat-form-field>
+
       </form>
   </mat-card>
 

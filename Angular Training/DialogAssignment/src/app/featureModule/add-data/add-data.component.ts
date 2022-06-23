@@ -15,6 +15,7 @@ export class AddDataComponent implements OnInit {
   newData: FormGroup;
   @Output() postData: EventEmitter<Data>;
   date = new Date().getDate();
+  link:any[]=['Yes','No']
   constructor(
     private form: FormBuilder,
     private user: UserDataService,
