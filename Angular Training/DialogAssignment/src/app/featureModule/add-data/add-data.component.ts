@@ -14,7 +14,7 @@ export class AddDataComponent implements OnInit {
   data: Data;
   newData: FormGroup;
   @Output() postData: EventEmitter<Data>;
-
+  date = new Date().getDate();
   constructor(
     private form: FormBuilder,
     private user: UserDataService,
@@ -26,14 +26,14 @@ export class AddDataComponent implements OnInit {
       id: ['', Validators.required],
       form: ['', Validators.required],
       to: ['', Validators.required],
-      dateCreated: ['', Validators.required],
+      dateCreated: [`${this.date}`, Validators.required],
       permanentLink: ['', Validators.required],
     });
+
+    this.newData.get('dateCreated').disable()
   }
 
-  OnFormSubmit(response: NgForm) {
-    
-  }
+  OnFormSubmit(response: NgForm) {}
 
   getData() {
     // console.log('data:', this.newData.value);
@@ -43,7 +43,6 @@ export class AddDataComponent implements OnInit {
         console.log('Form Data:', res);
 
         this.router.navigate(['home']);
-    
       },
       (error) => {
         console.log(error);
@@ -51,4 +50,3 @@ export class AddDataComponent implements OnInit {
     );
   }
 }
-
