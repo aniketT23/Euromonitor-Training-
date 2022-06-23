@@ -7,6 +7,7 @@ import { ShowDataComponent } from './featureModule/show-data/show-data.component
 
 const routes: Routes = [
   {path:'',component:ShowDataComponent,pathMatch:'full'},
+  {path:'home',component:ShowDataComponent},
   {path:'add',component:AddDataComponent}
 ];
 

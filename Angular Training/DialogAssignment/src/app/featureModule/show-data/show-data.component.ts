@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddDataComponent } from '../add-data/add-data.component';
 import { Data } from '../../models/data.model';
 import { MatDialog } from '@angular/material/dialog';
+import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-show-data',
@@ -11,70 +12,17 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ShowDataComponent implements OnInit {
   isDataLoading = true;
-  list: Data[] = [
-    {
-      id: 19228,
-      from: '/heath_and_wellness',
-      to: '/danone-group-in-heath-and-wellness/report',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-    {
-      id: 19229,
-      from: '/heinekens_acquisition_of_femsa_increases',
-      to: '/heinekens_acquisition_of_femsa_increases',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-    {
-      id: 19230,
-      from: '/herbal_traditional_products',
-      to: '/herbal_traditional_products',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-    {
-      id: 19231,
-      from: '/home_care',
-      to: '/amway-corp-in-home-care/report',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-    {
-      id: 19232,
-      from: '/hong-kong-china',
-      to: '/100-home-delivery-take-away-in-hong-kong-china',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-    {
-      id: 19233,
-      from: '/hot-drinks',
-      to: '/associated-british-foods-plc-in-hot-drinks/report',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-    {
-      id: 19233,
-      from: '/hot-drinks',
-      to: '/associated-british-foods-plc-in-hot-drinks/report',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-    {
-      id: 19233,
-      from: '/hot-drinks',
-      to: '/associated-british-foods-plc-in-hot-drinks/report',
-      dateCreated: new Date().getDate(),
-      permanentLink: true,
-    },
-  ];
+  list: Data[] = [];
   displayedColumns: string[] = ['ID', 'From', 'TO', 'Date', 'Link'];
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private user: UserDataService) {}
 
   ngOnInit(): void {
     // console.log(data);
     this.isDataLoading = false;
+    this.user.getData().subscribe((res) => {
+      this.list = res;
+      console.log('Response', this.list);
+    });
   }
 
   public addData() {
@@ -84,9 +32,8 @@ export class ShowDataComponent implements OnInit {
     });
   }
 
-  public storeData(event: any) {
-    this.list.push(event);
-    console.log("Event:",event);
-    
-  }
+  // public storeData(event: any) {
+  //   this.list.push(event);
+  //   console.log('Event:', event);
+  // }
 }

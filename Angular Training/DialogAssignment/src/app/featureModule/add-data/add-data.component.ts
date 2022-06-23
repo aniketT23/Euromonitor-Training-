@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Data } from 'src/app/models/data.model';
+import { Router } from '@angular/router';
+import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-add-data',
@@ -12,7 +14,11 @@ export class AddDataComponent implements OnInit {
   data: Data;
   newData: FormGroup;
   @Output() postData: EventEmitter<Data>;
-  constructor(private form: FormBuilder) {}
+  constructor(
+    private form: FormBuilder,
+    private user: UserDataService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.newData = this.form.group({
@@ -24,12 +30,22 @@ export class AddDataComponent implements OnInit {
     });
   }
 
-  OnFormSubmit(res: NgForm) {
-    console.log('Form Data:', res.value);
+  OnFormSubmit(response: NgForm) {
+    
   }
 
   getData() {
-    console.log('data:', this.newData.value);
-    this.postData.emit(this.newData.value);
+    // console.log('data:', this.newData.value);
+    // this.postData.emit(this.newData.value);
+    this.user.addData(this.newData.value).subscribe(
+      (res) => {
+        console.log('Form Data:', res);
+
+        this.router.navigate(['home']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
