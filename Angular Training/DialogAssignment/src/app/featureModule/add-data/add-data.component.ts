@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Data } from 'src/app/models/data.model';
@@ -14,6 +14,7 @@ export class AddDataComponent implements OnInit {
   data: Data;
   newData: FormGroup;
   @Output() postData: EventEmitter<Data>;
+
   constructor(
     private form: FormBuilder,
     private user: UserDataService,
@@ -42,6 +43,7 @@ export class AddDataComponent implements OnInit {
         console.log('Form Data:', res);
 
         this.router.navigate(['home']);
+    
       },
       (error) => {
         console.log(error);
@@ -49,3 +51,4 @@ export class AddDataComponent implements OnInit {
     );
   }
 }
+

@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon'
 import {MatInputModule} from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import{MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import {MatTableModule} from '@angular/material/table';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,9 @@ import { NgModule } from '@angular/core';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    
   ],
   exports:[
     MatTableModule,
@@ -27,7 +30,8 @@ import { NgModule } from '@angular/core';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ]
 })
 export class AngularMaterialModule { }
