@@ -23,7 +23,7 @@
     </mat-error> -->
  </mat-form-field>
  <mat-form-field class="example-full-width">
-  <input matInput placeholder=" Current Date" formControlName="dateCreated" >
+  <input matInput placeholder=" Current Date" formControlName="dateCreated" [value]="date" >
   <!-- <mat-error>
      <span *ngIf="!newData.get('dateCreated').valid && newData.get('dateCreated').touched">Please Enter Name</span>
   </mat-error> -->

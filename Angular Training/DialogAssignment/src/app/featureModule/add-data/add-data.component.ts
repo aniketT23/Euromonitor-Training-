@@ -15,7 +15,7 @@ export class AddDataComponent implements OnInit {
   newData: FormGroup;
   @Output() postData: EventEmitter<Data>;
   date = new Date().getDate();
-  link:any[]=['Yes','No']
+  link: any[] = ['Yes', 'No'];
   constructor(
     private form: FormBuilder,
     private user: UserDataService,
@@ -31,7 +31,7 @@ export class AddDataComponent implements OnInit {
       permanentLink: ['', Validators.required],
     });
 
-    this.newData.get('dateCreated').disable()
+    this.newData.get('dateCreated').disable();
   }
 
   OnFormSubmit(response: NgForm) {}
@@ -41,7 +41,10 @@ export class AddDataComponent implements OnInit {
     // this.postData.emit(this.newData.value);
     this.user.addData(this.newData.value).subscribe(
       (res) => {
-        console.log('Form Data:', res);
+        this.newData.value.dateCreated = this.date;
+        let newLink = this.newData.value.permanentLink;
+        this.newData.value.permanentLink = this.validateLink(newLink);
+        console.log('Form Data:', this.newData.value);
 
         this.router.navigate(['home']);
       },
@@ -49,5 +52,12 @@ export class AddDataComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  validateLink(val: any) {
+    if (val == 'Yes') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
