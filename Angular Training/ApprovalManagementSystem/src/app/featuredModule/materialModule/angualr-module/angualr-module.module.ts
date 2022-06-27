@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from '@angular/core';
 
@@ -21,6 +22,7 @@ import { NgModule } from '@angular/core';
     MatButtonModule,
     MatSidenavModule,
     MatDividerModule,
+    MatListModule,
   ],
   exports: [
     MatGridListModule,
@@ -32,6 +34,7 @@ import { NgModule } from '@angular/core';
     MatButtonModule,
     MatSidenavModule,
     MatDividerModule,
+    MatListModule,
   ],
 })
 export class AngualrModuleModule {}

@@ -7,13 +7,42 @@
   background: #eee;
 }
 .profileImg {
-    position: relative;
-    left: 30%;
-    width: 30%;
-    height: 30%;
-    border-radius: 50%;
-    border: 1px solid rgb(151, 147, 147);
+  position: relative;
+  left: 30%;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  border: 1px solid rgb(151, 147, 147);
 }
-.navBox{
-    padding-top: 20px;
+.navBox {
+  padding-top: 20px;
+}
+mat-sidenav {
+  width: 15%;
+  background-color: RGB(0, 57, 197);
+  color: white;
+}
+mat-list-item {
+  color: white;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+mat-divider {
+  background-color:rgb(168, 166, 166);
+  width: 90%;
+  margin-left: 10px;
+  margin-top: 5%;
+}
+mat-divider~p{
+    color: rgb(219, 219, 219);
+  margin-left: 7%;
+  margin-top: 2%;
+}
+mat-icon{
+   margin-left: 0px;
+margin-right: 10px;
+ position: relative;
+ top: 5px;
 }
