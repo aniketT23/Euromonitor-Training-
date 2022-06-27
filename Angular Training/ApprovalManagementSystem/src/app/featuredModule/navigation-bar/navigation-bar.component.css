@@ -19,7 +19,10 @@
 }
 mat-sidenav {
   width: 15%;
-  background-color: rgb(13, 51, 148);
+  background-image: url("../../../assets/Animated Shape.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: RGB(8, 61, 125); */
   color: white;
 }
 
