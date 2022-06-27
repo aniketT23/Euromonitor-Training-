@@ -1,6 +1,45 @@
-<mat-grid-list cols="2" >
+<div class="container1">
+  <mat-grid-list cols="2">
     <mat-grid-tile>
-        <img class="imgBG" src="../assets/Sprinkle.svg"/>
+      <img src="../../../assets/login.PNG" />
     </mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-</mat-grid-list>
+    <mat-grid-tile>
+      <mat-card class="loginCard">
+        <img class="imgBG" src="../../../assets/wfh.PNG" />
+
+        <mat-card-title>Hello Again!</mat-card-title>
+        <mat-card-subtitle>Please fill your details here.</mat-card-subtitle>
+        <mat-card-content>
+          <form [formGroup]="data" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="legacy">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                name="email"
+                placeholder="enter your email"
+                formControlName="email"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <!-- Password -->
+            <mat-form-field appearance="standard">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                placeholder="enter your password"
+                formControlName="password"
+              />
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button type="submit">Login</button>
+        </mat-card-actions>
+        <mat-card-footer>
+          <p>Don't have a account yet? <strong>Sign Up</strong></p>
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
