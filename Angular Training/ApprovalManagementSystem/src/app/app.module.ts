@@ -9,11 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './featuredModule/login/login.component';
 import { NgModule } from '@angular/core';
 import { SignupComponent } from './featuredModule/signup/signup.component';
+import { NavigationBarComponent } from './featuredModule/navigation-bar/navigation-bar.component';
+import { HomePageComponent } from './featuredModule/home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NavigationBarComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

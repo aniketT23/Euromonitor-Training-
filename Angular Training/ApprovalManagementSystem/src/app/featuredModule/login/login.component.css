@@ -54,9 +54,9 @@ button {
   width: 60%;
 }
 .imgBG {
-  /* position: relative;
-  top:6%; */
-  margin: 15% 39%;
+  position: relative;
+  top:6%;
+  margin: 10% 39%;
   border-radius: 50%;
   width: 20%;
   height: 20%;
