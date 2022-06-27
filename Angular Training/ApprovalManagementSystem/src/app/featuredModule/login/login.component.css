@@ -1,0 +1,14 @@
+mat-grid-tile {
+    background: #fff
+  }
+.imgBG{
+  width:1fr;
+  height: 100%; 
+}
+mat-grid-list{
+    border-radius: 6px;
+    border: 1px solid red;
+    margin-top: 100px;
+    width: 70%;
+    height: 70%;
+}
