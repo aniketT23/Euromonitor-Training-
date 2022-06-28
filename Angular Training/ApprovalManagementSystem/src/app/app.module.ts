@@ -11,13 +11,15 @@ import { NgModule } from '@angular/core';
 import { SignupComponent } from './featuredModule/signup/signup.component';
 import { NavigationBarComponent } from './featuredModule/navigation-bar/navigation-bar.component';
 import { HomePageComponent } from './featuredModule/home-page/home-page.component';
+import { DashboardComponent } from './featuredModule/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     NavigationBarComponent,
-    HomePageComponent
+    HomePageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

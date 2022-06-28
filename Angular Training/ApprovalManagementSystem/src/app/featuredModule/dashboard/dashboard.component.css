@@ -1,0 +1,30 @@
+.bgImage{
+    height: 7rem;
+    background-image: url("../../../assets/bgImg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bgImage>img{
+width: 8rem;
+height: 8rem;
+border: 5px solid #fff;
+border-radius: 50%;
+position: relative;
+left: 35rem;
+top: 4rem;
+}
+mat-icon{
+    color: #fff;
+    padding: 6px;
+    background-color: #2f2e41;
+    border-radius: 50%;
+    position:absolute;
+    top: 11rem;
+    left: 41.85rem;
+    
+}
+.content{
+    margin-top: 6%;
+    display: grid;
+  
+}
