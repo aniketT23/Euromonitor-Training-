@@ -12,6 +12,9 @@ import { SignupComponent } from './featuredModule/signup/signup.component';
 import { NavigationBarComponent } from './featuredModule/navigation-bar/navigation-bar.component';
 import { HomePageComponent } from './featuredModule/home-page/home-page.component';
 import { DashboardComponent } from './featuredModule/dashboard/dashboard.component';
+import { PersonalInfoComponent } from './featuredModule/personal-info/personal-info.component';
+import { StatsComponent } from './featuredModule/stats/stats.component';
+import { RecentReqComponent } from './featuredModule/recent-req/recent-req.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,10 @@ import { DashboardComponent } from './featuredModule/dashboard/dashboard.compone
     SignupComponent,
     NavigationBarComponent,
     HomePageComponent,
-    DashboardComponent
+    DashboardComponent,
+    PersonalInfoComponent,
+    StatsComponent,
+    RecentReqComponent
   ],
   imports: [
     BrowserModule,
