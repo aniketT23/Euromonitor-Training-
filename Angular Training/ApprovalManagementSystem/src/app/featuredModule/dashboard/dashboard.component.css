@@ -1,7 +1,7 @@
 .bgImage{
     height: 7rem;
-    background-image: url("../../../assets/bgImg.jpg");
-    background-size: cover;
+    background-image: url("../../../assets/moon.jpg");
+    background-size:cover;
     background-repeat: no-repeat;
 }
 .bgImage>img{
