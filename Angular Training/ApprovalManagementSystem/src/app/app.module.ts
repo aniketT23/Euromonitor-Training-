@@ -1,6 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AngualrModuleModule } from './components/materialModule/angualr-module/angualr-module.module';
+import { AngualrModuleModule } from './featuredModule/angualr-module/angualr-module.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
