@@ -1,9 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomePageComponent } from './featuredModule/home-page/home-page.component';
-import { LoginComponent } from './featuredModule/login/login.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
-import { SignupComponent } from './featuredModule/signup/signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
