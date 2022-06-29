@@ -5,26 +5,27 @@
 }
 mat-card-content {
   display: flex;
-  gap: 30%;
-  justify-content: left;
-
+  gap: 10%;
+  border: 1px solid red;
 }
-mat-card-content>div{
-    /* border: 1px solid forestgreen; */
+mat-card-content > div {
+  border: 1px solid forestgreen;
+  flex-grow: 1;
+  text-align: left;
 }
 p {
   color: grey;
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   display: flex;
-  /* justify-content: right; */
-  gap:10%;
+ 
+  /* gap:10%; */
 }
 p > strong {
   color: black;
   font-weight: 500;
-  justify-content: right;
-  /* margin-left: 30px; */
-/* padding: 0px 5px; */
-  /* border: 1px solid brown; */
-  text-align: right;
+  
+  margin-left: 30px;
+padding: 0px 5px;
+  border: 1px solid brown;
+  text-align: left;
 }
