@@ -28,9 +28,12 @@ export class CreateReqFormComponent implements OnInit {
   ) {}
 
   onSubmit(form: NgForm) {
-    // console.log('Working');
+   console.log(form);
+   
     this.requestService.addRequests(form).subscribe(
       (res) => {
+        // console.log(res.date);
+        
         console.log('Data Submitted');
       },
       (error) => {

@@ -35,6 +35,42 @@
       "amount": 12000,
       "date": "",
       "id": 4
+    },
+    {
+      "purpose": "Team Outing",
+      "discription": "saas",
+      "manager": "Akshay",
+      "estCost": 1212,
+      "amount": 21,
+      "date": "",
+      "id": 5
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "qww",
+      "manager": "Akshay",
+      "estCost": 21,
+      "amount": 21,
+      "date": "",
+      "id": 6
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "qww",
+      "manager": "Akshay",
+      "estCost": 21,
+      "amount": 21,
+      "date": "",
+      "id": 7
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "sasa",
+      "manager": "Akshay",
+      "estCost": 2121,
+      "amount": 211,
+      "date": "2022-07-08",
+      "id": 8
     }
   ]
 }
