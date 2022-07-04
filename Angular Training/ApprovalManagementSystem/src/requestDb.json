@@ -89,6 +89,25 @@
       "amount": 2,
       "date": "2022-07-06",
       "id": 10
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "sda",
+      "manager": "Akshay",
+      "estCost": 221,
+      "amount": 1212,
+      "date": "2022-07-06",
+      "id": 11
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "sda",
+      "manager": "Akshay",
+      "estCost": 212,
+      "amount": 1212,
+      "date": "2022-07-06",
+      "id": 12
     }
+    
   ]
 }

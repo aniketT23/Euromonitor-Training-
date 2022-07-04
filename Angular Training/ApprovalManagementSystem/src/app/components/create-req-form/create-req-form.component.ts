@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { RequestsService } from 'src/app/services/requests.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-req-form',
@@ -24,24 +25,29 @@ export class CreateReqFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private requestService: RequestsService
+    private requestService: RequestsService,
+    private toastr:ToastrService
   ) {}
 
   onSubmit(reqForm: NgForm) {
     this.requestService.addRequests(reqForm).subscribe(
       (res) => {
         console.log('Data Submitted');
-
-        this.formData.markAsPristine();
-        this.formData.markAsUntouched();
-        this.formData.reset();
+        
+              // this.route.navigate(['/home']);
+        // this.formData.markAsPristine();
+        // this.formData.markAsUntouched();
+        // this.formData.reset();
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
+ showSucess(){
+  console.log("Running",this.toastr);
+    this.toastr.success('Hello!',"Data");
+ }
   ngOnInit(): void {
     this.formData = this.formBuilder.group({
       purpose: ['', Validators.required],

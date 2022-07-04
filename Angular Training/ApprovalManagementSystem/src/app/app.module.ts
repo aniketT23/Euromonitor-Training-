@@ -17,6 +17,7 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
 import { RecentReqComponent } from './components/recent-req/recent-req.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { StatsComponent } from './components/stats/stats.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,6 @@ import { StatsComponent } from './components/stats/stats.component';
     RecentReqComponent,
     CreateReqComponent,
     CreateReqFormComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -40,9 +40,10 @@ import { StatsComponent } from './components/stats/stats.component';
     AngualrModuleModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
