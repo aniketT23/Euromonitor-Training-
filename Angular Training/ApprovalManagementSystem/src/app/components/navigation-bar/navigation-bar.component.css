@@ -1,11 +1,3 @@
-.example-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #eee;
-}
 .profileImg {
   position: relative;
   left: 30%;
@@ -17,34 +9,26 @@
 .navBox {
   padding-top: 20px;
 }
-mat-sidenav {
-  width: 15%;
-  background-image: url("../../../assets/Animated Shape.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* background-color: RGB(8, 61, 125); */
-  color: white;
-}
 
 a {
   color: white;
   text-decoration: none;
 }
 mat-divider {
-  background-color:rgb(168, 166, 166);
+  background-color: rgb(168, 166, 166);
   width: 90%;
   margin-left: 10px;
   margin-top: 5%;
 }
-mat-divider~p{
-    color: rgb(219, 219, 219);
+mat-divider ~ p {
+  color: rgb(219, 219, 219);
   margin-left: 7%;
   margin-top: 2%;
   margin-bottom: 0px;
 }
-mat-icon{
-   margin-left: 0px;
-margin-right: 10px;
- position: relative;
- top: 5px;
+mat-icon {
+  margin-left: 0px;
+  margin-right: 10px;
+  position: relative;
+  top: 5px;
 }
