@@ -13,3 +13,20 @@ input.example-right-align {
 .example-right-align {
   text-align: right;
 }
+.reqForm {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  column-gap: 10%;
+  row-gap: 10%;
+  justify-content: center;
+  -webkit-box-shadow: 10px 8px 8px -4px rgba(26, 98, 214, 0.39);
+  -moz-box-shadow: 10px 8px 8px -4px rgba(26, 98, 214, 0.39);
+  box-shadow: 10px 8px 8px -4px rgba(26, 98, 214, 0.39);
+}
+.formBox {
+  padding: 2%;
+}
+.reqBox {
+  border: 1px solid red;
+  height: 100%;
+}

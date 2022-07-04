@@ -1,7 +1,7 @@
-<mat-card>
+<mat-card class="reqBox">
   <mat-card-title>Create Request</mat-card-title>
-  <mat-card>
-    <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <mat-card-content class="formBox">
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()" class="reqForm">
       <mat-form-field class="example-full-width">
         <mat-label>Purpose</mat-label>
         <mat-select formControlName="purpose">
@@ -68,5 +68,5 @@
       
       <button routerLink="/home" routerLinkActive="router-link-active" >cancel</button>
     </form>
-  </mat-card>
+  </mat-card-content>
 </mat-card>
