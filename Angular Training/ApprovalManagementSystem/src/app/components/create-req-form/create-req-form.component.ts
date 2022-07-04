@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
+import { RequestsService } from 'src/app/services/requests.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CreateReqFormComponent implements OnInit {
   formData: FormGroup;
+
   purposeData: string[] = [
     'Travel',
     'Team Outing',
@@ -18,11 +20,23 @@ export class CreateReqFormComponent implements OnInit {
     'Transport',
     'Hotel',
   ];
-  
-  constructor(private formBuilder: FormBuilder, private route: Router) {}
 
-  onSubmit() {
-    console.log('Working');
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: Router,
+    private requestService: RequestsService
+  ) {}
+
+  onSubmit(form: NgForm) {
+    // console.log('Working');
+    this.requestService.addRequests(form).subscribe(
+      (res) => {
+        console.log('Data Submitted');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {

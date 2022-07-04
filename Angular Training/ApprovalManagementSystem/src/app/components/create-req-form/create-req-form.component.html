@@ -1,7 +1,7 @@
 <mat-card class="reqBox">
   <mat-card-title>Create Request</mat-card-title>
   <mat-card-content class="formBox">
-    <form [formGroup]="formData" (ngSubmit)="onSubmit()" class="reqForm">
+    <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)" class="reqForm">
       <mat-form-field class="example-full-width">
         <mat-label>Purpose</mat-label>
         <mat-select formControlName="purpose">
