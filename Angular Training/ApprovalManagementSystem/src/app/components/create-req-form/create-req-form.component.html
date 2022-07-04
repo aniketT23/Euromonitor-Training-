@@ -1,1 +1,15 @@
-<p>create-req-form works!</p>
+<mat-card>
+  <mat-card-title>Create Request</mat-card-title>
+  <mat-card>
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Purpose</mat-label>
+        <mat-select formControlName="purpose"></mat-select>
+        <mat-option *ngFor="let data of purposeData" [value]="data">
+          {{ data }}
+        </mat-option>
+        <!-- <mat-error *ngIf="purpose.invalid">Enter your Purpose</mat-error> -->
+      </mat-form-field>
+    </form>
+  </mat-card>
+</mat-card>
