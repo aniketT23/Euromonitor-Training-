@@ -4,12 +4,69 @@
     <form [formGroup]="formData" (ngSubmit)="onSubmit()">
       <mat-form-field class="example-full-width">
         <mat-label>Purpose</mat-label>
-        <mat-select formControlName="purpose"></mat-select>
-        <mat-option *ngFor="let data of purposeData" [value]="data">
-          {{ data }}
-        </mat-option>
-        <!-- <mat-error *ngIf="purpose.invalid">Enter your Purpose</mat-error> -->
+        <mat-select formControlName="purpose">
+          <mat-option *ngFor="let data of purposeData" [value]="data">
+            {{ data }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!formData.get('discription').valid"
+          >Enter your Purpose</mat-error
+        >
       </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Discription</mat-label>
+        <textarea
+          matInput
+          placeholder="enter your discription"
+          formControlName="discription"
+        ></textarea>
+        <mat-error *ngIf="!formData.get('discription').valid"
+          >Enter your discription</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Manager</mat-label>
+        <input matInput formControlName="manager" />
+        <mat-error *ngIf="!formData.get('manager').valid"></mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Estimated Cost</mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          placeholder="0"
+          formControlName="estCost"
+        />
+        <span matPrefix>₹&nbsp;</span>
+        <span matSuffix>.00</span>
+        <mat-error *ngIf="!formData.get('estCost').valid"
+          >Enter your Amount</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          placeholder="0"
+          formControlName="amount"
+        />
+        <span matPrefix>₹&nbsp;</span>
+        <span matSuffix>.00</span>
+        <mat-error *ngIf="!formData.get('amount').valid"
+          >Enter your Amount</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Plan Date</mat-label>
+        <input matInput  type="date" />
+      </mat-form-field>
+
+      <button type="submit">submit</button>
+      
+      <button routerLink="/home" routerLinkActive="router-link-active" >cancel</button>
     </form>
   </mat-card>
 </mat-card>

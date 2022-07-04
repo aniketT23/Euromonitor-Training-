@@ -29,7 +29,7 @@ export class CreateReqFormComponent implements OnInit {
     this.formData = this.formBuilder.group({
       purpose: ['', Validators.required],
       discription: ['', Validators.required],
-      manager: ['', Validators.required],
+      manager: ['Akshay', Validators.required],
       estCost: ['', Validators.required],
       amount: ['', Validators.required],
       date: ['', Validators.required],

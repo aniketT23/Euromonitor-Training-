@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 @NgModule({
   declarations: [],
@@ -24,6 +25,7 @@ import { NgModule } from '@angular/core';
     MatDividerModule,
     MatListModule,
     MatSelectModule,
+    MatTableModule,
   ],
   exports: [
     MatGridListModule,
@@ -37,6 +39,7 @@ import { NgModule } from '@angular/core';
     MatDividerModule,
     MatListModule,
     MatSelectModule,
+    MatTableModule,
   ],
 })
 export class AngualrModuleModule {}
