@@ -27,14 +27,14 @@ export class CreateReqFormComponent implements OnInit {
     private requestService: RequestsService
   ) {}
 
-  onSubmit(form: NgForm) {
-   console.log(form);
-   
-    this.requestService.addRequests(form).subscribe(
+  onSubmit(reqForm: NgForm) {
+    this.requestService.addRequests(reqForm).subscribe(
       (res) => {
-        // console.log(res.date);
-        
         console.log('Data Submitted');
+
+        this.formData.markAsPristine();
+        this.formData.markAsUntouched();
+        this.formData.reset();
       },
       (error) => {
         console.log(error);

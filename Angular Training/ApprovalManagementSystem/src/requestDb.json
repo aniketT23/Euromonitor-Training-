@@ -2,75 +2,93 @@
   "Requests": [
     {
       "purpose": "Team Outing",
-      "discription": "Nothing",
+      "discription": "team Chill",
       "manager": "Akshay",
-      "estCost": 1200,
-      "amount": 12000,
-      "date": "",
+      "estCost": 50000,
+      "amount": 20000,
+      "date": "2022-07-05",
       "id": 1
     },
     {
-      "purpose": "Team Outing",
-      "discription": "Nothing",
+      "purpose": "Food & Drinks",
+      "discription": "Going Out",
       "manager": "Akshay",
-      "estCost": 1200,
-      "amount": 12000,
-      "date": "",
+      "estCost": 5000,
+      "amount": 1000,
+      "date": "2022-07-07",
       "id": 2
     },
     {
       "purpose": "Team Outing",
-      "discription": "Nothing",
+      "discription": "sdas",
       "manager": "Akshay",
-      "estCost": 1200,
-      "amount": 12000,
-      "date": "",
+      "estCost": 213,
+      "amount": 212,
+      "date": "2022-06-29",
       "id": 3
     },
     {
-      "purpose": "Team Outing",
-      "discription": "Nothing",
+      "purpose": "Internet Bill",
+      "discription": "eds",
       "manager": "Akshay",
-      "estCost": 1200,
-      "amount": 12000,
-      "date": "",
+      "estCost": 23132,
+      "amount": 123312,
+      "date": "2022-07-07",
       "id": 4
     },
     {
-      "purpose": "Team Outing",
-      "discription": "saas",
+      "purpose": "Food & Drinks",
+      "discription": "sda",
       "manager": "Akshay",
-      "estCost": 1212,
-      "amount": 21,
-      "date": "",
+      "estCost": 3213,
+      "amount": 2312,
+      "date": "2022-07-01",
       "id": 5
     },
     {
       "purpose": "Food & Drinks",
-      "discription": "qww",
+      "discription": "sda",
       "manager": "Akshay",
-      "estCost": 21,
-      "amount": 21,
-      "date": "",
+      "estCost": 3213,
+      "amount": 2312,
+      "date": "2022-07-01",
       "id": 6
     },
     {
       "purpose": "Food & Drinks",
-      "discription": "qww",
+      "discription": "asda",
       "manager": "Akshay",
-      "estCost": 21,
-      "amount": 21,
-      "date": "",
+      "estCost": 1231,
+      "amount": 123123,
+      "date": "2022-07-08",
       "id": 7
     },
     {
       "purpose": "Food & Drinks",
-      "discription": "sasa",
+      "discription": "dfasd",
       "manager": "Akshay",
-      "estCost": 2121,
-      "amount": 211,
-      "date": "2022-07-08",
+      "estCost": 312,
+      "amount": 1323,
+      "date": "2022-07-10",
       "id": 8
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "dsasd",
+      "manager": "Akshay",
+      "estCost": 13,
+      "amount": 123,
+      "date": "2022-07-06",
+      "id": 9
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "sadsd",
+      "manager": "Akshay",
+      "estCost": 23,
+      "amount": 2,
+      "date": "2022-07-06",
+      "id": 10
     }
   ]
 }
