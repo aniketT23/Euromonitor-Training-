@@ -26,15 +26,15 @@ export class CreateReqFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: Router,
     private requestService: RequestsService,
-    private toastr:ToastrService
+    private toastr: ToastrService
   ) {}
 
   onSubmit(reqForm: NgForm) {
     this.requestService.addRequests(reqForm).subscribe(
       (res) => {
         console.log('Data Submitted');
-        this.toastr.success('Request Sent',` for amount of ${res.amount}`);
-              // this.route.navigate(['/home']);
+        this.toastr.success('Request Sent', ` for amount of ${res.amount}`);
+        this.route.navigate(['/home']);
         // this.formData.markAsPristine();
         // this.formData.markAsUntouched();
         // this.formData.reset();
@@ -44,10 +44,9 @@ export class CreateReqFormComponent implements OnInit {
       }
     );
   }
- showSucess(){
-  
-    this.toastr.success('Hello!',"Data");
- }
+  showSucess() {
+    this.toastr.success('Hello!', 'Data');
+  }
   ngOnInit(): void {
     this.formData = this.formBuilder.group({
       purpose: ['', Validators.required],

@@ -35,8 +35,10 @@ input.example-right-align {
   height: 95%;
 }
 button{
-  background-color: greenyellow;
+  background-image: linear-gradient(to right top, #2a2a32, #282c5e, #1c2c8b, #0927b7, #1711e2);
   border: none;
   border-radius: 12px;
   margin-left: 45%;
+  color: white;
+  
 }

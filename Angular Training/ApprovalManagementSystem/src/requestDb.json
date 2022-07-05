@@ -125,6 +125,42 @@
       "amount": "",
       "date": "",
       "id": 14
+    },
+    {
+      "purpose": "",
+      "discription": "",
+      "manager": "Akshay",
+      "estCost": "",
+      "amount": "",
+      "date": "",
+      "id": 15
+    },
+    {
+      "purpose": "Travel",
+      "discription": "Assiuas",
+      "manager": "Akshay",
+      "estCost": 1502,
+      "amount": 1255,
+      "date": "2022-07-06",
+      "id": 16
+    },
+    {
+      "purpose": "Travel",
+      "discription": "sa",
+      "manager": "Akshay",
+      "estCost": 2311,
+      "amount": 331,
+      "date": "2022-07-01",
+      "id": 17
+    },
+    {
+      "purpose": "Food & Drinks",
+      "discription": "avc",
+      "manager": "Akshay",
+      "estCost": 212,
+      "amount": 1,
+      "date": "2022-05-24",
+      "id": 18
     }
   ]
 }
