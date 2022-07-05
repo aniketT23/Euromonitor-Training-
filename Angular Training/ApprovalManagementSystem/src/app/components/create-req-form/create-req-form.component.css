@@ -34,3 +34,9 @@ input.example-right-align {
   border: 1px solid red;
   height: 95%;
 }
+button{
+  background-color: greenyellow;
+  border: none;
+  border-radius: 12px;
+  
+}

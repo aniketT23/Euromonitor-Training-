@@ -33,7 +33,7 @@ export class CreateReqFormComponent implements OnInit {
     this.requestService.addRequests(reqForm).subscribe(
       (res) => {
         console.log('Data Submitted');
-        
+        this.toastr.success('Request Sent',` for amount of ${res.amount}`);
               // this.route.navigate(['/home']);
         // this.formData.markAsPristine();
         // this.formData.markAsUntouched();
@@ -45,7 +45,7 @@ export class CreateReqFormComponent implements OnInit {
     );
   }
  showSucess(){
-  console.log("Running",this.toastr);
+  
     this.toastr.success('Hello!',"Data");
  }
   ngOnInit(): void {
