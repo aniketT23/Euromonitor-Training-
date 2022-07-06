@@ -8,7 +8,8 @@
       "gender": "male",
       "contact": 8585999174,
       "id": 1
-    }, {
+    },
+    {
       "role": "user",
       "name": "Aniket",
       "email": "tiwarianiket91@gmail.com",
@@ -16,6 +17,15 @@
       "gender": "male",
       "contact": 8585999174,
       "id": 2
+    },
+    {
+      "role": "user",
+      "name": "Tech",
+      "email": "tech@gmail.com",
+      "password": "tech#123",
+      "gender": "male",
+      "contact": 8523697410,
+      "id": 3
     }
   ],
   "books": []

@@ -2,7 +2,7 @@
   <mat-card-subtitle>Want to access then</mat-card-subtitle>
   <mat-card-title> Please Login!!</mat-card-title>
   <mat-card-content>
-    <form [formGroup]="loginData" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginData" (ngSubmit)="onSubmit(loginData.value)">
       <mat-form-field appearance="legacy">
         <mat-label>Email</mat-label>
         <input matInput placeholder="enter your email" formControlName="email" />

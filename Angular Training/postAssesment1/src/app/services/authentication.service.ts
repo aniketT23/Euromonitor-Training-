@@ -26,7 +26,7 @@ export class AuthenticationService {
   public authUser() {
     this.res = this.users.find((userInfo: any) => {
       return (
-        userInfo.name == this.loginData.name &&
+        userInfo.email == this.loginData.email &&
         userInfo.password == this.loginData.password
       );
     });
