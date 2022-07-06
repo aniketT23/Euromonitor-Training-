@@ -1,1 +1,11 @@
-<p>sign-up works!</p>
+<mat-card>
+    <mat-card-subtitle>Please register here !!</mat-card-subtitle>
+    <mat-card-title> SignUp</mat-card-title>
+    <mat-card-content>
+    <form [formGroup]="registrationData" (ngSubmit)='onSubmit()'>
+
+    </form>
+    </mat-card-content>
+    <mat-card-footer>have a account already?<a routerLink="/login">Login!!</a></mat-card-footer>
+  </mat-card>
+  

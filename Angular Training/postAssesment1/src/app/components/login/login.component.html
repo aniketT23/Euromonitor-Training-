@@ -1,4 +1,22 @@
 <mat-card>
-  <mat-card></mat-card>
-  <mat-card></mat-card>
+  <mat-card-subtitle>Want to access then</mat-card-subtitle>
+  <mat-card-title> Please Login!!</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginData" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="enter your email" formControlName="email" />
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" >
+        <button class="hide"  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button class="submit" type="submit" >Login</button>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>new user??<a routerLink="/signup">Sign Up!!</a></mat-card-footer>
 </mat-card>
