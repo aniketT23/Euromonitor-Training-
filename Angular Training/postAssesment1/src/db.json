@@ -1,4 +1,22 @@
 {
-  "users": [],
-  "books":[]
+  "users": [
+    {
+      "role": "admin",
+      "name": "Aniket",
+      "email": "admin@gmail.com",
+      "password": "admin@123",
+      "gender": "male",
+      "contact": 8585999174,
+      "id": 1
+    }, {
+      "role": "user",
+      "name": "Aniket",
+      "email": "tiwarianiket91@gmail.com",
+      "password": "Aniket@123",
+      "gender": "male",
+      "contact": 8585999174,
+      "id": 2
+    }
+  ],
+  "books": []
 }
