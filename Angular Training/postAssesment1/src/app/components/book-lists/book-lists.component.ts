@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BooksService } from 'src/app/services/books.service';
 import { EditBooksComponent } from '../edit-books/edit-books.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,7 +16,8 @@ export class BookListsComponent implements OnInit {
   constructor(
     private route: Router,
     private booksServiesc: BooksService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public service: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -23,18 +25,18 @@ export class BookListsComponent implements OnInit {
       this.data = res;
       console.log('Books:-', this.data);
     });
-  }
+   
+      }
   public openDialog(id: any) {
     this.booksServiesc.bookID = id;
-    this.dialog.open(EditBooksComponent,{
-      width:'50%',
-     
+    this.dialog.open(EditBooksComponent, {
+      width: '50%',
     });
   }
   public deleteItem(id: any) {
     console.log(id);
-    this.booksServiesc.deleteBook(id).subscribe((res=>{
-      console.log('Deleted Data:',res)
-    }))
+    this.booksServiesc.deleteBook(id).subscribe((res) => {
+      console.log('Deleted Data:', res);
+    });
   }
 }

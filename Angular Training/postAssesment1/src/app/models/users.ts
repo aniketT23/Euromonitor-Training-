@@ -6,4 +6,5 @@ export class Users {
     gender:string;
     contact:number;
     books:[];
+    noOfBooks:number;
 }

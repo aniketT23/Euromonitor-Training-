@@ -6,9 +6,12 @@
     <mat-card-content>{{ book.discription }}</mat-card-content>
     <span matPrefix>₹ {{ book.cost }}</span>
     <mat-card-footer>{{ book.author }}</mat-card-footer>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="service.isAdmin">
       <button (click)="openDialog(book.id)"><mat-icon>edit</mat-icon></button>
       <button (click)="deleteItem(book.id)"><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="service.isUser">
+      <button>Request</button>
     </mat-card-actions>
   </mat-card>
 </div>

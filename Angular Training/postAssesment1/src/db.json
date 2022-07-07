@@ -16,6 +16,7 @@
       "password": "Aniket@123",
       "gender": "male",
       "contact": 8585999174,
+      "noOfBooks": 0,
       "id": 2
     },
     {
@@ -25,6 +26,7 @@
       "password": "tech#123",
       "gender": "male",
       "contact": 8523697410,
+      "noOfBooks": 0,
       "id": 3
     },
     {
@@ -34,6 +36,7 @@
       "password": "Abhi@123",
       "gender": "male",
       "contact": 7862589417,
+      "noOfBooks": 0,
       "books": null,
       "id": 4
     }

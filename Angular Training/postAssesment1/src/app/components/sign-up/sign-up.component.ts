@@ -29,6 +29,7 @@ export class SignUpComponent implements OnInit {
       gender: ['', Validators.required],
       contact: ['', Validators.required],
       books: [],
+      noOfBooks:[0,Validators.required]
     });
   }
   public onSubmit(form: NgForm) {
