@@ -30,9 +30,14 @@
 
           </button>
 
-          <button mat-button (click)="logOut()">
+          <button mat-button (click)="logOut()" *ngIf="service.isAuth">
 
             <mat-icon>logout</mat-icon>Logout
+
+          </button>
+          <button mat-button routerLink="/login" *ngIf="!service.isAuth">
+
+            <mat-icon>login</mat-icon>LogIn
 
           </button>
 

@@ -12,7 +12,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { UserBooksComponent } from './components/user-books/user-books.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: BookListsComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'add', component: AddbooksComponent, canActivate: [AuthGuard] },

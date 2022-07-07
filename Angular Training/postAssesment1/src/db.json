@@ -66,9 +66,7 @@
       "gender": "male",
       "contact": 7862589417,
       "noOfBooks": 0,
-      "books": [
-       
-      ],
+      "books": [],
       "id": 4
     }
   ],
@@ -126,6 +124,15 @@
       "quantity": 100,
       "image": "./assets/book2.jpg",
       "id": 6
+    },
+    {
+      "bookname": "The India Story",
+      "discription": "Blah blah",
+      "author": "Bimal Jalal",
+      "cost": 865,
+      "quantity": 85,
+      "image": "./assets/book3.jpg",
+      "id": 7
     }
   ]
 }

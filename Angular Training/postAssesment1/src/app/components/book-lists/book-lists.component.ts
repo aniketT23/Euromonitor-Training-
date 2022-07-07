@@ -53,6 +53,7 @@ export class BookListsComponent implements OnInit {
     this.booksServiesc.deleteBook(id).subscribe((res) => {
       console.log('Deleted Data:', res);
       this.toastr.warning('Book Deleted', '');
+      this.route.navigate([''])
     });
   }
   public bookCart(id: any) {
@@ -98,4 +99,5 @@ export class BookListsComponent implements OnInit {
       }
     );
   }
+  
 }
