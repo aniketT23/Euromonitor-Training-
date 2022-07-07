@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NgModule } from '@angular/core';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { UserBooksComponent } from './components/user-books/user-books.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'add', component: AddbooksComponent, canActivate: [AuthGuard] },
   { path: 'view', component: BookListsComponent, canActivate: [AuthGuard] },
-  { path: 'edit', component: EditBooksComponent,canActivate:[AuthGuard] },
+  { path: 'edit', component: EditBooksComponent, canActivate: [AuthGuard] },
+  { path: 'myBook', component: UserBooksComponent, canActivate: [AuthGuard] },
   { path: 'menu', component: MenuComponent },
 ];
 

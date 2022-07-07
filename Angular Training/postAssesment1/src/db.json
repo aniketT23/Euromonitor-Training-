@@ -16,7 +16,7 @@
       "password": "Aniket@123",
       "gender": "male",
       "contact": 8585999174,
-      "noOfBooks": 6,
+      "noOfBooks": 3,
       "id": 2,
       "books": [
         {
@@ -78,7 +78,7 @@
       "discription": "",
       "author": "Robert Kiyosaki",
       "cost": 1800,
-      "quantity": "",
+      "quantity": 20,
       "image": "./assets/book1.jpg",
       "id": 1
     },
@@ -87,7 +87,7 @@
       "discription": "",
       "author": "H.G. Wells",
       "cost": 3800,
-      "quantity": "",
+      "quantity": 30,
       "image": "./assets/book2.jpg",
       "id": 2
     },
@@ -123,8 +123,8 @@
       "discription": "",
       "author": "Sir Thomas Moor",
       "cost": 985,
-      "quantity": "",
-      "image": "./assets/book1.jpg",
+      "quantity": 100,
+      "image": "./assets/book2.jpg",
       "id": 6
     }
   ]

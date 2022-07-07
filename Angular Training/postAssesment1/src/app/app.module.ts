@@ -16,6 +16,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgModule } from '@angular/core';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ToastrModule } from 'ngx-toastr';
+import { UserBooksComponent } from './components/user-books/user-books.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     BookListsComponent,
     EditBooksComponent,
     MenuComponent,
+    UserBooksComponent,
   ],
   imports: [
     BrowserModule,
