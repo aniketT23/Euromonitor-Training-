@@ -18,14 +18,16 @@ export class BookListsComponent implements OnInit {
   data: any;
   id: number;
   bookInfo = new Users();
-  books: any[]=[];
+  books: any[] = [];
+  date = new Date().getDate() + 3;
+  noOfBooks: number;
   constructor(
     private route: Router,
     private booksServiesc: BooksService,
     private dialog: MatDialog,
     public service: AuthenticationService,
-    private userService: UsersService,
-    private toastr: ToastrService,
+    public userService: UsersService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class BookListsComponent implements OnInit {
     console.log(id);
     this.booksServiesc.deleteBook(id).subscribe((res) => {
       console.log('Deleted Data:', res);
-      this.toastr.warning('Book Deleted','')
+      this.toastr.warning('Book Deleted', '');
     });
   }
   public bookCart(id: any) {
@@ -54,16 +56,28 @@ export class BookListsComponent implements OnInit {
     this.id = this.service.id;
     this.userService.getUserByID(this.id).subscribe(
       (res) => {
-        this.bookInfo = res;
-        this.bookInfo.books=this.books;
+        if (res.noOfBooks <= 3) {
+          this.noOfBooks = res.noOfBooks;
+          this.bookInfo = res;
+          this.bookInfo.books = this.books;
+          this.bookInfo.noOfBooks = this.noOfBooks + this.books.length;
+          console.log('Books Number', this.noOfBooks);
+          this.updateUserInventory(this.id, this.bookInfo);
+          this.toastr.success('Book requested', `return date ${this.date}`);
+        } else {
+          this.toastr.error(
+            'You have exceeded your request limit',
+            'Limited Exceede'
+          );
+          this.route.navigate(['/menu']);
+        }
+
+        //
       },
       (error) => {
         console.log(error);
       }
     );
-
-    this.updateUserInventory(this.id,this.bookInfo)
-    this.toastr.success('Book requested',`return date`)
   }
   public updateUserInventory(id: any, data: any) {
     this.userService.updateUser(id, data).subscribe(
