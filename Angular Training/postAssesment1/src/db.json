@@ -17,7 +17,27 @@
       "gender": "male",
       "contact": 8585999174,
       "noOfBooks": 0,
-      "id": 2
+      "id": 2,
+      "books": [
+        {
+          "bookname": "Time Machine",
+          "discription": "",
+          "author": "H.G. Wells",
+          "cost": 3800,
+          "quantity": "",
+          "image": "./assets/book2.jpg",
+          "id": 2
+        },
+        {
+          "bookname": "Rich Dad Poor Dad",
+          "discription": "",
+          "author": "Robert Kiyosaki",
+          "cost": 1800,
+          "quantity": "",
+          "image": "./assets/book1.jpg",
+          "id": 1
+        }
+      ]
     },
     {
       "role": "user",
