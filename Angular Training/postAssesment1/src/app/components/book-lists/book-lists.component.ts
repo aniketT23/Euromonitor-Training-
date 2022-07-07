@@ -26,7 +26,10 @@ export class BookListsComponent implements OnInit {
   }
   public openDialog(id: any) {
     this.booksServiesc.bookID = id;
-    this.dialog.open(EditBooksComponent);
+    this.dialog.open(EditBooksComponent,{
+      width:'50%',
+     
+    });
   }
   public deleteItem(id: any) {
     console.log(id);

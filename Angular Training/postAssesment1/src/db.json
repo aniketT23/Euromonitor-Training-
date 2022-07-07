@@ -31,10 +31,10 @@
   "books": [
     {
       "bookname": "Rich Dad Poor Dad",
-      "discription": "Blah blah balah",
+      "discription": "",
       "author": "Robert Kiyosaki",
-      "cost": 800,
-      "quantity": 20,
+      "cost": 1800,
+      "quantity": "",
       "image": "./assets/book1.jpg",
       "id": 1
     },
@@ -49,10 +49,10 @@
     },
     {
       "bookname": "A Dangerous place",
-      "discription": "Blah blah balah",
+      "discription": "Blaha blaha",
       "author": "D.P. Moynihan",
-      "cost": 2800,
-      "quantity": 53,
+      "cost": 4552,
+      "quantity": 28,
       "image": "./assets/book3.jpg",
       "id": 3
     },
@@ -76,10 +76,10 @@
     },
     {
       "bookname": "Utopia",
-      "discription": "Blah blah balah",
+      "discription": "",
       "author": "Sir Thomas Moor",
-      "cost": 9685,
-      "quantity": 28,
+      "cost": 985,
+      "quantity": "",
       "image": "./assets/book1.jpg",
       "id": 6
     }

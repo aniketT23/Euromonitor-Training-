@@ -1,21 +1,63 @@
 <h1 mat-dialog-title>Edit Book</h1>
 
-<div mat-dialog-content><mat-card><form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
-   
- 
-         
-            <mat-form-field appearance="legacy">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="enter your email" formControlName="email" />
-              <mat-icon matSuffix>email</mat-icon>
-            </mat-form-field>
-           
-            <button class="submit" type="submit" >Login</button>
-        
-        
-    
-      
-</form> </mat-card></div>
+<div mat-dialog-content>
+  <mat-card
+    ><form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
+      <mat-form-field appearance="legacy">
+        <mat-label>Book Name</mat-label>
+        <input
+          matInput
+          placeholder="enter book name"
+          formControlName="bookname"
+          value="{{bookData.bookname}}"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label>Discription</mat-label>
+        <textarea
+          matInput
+          placeholder="Book details"
+          formControlName="discription"
+          value="{{bookData.discription}}"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Author </mat-label>
+        <input
+          matInput
+          class="example-right-align"
+          placeholder="enter author name"
+          formControlName="author"
+          value="{{bookData.author}}"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label>Cost </mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          placeholder="cost pf a book"
+          formControlName="cost"
+          value="{{bookData.cost}}"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label>Quantity </mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          placeholder="Number of Books Available"
+          formControlName="quantity"
+          value="{{bookData.quantity}}"
+        />
+      </mat-form-field>
+      <button class="submit" type="submit" >Edit</button>
+    </form>
+  </mat-card>
+</div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close >Close</button>
+  <button mat-button mat-dialog-close>Close</button>
 </div>
