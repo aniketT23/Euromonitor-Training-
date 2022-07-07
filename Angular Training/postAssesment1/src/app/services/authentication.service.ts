@@ -45,11 +45,11 @@ export class AuthenticationService {
     if (this.res.role == 'admin') {
       this.isAdmin = true;
       this.isAuth = true;
-      this.router.navigate(['']);
+      this.router.navigate(['add']);
     } else if (this.res.role == 'user') {
       this.isUser = true;
       this.isAuth = true;
-      this.router.navigate(['signup']);
+      this.router.navigate(['menu']);
     }
     else{
       alert('Invalid user');

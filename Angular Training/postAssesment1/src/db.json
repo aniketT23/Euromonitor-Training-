@@ -28,5 +28,60 @@
       "id": 3
     }
   ],
-  "books": []
+  "books": [
+    {
+      "bookname": "Rich Dad Poor Dad",
+      "discription": "Blah blah balah",
+      "author": "Robert Kiyosaki",
+      "cost": 800,
+      "quantity": 20,
+      "image": "./assets/book1.jpg",
+      "id": 1
+    },
+    {
+      "bookname": "Time Machine",
+      "discription": "Blah blah balah",
+      "author": "H.G. Wells",
+      "cost": 1800,
+      "quantity": 5,
+      "image": "./assets/book2.jpg",
+      "id": 2
+    },
+    {
+      "bookname": "A Dangerous place",
+      "discription": "Blah blah balah",
+      "author": "D.P. Moynihan",
+      "cost": 2800,
+      "quantity": 53,
+      "image": "./assets/book3.jpg",
+      "id": 3
+    },
+    {
+      "bookname": "The Moon and Sixpence:",
+      "discription": "Blah blah balah",
+      "author": "Somerset Maughan",
+      "cost": 290,
+      "quantity": 152,
+      "image": "./assets/book4.jpg",
+      "id": 4
+    },
+    {
+      "bookname": "Chitra",
+      "discription": "Blah blah balah",
+      "author": "R.N.Tagore",
+      "cost": 968,
+      "quantity": 285,
+      "image": "./assets/book1.jpg",
+      "id": 5
+    },
+    {
+      "bookname": "Utopia",
+      "discription": "Blah blah balah",
+      "author": "Sir Thomas Moor",
+      "cost": 9685,
+      "quantity": 28,
+      "image": "./assets/book1.jpg",
+      "id": 6
+    }
+  ]
 }

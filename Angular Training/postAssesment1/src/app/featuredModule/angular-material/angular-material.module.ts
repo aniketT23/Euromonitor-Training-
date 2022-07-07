@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 @NgModule({
   declarations: [],
@@ -16,6 +17,7 @@ import { NgModule } from '@angular/core';
     MatIconModule,
     MatRadioModule,
     MatMenuModule,
+    MatToolbarModule,
   ],
   exports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { NgModule } from '@angular/core';
     MatIconModule,
     MatRadioModule,
     MatMenuModule,
+    MatToolbarModule,
   ],
 })
 export class AngularMaterialModule {}

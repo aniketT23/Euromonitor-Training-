@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { AddbooksComponent } from './components/addbooks/addbooks.component';
+import { AuthGuard } from './auth.guard';
 import { BookListsComponent } from './components/book-lists/book-lists.component';
 import { EditBooksComponent } from './components/edit-books/edit-books.component';
 import { HomeComponent } from './components/home/home.component';
