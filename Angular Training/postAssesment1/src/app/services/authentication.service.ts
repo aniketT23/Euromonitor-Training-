@@ -15,6 +15,7 @@ export class AuthenticationService {
   isUser = false;
   res: any;
   loginData: any;
+  id:number
   constructor(private http: HttpClient, private router: Router) {}
   public authenticateUser(data: any) {
     return this.http.get(userUrl).subscribe((res) => {
@@ -22,7 +23,7 @@ export class AuthenticationService {
       this.loginData = data;
       this.authUser();
       this.navigateUser();
-      this.userName = this.res.name;
+      
     });
   }
   public authUser() {
@@ -36,6 +37,8 @@ export class AuthenticationService {
 
   public navigateUser() {
     if (this.res) {
+      this.userName = this.res.name;
+      this.id=this.res.id;
       this.checkRole();
     } else {
       alert('Invalid Credentials');

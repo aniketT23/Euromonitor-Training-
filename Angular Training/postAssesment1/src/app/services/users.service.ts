@@ -30,4 +30,13 @@ export class UsersService {
       .post<Users>(userUrl, data)
       .pipe(catchError(this.handleError));
   }
+  public getUserByID(id: any): Observable<Users> {
+    const newUrl = `${userUrl}/${id}`;
+    return this.http.get<Users>(newUrl).pipe(catchError(this.handleError));
+  }
+
+  public updateUser(id:any,data:any):Observable<Users>{
+    const newUrl = `${userUrl}/${id}`;
+    return this.http.patch<Users>(newUrl,data).pipe(catchError(this.handleError));
+  }
 }
