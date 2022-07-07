@@ -9,6 +9,7 @@ const userUrl = environment.userUrl;
 })
 export class AuthenticationService {
   users: any;
+  userName: string;
   isAuth = false;
   isAdmin = false;
   isUser = false;
@@ -21,6 +22,7 @@ export class AuthenticationService {
       this.loginData = data;
       this.authUser();
       this.navigateUser();
+      this.userName = this.res.name;
     });
   }
   public authUser() {
@@ -49,9 +51,8 @@ export class AuthenticationService {
     } else if (this.res.role == 'user') {
       this.isUser = true;
       this.isAuth = true;
-      this.router.navigate(['menu']);
-    }
-    else{
+      this.router.navigate(['view']);
+    } else {
       alert('Invalid user');
     }
   }

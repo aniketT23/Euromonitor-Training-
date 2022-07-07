@@ -1,40 +1,36 @@
-<p>
+
 
     <mat-toolbar color="primary">
 
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    
 
-        <mat-icon>dashboard</mat-icon>
-
-      </button>
-
-      <span>EMI Library</span>
+      <span>Book Management</span>
 
       <span class="example-spacer"></span>
 
       <div>
 
-        <button mat-button>Hi!</button>
+        <button mat-button>Hi!{{name}}</button>
 
-        <button mat-button routerLink="/dashboard">
+        <button mat-button routerLink="/view">
 
             <mat-icon>home</mat-icon>Home
 
           </button>
 
-          <button mat-button routerLink="/books">
+          <button mat-button routerLink="/view" *ngIf="service.isUser">
 
-            <mat-icon>book</mat-icon>Books
-
-          </button>
-
-          <button mat-button routerLink="/users">
-
-            <mat-icon>people</mat-icon>Users
+            <mat-icon>book</mat-icon>My Books
 
           </button>
 
-          <button mat-button >
+          <button mat-button routerLink="/add" *ngIf="service.isAdmin">
+
+            <mat-icon>add</mat-icon>Add Books
+
+          </button>
+
+          <button mat-button (click)="logOut()">
 
             <mat-icon>logout</mat-icon>Logout
 
@@ -43,5 +39,5 @@
       </div>
 
     </mat-toolbar>
+  
 
-  </p>

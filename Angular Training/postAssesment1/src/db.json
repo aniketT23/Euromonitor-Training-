@@ -26,6 +26,16 @@
       "gender": "male",
       "contact": 8523697410,
       "id": 3
+    },
+    {
+      "role": "user",
+      "name": "Abhishek",
+      "email": "abhi@gmail.com",
+      "password": "Abhi@123",
+      "gender": "male",
+      "contact": 7862589417,
+      "books": null,
+      "id": 4
     }
   ],
   "books": [
@@ -40,10 +50,10 @@
     },
     {
       "bookname": "Time Machine",
-      "discription": "Blah blah balah",
+      "discription": "",
       "author": "H.G. Wells",
-      "cost": 1800,
-      "quantity": 5,
+      "cost": 3800,
+      "quantity": "",
       "image": "./assets/book2.jpg",
       "id": 2
     },
@@ -55,7 +65,8 @@
       "quantity": 152,
       "image": "./assets/book4.jpg",
       "id": 4
-    },{
+    },
+    {
       "bookname": "A Dangerous place",
       "discription": "Blaha blaha",
       "author": "D.P. Moynihan",

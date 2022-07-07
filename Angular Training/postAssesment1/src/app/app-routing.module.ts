@@ -14,10 +14,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'add', component: AddbooksComponent },
-  { path: 'view', component: BookListsComponent },
-  { path: 'edit', component: EditBooksComponent },
-  {path:'menu',component:MenuComponent}
+  { path: 'add', component: AddbooksComponent, canActivate: [AuthGuard] },
+  { path: 'view', component: BookListsComponent, canActivate: [AuthGuard] },
+  { path: 'edit', component: EditBooksComponent,canActivate:[AuthGuard] },
+  { path: 'menu', component: MenuComponent },
 ];
 
 @NgModule({

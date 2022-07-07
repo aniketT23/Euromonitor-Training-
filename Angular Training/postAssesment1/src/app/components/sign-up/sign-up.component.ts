@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usersServices: UsersService,
-    private router: Router // private toastr: ToastrService
+    private router: Router ,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class SignUpComponent implements OnInit {
     this.usersServices.addUsers(form).subscribe(
       (res) => {
         console.log('New User:', res);
-        // this.toastr.success('User Registers', 'sent');
+         this.toastr.success('User Registers', 'sent');
       },
       (error) => {
         console.log(error);
