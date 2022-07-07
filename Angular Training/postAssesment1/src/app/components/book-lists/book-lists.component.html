@@ -12,9 +12,10 @@
     <img class="bookImg" src="{{ book.image }}" />
     <mat-card-content>{{ book.discription }}</mat-card-content>
     <span matPrefix>₹ {{ book.cost }}</span>
+    <mat-card-content>Books Available: {{ book.quantity }}</mat-card-content>
     <mat-card-footer>By:- {{ book.author }}</mat-card-footer>
     <mat-card-actions *ngIf="service.isAdmin">
-      <mat-card-content>{{ book.quantity }}</mat-card-content>
+
       <button (click)="openDialog(book.id)"><mat-icon>edit</mat-icon></button>
       <button (click)="deleteItem(book.id)"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>

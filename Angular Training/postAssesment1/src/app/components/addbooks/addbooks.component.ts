@@ -34,7 +34,5 @@ export class AddbooksComponent implements OnInit {
       console.log(error)
     })
   }
-  public Onreset() {
-    this.bookData.reset();
-  }
+ 
 }
