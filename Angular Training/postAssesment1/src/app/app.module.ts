@@ -11,9 +11,13 @@ import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AddbooksComponent } from './components/addbooks/addbooks.component';
+import { BookListsComponent } from './components/book-lists/book-lists.component';
+import { EditBooksComponent } from './components/edit-books/edit-books.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignUpComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, SignUpComponent, HomeComponent, AddbooksComponent, BookListsComponent, EditBooksComponent, MenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

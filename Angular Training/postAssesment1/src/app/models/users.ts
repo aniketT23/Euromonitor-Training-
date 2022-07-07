@@ -5,4 +5,5 @@ export class Users {
     password:string;
     gender:string;
     contact:number;
+    books:[];
 }

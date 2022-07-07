@@ -16,8 +16,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usersServices: UsersService,
-    private router: Router,
-    // private toastr: ToastrService
+    private router: Router // private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +27,7 @@ export class SignUpComponent implements OnInit {
       password: ['', Validators.required],
       gender: ['', Validators.required],
       contact: ['', Validators.required],
+      books: [],
     });
   }
   public onSubmit(form: NgForm) {

@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 @NgModule({
@@ -14,6 +15,7 @@ import { NgModule } from '@angular/core';
     MatInputModule,
     MatIconModule,
     MatRadioModule,
+    MatMenuModule,
   ],
   exports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { NgModule } from '@angular/core';
     MatInputModule,
     MatIconModule,
     MatRadioModule,
+    MatMenuModule,
   ],
 })
 export class AngularMaterialModule {}
