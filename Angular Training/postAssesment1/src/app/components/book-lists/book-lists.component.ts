@@ -16,6 +16,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class BookListsComponent implements OnInit {
   data: any;
+  term = '';
   id: number;
   bookInfo = new Users();
   books: any[] = [];
@@ -35,6 +36,11 @@ export class BookListsComponent implements OnInit {
       this.data = res;
       console.log('Books:-', this.data);
     });
+    if (this.service.isAdmin) {
+      console.log('Admin');
+    } else if (this.service.isUser) {
+      console.log('User');
+    }
   }
   public openDialog(id: any) {
     this.booksServiesc.bookID = id;
@@ -63,13 +69,18 @@ export class BookListsComponent implements OnInit {
           this.bookInfo.noOfBooks = this.noOfBooks + 1;
           console.log('Books Number', this.noOfBooks);
           this.updateUserInventory(this.id, this.bookInfo);
-          this.toastr.success('Book requested', `return date ${this.date}`);
+          this.toastr.success(
+            'Book requested',
+            `Book Return Date: ${
+              this.date
+            }/${new Date().getMonth()}/${new Date().getFullYear()}`
+          );
         } else {
           this.toastr.error(
             'You have exceeded your request limit',
             'Limited Exceede'
           );
-          this.route.navigate(['/menu']);
+          this.route.navigate(['/view']);
         }
 
         //

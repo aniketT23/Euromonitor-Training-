@@ -1,11 +1,18 @@
 <app-menu></app-menu>
+<div>
+  <mat-form-field  appearance="fill">
+    <mat-label>Search</mat-label>
+  <input matInput placeholder="search here" [(ngModel)]="term"/>
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+</div>
 <div class="booklists">
-  <mat-card class="bookBox" *ngFor="let book of data">
+  <mat-card class="bookBox" *ngFor="let book of data | filter:term">
     <mat-card-title>{{ book.bookname }}</mat-card-title>
     <img class="bookImg" src="{{ book.image }}" />
     <mat-card-content>{{ book.discription }}</mat-card-content>
     <span matPrefix>₹ {{ book.cost }}</span>
-    <mat-card-footer>{{ book.author }}</mat-card-footer>
+    <mat-card-footer>By:- {{ book.author }}</mat-card-footer>
     <mat-card-actions *ngIf="service.isAdmin">
       <button (click)="openDialog(book.id)"><mat-icon>edit</mat-icon></button>
       <button (click)="deleteItem(book.id)"><mat-icon>delete</mat-icon></button>

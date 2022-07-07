@@ -12,12 +12,22 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgModule } from '@angular/core';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignUpComponent, HomeComponent, AddbooksComponent, BookListsComponent, EditBooksComponent, MenuComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignUpComponent,
+    HomeComponent,
+    AddbooksComponent,
+    BookListsComponent,
+    EditBooksComponent,
+    MenuComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
