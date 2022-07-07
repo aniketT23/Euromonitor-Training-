@@ -1,1 +1,13 @@
-<p>book-lists works!</p>
+<div class="booklists">
+  <mat-card class="bookBox" *ngFor="let book of data">
+    <mat-card-title>{{ book.bookname }}</mat-card-title>
+    <img class="bookImg" src="{{ book.image }}" />
+    <mat-card-content>{{ book.discription }}</mat-card-content>
+    <span matPrefix>₹ {{ book.cost }}</span>
+    <mat-card-footer>{{ book.author }}</mat-card-footer>
+    <mat-card-actions>
+      <button (click)="openDialog()"><mat-icon>edit</mat-icon></button>
+      <button (click)="deleteItem(book.id)"><mat-icon >delete</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>

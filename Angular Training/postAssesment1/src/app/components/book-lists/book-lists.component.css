@@ -1,0 +1,15 @@
+.booklists{
+    display: grid;
+    grid-template-columns: repeat(4,22%) ;
+    row-gap:5%;
+    column-gap: 3%;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+   
+}
+
+.bookImg{
+    width: 100%;
+    height: 70%;
+}

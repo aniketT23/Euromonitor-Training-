@@ -30,4 +30,14 @@ export class BooksService {
   public getBooks(): Observable<Books[]> {
     return this.http.get<Books[]>(booksUrl).pipe(catchError(this.handleError));
   }
+  public deleteBook(id: any): Observable<Books> {
+    const newUrl = `${booksUrl}/${id}`;
+    return this.http.delete<Books>(newUrl).pipe(catchError(this.handleError));
+  }
+  public editBooks(id: any, data: any): Observable<Books> {
+    const newUrl = `${booksUrl}/${id}`;
+    return this.http
+      .patch<Books>(newUrl, data)
+      .pipe(catchError(this.handleError));
+  }
 }
