@@ -56,11 +56,11 @@ export class BookListsComponent implements OnInit {
     this.id = this.service.id;
     this.userService.getUserByID(this.id).subscribe(
       (res) => {
-        if (res.noOfBooks <= 3) {
+        if (res.noOfBooks < 3) {
           this.noOfBooks = res.noOfBooks;
           this.bookInfo = res;
           this.bookInfo.books = this.books;
-          this.bookInfo.noOfBooks = this.noOfBooks + this.books.length;
+          this.bookInfo.noOfBooks = this.noOfBooks + 1;
           console.log('Books Number', this.noOfBooks);
           this.updateUserInventory(this.id, this.bookInfo);
           this.toastr.success('Book requested', `return date ${this.date}`);
