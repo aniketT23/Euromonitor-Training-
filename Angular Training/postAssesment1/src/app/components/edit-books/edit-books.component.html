@@ -1,1 +1,21 @@
-<p>edit-books works!</p>
+<h1 mat-dialog-title>Edit Book</h1>
+
+<div mat-dialog-content><mat-card><form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
+   
+ 
+         
+            <mat-form-field appearance="legacy">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="enter your email" formControlName="email" />
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+           
+            <button class="submit" type="submit" >Login</button>
+        
+        
+    
+      
+</form> </mat-card></div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close >Close</button>
+</div>

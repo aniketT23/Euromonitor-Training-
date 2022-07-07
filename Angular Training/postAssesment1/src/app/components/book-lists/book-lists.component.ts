@@ -24,10 +24,11 @@ export class BookListsComponent implements OnInit {
       console.log('Books:-', this.data);
     });
   }
-  public openDialog() {
+  public openDialog(id: any) {
+    this.booksServiesc.bookID = id;
     this.dialog.open(EditBooksComponent);
   }
-  public deleteItem(id:any){
-    console.log(id)
+  public deleteItem(id: any) {
+    console.log(id);
   }
 }

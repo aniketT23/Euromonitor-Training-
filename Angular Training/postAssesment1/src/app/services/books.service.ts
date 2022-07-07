@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
+import { BehaviorSubject } from 'rxjs';
 import { Books } from '../models/books';
 import { Injectable } from '@angular/core';
-import { Users } from '../models/users';
 import { environment } from 'src/environments/environment';
 
 const booksUrl = environment.booksUrl;
@@ -11,6 +11,7 @@ const booksUrl = environment.booksUrl;
   providedIn: 'root',
 })
 export class BooksService {
+  bookID = new BehaviorSubject('');
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
       console.log('Client Side Error', errorResponse.error);
@@ -39,5 +40,10 @@ export class BooksService {
     return this.http
       .patch<Books>(newUrl, data)
       .pipe(catchError(this.handleError));
+  }
+
+  public getBooksById(id: number): Observable<Books> {
+    const newUrl = `${booksUrl}/${id}`;
+    return this.http.get<Books>(newUrl).pipe(catchError(this.handleError));
   }
 }
