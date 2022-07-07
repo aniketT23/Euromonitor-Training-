@@ -1,10 +1,12 @@
 <app-menu></app-menu>
 <div class="booklists">
-  <mat-card class="bookBox" *ngFor="let book of data">
-    <mat-card-title>{{ book.bookname }}</mat-card-title>
-    <img class="bookImg" src="{{ book.image }}" />
-    <mat-card-content>{{ book.discription }}</mat-card-content>
-    <span matPrefix>₹ {{ book.cost }}</span>
-    <mat-card-footer>By:- {{ book.author }}</mat-card-footer>
-  </mat-card>
-</div>
+    <mat-card class="bookBox" *ngFor="let book of data">
+      <mat-card-title>{{ book.bookname }}</mat-card-title>
+      <img class="bookImg" src="{{ book.image }}" />
+      <mat-card-content>{{ book.discription }}</mat-card-content>
+      <span matPrefix>₹ {{ book.cost }}</span>
+      <mat-card-footer>By:- {{ book.author }}</mat-card-footer>
+      
+      
+    </mat-card>
+  </div>
