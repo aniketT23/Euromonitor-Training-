@@ -33,5 +33,8 @@ export class BookListsComponent implements OnInit {
   }
   public deleteItem(id: any) {
     console.log(id);
+    this.booksServiesc.deleteBook(id).subscribe((res=>{
+      console.log('Deleted Data:',res)
+    }))
   }
 }

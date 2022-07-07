@@ -48,15 +48,6 @@
       "id": 2
     },
     {
-      "bookname": "A Dangerous place",
-      "discription": "Blaha blaha",
-      "author": "D.P. Moynihan",
-      "cost": 4552,
-      "quantity": 28,
-      "image": "./assets/book3.jpg",
-      "id": 3
-    },
-    {
       "bookname": "The Moon and Sixpence:",
       "discription": "Blah blah balah",
       "author": "Somerset Maughan",
@@ -64,6 +55,14 @@
       "quantity": 152,
       "image": "./assets/book4.jpg",
       "id": 4
+    },{
+      "bookname": "A Dangerous place",
+      "discription": "Blaha blaha",
+      "author": "D.P. Moynihan",
+      "cost": 4552,
+      "quantity": 28,
+      "image": "./assets/book3.jpg",
+      "id": 3
     },
     {
       "bookname": "Chitra",
