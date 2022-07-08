@@ -15,7 +15,7 @@ data:any;
   constructor(private route:Router,private userService:UsersService, public service:AuthenticationService) { }
 
   ngOnInit(): void {
-    this.userService.getUserByID(2).subscribe(res=>{
+    this.userService.getUserByID(this.service.id).subscribe(res=>{
       this.data=res.books;
   })
   }

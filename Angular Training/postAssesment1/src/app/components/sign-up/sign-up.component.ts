@@ -22,13 +22,21 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationData = this.fb.group({
-      role: ['user', Validators.required,],
-      name: ['', Validators.required, Validators.minLength(3)],
-      email: ['', Validators.required,Validators.email],
+      role: ['user', Validators.required],
+      name: [
+        '',
+        Validators.required,
+        // Validators.minLength(3)
+      ],
+      email: [
+        '',
+        Validators.required,
+        // Validators.email
+      ],
       password: [
         '',
         Validators.required,
-        Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+        // Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
       ],
       gender: ['', Validators.required],
       contact: ['', Validators.required],
@@ -41,6 +49,7 @@ export class SignUpComponent implements OnInit {
       (res) => {
         console.log('New User:', res);
         this.toastr.success('User Registers', 'sent');
+        this.router.navigate(['/login']);
       },
       (error) => {
         console.log(error);

@@ -65,9 +65,108 @@
       "password": "Abhi@123",
       "gender": "male",
       "contact": 7862589417,
-      "noOfBooks": 0,
-      "books": [],
+      "noOfBooks": 3,
+      "books": [
+        {
+          "bookname": "A Dangerous place",
+          "discription": "Blaha blaha",
+          "author": "D.P. Moynihan",
+          "cost": 4552,
+          "quantity": 28,
+          "image": "./assets/book3.jpg",
+          "id": 3
+        },
+        {
+          "bookname": "Chitra",
+          "discription": "Blah blah balah",
+          "author": "R.N.Tagore",
+          "cost": 968,
+          "quantity": 285,
+          "image": "./assets/book1.jpg",
+          "id": 5
+        },
+        {
+          "bookname": "Utopia",
+          "discription": "",
+          "author": "Sir Thomas Moor",
+          "cost": 985,
+          "quantity": 100,
+          "image": "./assets/book2.jpg",
+          "id": 6
+        }
+      ],
       "id": 4
+    },
+    {
+      "role": "user",
+      "name": "Shivam",
+      "email": "shivam@gmail.com",
+      "password": "Abc@123",
+      "gender": "male",
+      "contact": 7896547856,
+      "books": [
+        {
+          "bookname": "The India Story",
+          "discription": "Blah blah",
+          "author": "Bimal Jalal",
+          "cost": 865,
+          "quantity": 85,
+          "image": "./assets/book3.jpg",
+          "id": 7
+        },
+        {
+          "bookname": "Time Machine",
+          "discription": "",
+          "author": "H.G. Wells",
+          "cost": 3800,
+          "quantity": 30,
+          "image": "./assets/book2.jpg",
+          "id": 2
+        },
+        {
+          "bookname": "Rich Dad Poor Dad",
+          "discription": "",
+          "author": "Robert Kiyosaki",
+          "cost": 1800,
+          "quantity": 20,
+          "image": "./assets/book1.jpg",
+          "id": 1
+        }
+      ],
+      "noOfBooks": 3,
+      "id": 5
+    },
+    {
+      "role": "user",
+      "name": "Rambhu",
+      "email": "ram@gmail.com",
+      "password": "ram@123",
+      "gender": "male",
+      "contact": 9996385697,
+      "books": null,
+      "noOfBooks": 0,
+      "id": 6
+    },
+    {
+      "role": "user",
+      "name": "user",
+      "email": "user@gmail.com",
+      "password": "user@123",
+      "gender": "male",
+      "contact": 787541269,
+      "books": [
+        {
+          "bookname": "A Dangerous place",
+          "discription": "Blaha blaha",
+          "author": "D.P. Moynihan",
+          "cost": 4552,
+          "quantity": 28,
+          "image": "./assets/book3.jpg",
+          "id": 3
+        }
+      ],
+      "noOfBooks": 3,
+      "id": 7
     }
   ],
   "books": [
