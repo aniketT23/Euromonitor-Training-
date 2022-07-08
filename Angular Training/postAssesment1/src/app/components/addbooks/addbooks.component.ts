@@ -24,6 +24,7 @@ export class AddbooksComponent implements OnInit {
       author: ['', Validators.required],
       cost: ['', Validators.required],
       quantity: ['', Validators.required],
+      Image:['./assets/book1.jpg']
     });
   }
 
