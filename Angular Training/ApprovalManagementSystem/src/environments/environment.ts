@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:3000/Requests',
+  usersUrl:'  http://localhost:3000/users'
 };
 
 /*
