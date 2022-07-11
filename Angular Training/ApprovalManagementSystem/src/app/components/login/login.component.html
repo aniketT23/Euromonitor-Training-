@@ -10,7 +10,7 @@
         <mat-card-title>Hello Again!</mat-card-title>
         <mat-card-subtitle>Please fill your details here.</mat-card-subtitle>
         <mat-card-content>
-          <form [formGroup]="data" (ngSubmit)="onSubmit()">
+          <form [formGroup]="data" (ngSubmit)="onSubmit(data.value)">
             <mat-form-field appearance="legacy">
               <mat-label>Email</mat-label>
               <input

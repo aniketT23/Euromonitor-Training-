@@ -2,13 +2,23 @@
   "users": [
     {
       "role": "admin",
-      "name": "Aniket",
+      "name": "Akshay",
       "email": "admin@gmail.com",
       "password": "admin@123",
-      "designation": "",
+      "designation": "manager",
       "gender": "male",
       "contact": 8585999174,
       "id": 1
+    },
+    {
+      "role": "user",
+      "name": "Aniket",
+      "email": "aniket@gmail.com",
+      "password": "aniket@123",
+      "designation": "SE-1",
+      "gender": "male",
+      "contact": 8585999174,
+      "id": 2
     }
   ],
   "Requests": [
