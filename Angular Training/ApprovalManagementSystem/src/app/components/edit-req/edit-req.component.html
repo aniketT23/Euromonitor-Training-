@@ -1,5 +1,58 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<h1 mat-dialog-title>Edit Request</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)">
+    <mat-form-field appearance="legacy">
+      <mat-label>Purpose</mat-label>
+      <input
+        matInput
+        placeholder="purpose"
+        formControlName="purpose"
+        value="{{ reqData.purpose }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Description</mat-label>
+      <input
+        matInput
+        placeholder="Enter Details Here"
+        formControlName="discription"
+        value="{{ reqData.discription }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Manager</mat-label>
+      <input
+        matInput
+        placeholder="Manager"
+        formControlName="manager"
+        value="{{ reqData.manager }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Estimated Cost</mat-label>
+      <input
+        matInput
+        placeholder="Enter your Cost"
+        formControlName="estCost"
+        value="{{ reqData.estCost }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Amount</mat-label>
+      <input
+        matInput
+        placeholder="Enter your Cost"
+        formControlName="amount"
+        value="{{ reqData.amount }}"
+      />
+    </mat-form-field>
+    <button><mat-icon>save</mat-icon></button>
+  </form>
+</div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
 </div>
