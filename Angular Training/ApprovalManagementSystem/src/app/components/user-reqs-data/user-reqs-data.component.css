@@ -1,7 +1,19 @@
 .requests{
     display: grid;
     grid-template-columns: repeat(3,30%);
-    gap:2%
+    /* grid-template-rows: repeat(4,20%); */
+    /* gap:4%; */
+    row-gap: 5%;
+    justify-content: space-evenly;
+height: 100%;
+    
+}
+.requests>mat-card{
+    /* width: 100%; */
+    /* height: 90%; */
+    -webkit-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.34);
+    -moz-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.34);
+    box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.34);
 }
 .functions{
     background-color: transparent;
@@ -25,8 +37,11 @@
 .cost{
     display: flex;
 }
-mat-card-actions{
-    border: 1px solid black;
-    
-   margin-left: 25%;
+
+.content{
+    text-align: center;
+}
+mat-card-content{
+    text-align: left;
+    margin-left: 4%;
 }
