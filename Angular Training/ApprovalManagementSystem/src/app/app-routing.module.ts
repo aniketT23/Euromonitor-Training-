@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { CreateReqComponent } from './components/create-req/create-req.component';
+import { HistoryComponent } from './components/history/history.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   {path:'create',component:CreateReqComponent},
   {path:'view',component:ViewReqComponent},
+  {path:'history',component:HistoryComponent}
   
 ];
 

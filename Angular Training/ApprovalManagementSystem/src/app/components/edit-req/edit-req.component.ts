@@ -45,6 +45,7 @@ export class EditReqComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log('Edited Data:', res);
+          this.route.navigate(['home'])
         },
         (error) => {
           console.log(error);

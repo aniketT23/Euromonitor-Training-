@@ -33,26 +33,6 @@
       "id": 1
     },
     {
-      "purpose": "Food & Drinks",
-      "discription": "Going Out",
-      "manager": "Akshay",
-      "estCost": 5000,
-      "amount": 1000,
-      "date": "2022-07-07",
-      "status": "active",
-      "id": 2
-    },
-    {
-      "purpose": "Team Outing",
-      "discription": "sdas",
-      "manager": "Akshay",
-      "estCost": 213,
-      "amount": 212,
-      "date": "2022-06-29",
-      "status": "active",
-      "id": 3
-    },
-    {
       "purpose": "Internet Bill",
       "discription": "eds",
       "manager": "Akshay",
@@ -154,10 +134,10 @@
     },
     {
       "purpose": "Travel",
-      "discription": "sa",
+      "discription": "saas",
       "manager": "Akshay",
-      "estCost": 2311,
-      "amount": 331,
+      "estCost": "23110",
+      "amount": "3312",
       "date": "2022-07-01",
       "status": "active",
       "id": 17

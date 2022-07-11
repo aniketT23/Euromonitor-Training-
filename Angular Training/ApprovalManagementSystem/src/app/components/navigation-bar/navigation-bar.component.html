@@ -20,13 +20,13 @@
       >
 
       <mat-list-item
-        ><a routerLink="/login"
+        ><a routerLink="/history"
           ><mat-icon>history</mat-icon>History</a
         ></mat-list-item
       >
 
       <mat-list-item
-        ><a routerLink="/login">
+        ><a routerLink="/create">
           <mat-icon>create</mat-icon>Create Request</a
         ></mat-list-item
       >
@@ -39,8 +39,8 @@
           ><mat-icon>notifications</mat-icon>Notification</a
         ></mat-list-item
       >
-      <mat-list-item
-        ><a routerLink="/login"
+      <mat-list-item (click)="logOut()"
+        ><a 
           ><mat-icon>logout</mat-icon>Logout</a
         ></mat-list-item
       >
