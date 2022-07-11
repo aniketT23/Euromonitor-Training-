@@ -1,0 +1,15 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+  }
+  mat-sidenav {
+    width: 15%;
+    background-image: url("../../../assets/Animated Shape.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+     color: white;
+  }  
