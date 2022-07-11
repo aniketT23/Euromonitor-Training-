@@ -15,6 +15,7 @@ background: linear-gradient(to left, #0B2541, #0E4B97);
     border: none;
     margin-top: 0.65rem;
     margin-left: 2rem;
+    background-color: #fff;
     
 }
 mat-icon{
@@ -29,3 +30,8 @@ mat-icon{
     padding: 0px;
     background-color: #fff;
 } */
+.heading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

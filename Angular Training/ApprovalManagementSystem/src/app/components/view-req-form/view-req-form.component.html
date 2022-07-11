@@ -1,37 +1,22 @@
 <div class="header">
-
-    <input class="searchBar" matInput placeholder="Search here" />
-     <!-- <mat-icon>search</mat-icon> -->
+  <input class="searchBar" matInput placeholder="Search here" />
+  <!-- <mat-icon>search</mat-icon> -->
 </div>
-<div  >
-    <table mat-table [dataSource]="data" class="viewRequest" class="mat-elevation-z8"
-    >
-    
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef><strong>Request ID</strong></th>
-        <td mat-cell *matCellDef="let row">{{row.id}}</td>
-      </ng-container>
-
-    <ng-container matColumnDef="estCost">
-        <th mat-header-cell *matHeaderCellDef><strong><span matPrefix>₹&nbsp;</span>Estimated Cost</strong></th>
-        <td mat-cell *matCellDef="let row"><span matPrefix>₹&nbsp;</span>{{row.estCost}}</td>
-      </ng-container>
-
-    <ng-container matColumnDef="manager">
-        <th mat-header-cell *matHeaderCellDef><strong>Manager Name</strong></th>
-        <td mat-cell *matCellDef="let row">{{row.manager}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="purpose">
-        <th mat-header-cell *matHeaderCellDef><strong>Purpose</strong></th>
-        <td mat-cell *matCellDef="let row">{{row.purpose}}</td>
-      </ng-container>
-
-      
-     
-
-      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
-      <!-- <tr mat-row *matRowDef="let row;columns: displayedColumns;" [routerLink]="['/request/',row.id]"></tr> -->
-    </table>
-</div>
+<mat-card>
+    <div class="heading">
+  <p *ngFor="let item of displayColumns"><strong>{{ item }}</strong></p></div>
+  <mat-accordion *ngFor="let req of data">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         {{req.id}}
+        </mat-panel-title>
+        <mat-panel-description>
+         {{req.purpose}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>  {{req.discription}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-paginator #paginator [length]="100" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page"></mat-paginator>
+</mat-card>
