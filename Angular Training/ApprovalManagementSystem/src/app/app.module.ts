@@ -18,6 +18,10 @@ import { RecentReqComponent } from './components/recent-req/recent-req.component
 import { SignupComponent } from './components/signup/signup.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ViewReqComponent } from './components/view-req/view-req.component';
+import { ViewReqFormComponent } from './components/view-req-form/view-req-form.component';
+import { EditReqComponent } from './components/edit-req/edit-req.component';
+import { DeleteReqComponent } from './components/delete-req/delete-req.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { ToastrModule } from 'ngx-toastr';
     RecentReqComponent,
     CreateReqComponent,
     CreateReqFormComponent,
+    ViewReqComponent,
+    ViewReqFormComponent,
+    EditReqComponent,
+    DeleteReqComponent,
   ],
   imports: [
     BrowserModule,

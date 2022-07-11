@@ -1,4 +1,16 @@
 {
+  "users": [
+    {
+      "role": "admin",
+      "name": "Aniket",
+      "email": "admin@gmail.com",
+      "password": "admin@123",
+      "designation": "",
+      "gender": "male",
+      "contact": 8585999174,
+      "id": 1
+    }
+  ],
   "Requests": [
     {
       "purpose": "Team Outing",
@@ -108,7 +120,7 @@
       "date": "2022-07-06",
       "id": 12
     },
-       {
+    {
       "purpose": "Travel",
       "discription": "Assiuas",
       "manager": "Akshay",
@@ -134,6 +146,15 @@
       "amount": 1,
       "date": "2022-05-24",
       "id": 18
+    },
+    {
+      "purpose": "Hotel",
+      "discription": "Reallocation",
+      "manager": "Akshay",
+      "estCost": 8963,
+      "amount": 8562,
+      "date": "2022-07-11",
+      "id": 19
     }
   ]
 }
