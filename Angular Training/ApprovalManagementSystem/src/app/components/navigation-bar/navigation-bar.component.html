@@ -3,12 +3,17 @@
   <div class="info">
     <mat-list>
       <mat-list-item
-        ><a routerLink="/login">
+        ><a routerLink="/home">
           <mat-icon class="icon">home</mat-icon>Home
         </a></mat-list-item
       >
 
       <mat-list-item
+        ><a routerLink="/view"
+          ><mat-icon>preview</mat-icon>My Requests
+        </a></mat-list-item
+      >
+      <mat-list-item *ngIf="service.isAdmin"
         ><a routerLink="/login"
           ><mat-icon>preview</mat-icon>View Requests
         </a></mat-list-item

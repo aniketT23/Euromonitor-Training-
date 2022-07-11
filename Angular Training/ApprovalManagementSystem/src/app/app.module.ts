@@ -22,6 +22,9 @@ import { ViewReqComponent } from './components/view-req/view-req.component';
 import { ViewReqFormComponent } from './components/view-req-form/view-req-form.component';
 import { EditReqComponent } from './components/edit-req/edit-req.component';
 import { DeleteReqComponent } from './components/delete-req/delete-req.component';
+import { HistoryComponent } from './components/history/history.component';
+import { UserReqsComponent } from './components/user-reqs/user-reqs.component';
+import { UserReqsDataComponent } from './components/user-reqs-data/user-reqs-data.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { DeleteReqComponent } from './components/delete-req/delete-req.component
     ViewReqFormComponent,
     EditReqComponent,
     DeleteReqComponent,
+    HistoryComponent,
+    UserReqsComponent,
+    UserReqsDataComponent,
   ],
   imports: [
     BrowserModule,
