@@ -1,21 +1,21 @@
 <div><h2>Requests</h2></div>
 <mat-card class="requests">
     <mat-card *ngFor="let item of data">
-<div>
-    <img src="">
+<div class="profile">
+    <img src="../../../assets/crypto.PNG">
     <p>Name</p>
     <p>Contact No: </p>
 </div>
 <div>
     <mat-card-title>{{item.purpose}}</mat-card-title>
-    <mat-card-content>{{item.discription}}</mat-card-content>
+    <mat-card-content>Description: {{item.discription}}</mat-card-content>
     <div class="cost">
-        <p>{{item.estCost}}</p>
-        <p>{{item.amount}}</p>
-        <p>{{item.date}}</p>
+        <p>Estimated Cost: {{item.estCost}}</p>
+        <p>Amount Spent: {{item.amount}}</p>
+        <p>Date: {{item.date}}</p>
     </div>
     <mat-card-actions>
-        <button class="functions"><mat-icon>check</mat-icon></button>
+        <button class="functions"><mat-icon>check </mat-icon></button>
         <button  class="functions"><mat-icon>cancel</mat-icon></button>
       </mat-card-actions>
 </div>

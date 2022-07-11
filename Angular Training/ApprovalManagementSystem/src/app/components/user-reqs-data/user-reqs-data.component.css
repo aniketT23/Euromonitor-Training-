@@ -6,4 +6,27 @@
 .functions{
     background-color: transparent;
     border: none;
+   margin: 0% 5%;
+   border-radius: 50%;
+}
+.profile{
+    background-image: url("../../../assets/leaf.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+}
+.profile>img{
+    width: 25%;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-top: 4%;
+}
+.cost{
+    display: flex;
+}
+mat-card-actions{
+    border: 1px solid black;
+    
+   margin-left: 25%;
 }
