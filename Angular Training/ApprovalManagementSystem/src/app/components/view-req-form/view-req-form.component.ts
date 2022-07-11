@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ViewReqFormComponent implements OnInit {
   data: Requests[] = [];
-  displayColumns:string[]=['estCost','manager','purpose']
+  displayColumns:string[]=['id','estCost','manager','purpose']
   constructor(private route: Router, private requestService: RequestsService) {}
 
   ngOnInit(): void {
