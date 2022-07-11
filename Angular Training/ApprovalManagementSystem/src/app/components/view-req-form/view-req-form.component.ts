@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { EditReqComponent } from '../edit-req/edit-req.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,7 +23,11 @@ export class ViewReqFormComponent implements OnInit {
     'Status',
     'Operations',
   ];
-  constructor(private route: Router, private requestService: RequestsService) {}
+  constructor(
+    private route: Router,
+    private requestService: RequestsService,
+    public dialog: MatDialog
+  ) {}
   pageData: MatTableDataSource<Requests>;
   @ViewChild('paginator') paginator: MatPaginator;
   ngAfterViewInit() {
@@ -34,11 +39,16 @@ export class ViewReqFormComponent implements OnInit {
       (res) => {
         this.data = res;
         this.data.reverse();
-        console.log('data:', this.data);
+        // console.log('data:', this.data);
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  openDialog(id: any) {
+    this.dialog.open(EditReqComponent);
+    this.requestService.reqID = id;
   }
 }

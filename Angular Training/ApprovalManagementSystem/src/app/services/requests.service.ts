@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Requests } from '../models/requests.model';
 import { environment } from 'src/environments/environment';
@@ -10,6 +11,7 @@ const reqUrl = environment.baseUrl;
   providedIn: 'root',
 })
 export class RequestsService {
+  reqID = new BehaviorSubject('');
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
       console.log('Client Side Error', errorResponse.error);
@@ -28,6 +30,10 @@ export class RequestsService {
     return this.http
       .post<Requests>(reqUrl, reqData)
       .pipe(catchError(this.handleError));
+  }
+  public getReqByID(id: any): Observable<Requests> {
+    const newUrl = `${reqUrl}/${id}`;
+    return this.http.get<Requests>(newUrl).pipe(catchError(this.handleError));
   }
   public editRequest(id: any, data: any): Observable<Requests> {
     const newUrl = `${reqUrl}/${id}`;

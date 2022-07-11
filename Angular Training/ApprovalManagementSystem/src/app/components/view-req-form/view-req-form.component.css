@@ -1,26 +1,25 @@
-.header{
-    width: 100%;
-    height: 8%;
-    border-radius: 6px;
-   /* Created with https://www.css-gradient.com */
-background: #0B2541;
-background: -webkit-linear-gradient(right, #0B2541, #0E4B97);
-background: -moz-linear-gradient(right, #0B2541, #0E4B97);
-background: linear-gradient(to left, #0B2541, #0E4B97);
+.header {
+  width: 100%;
+  height: 8%;
+  border-radius: 6px;
+  /* Created with https://www.css-gradient.com */
+  background: #0b2541;
+  background: -webkit-linear-gradient(right, #0b2541, #0e4b97);
+  background: -moz-linear-gradient(right, #0b2541, #0e4b97);
+  background: linear-gradient(to left, #0b2541, #0e4b97);
 }
-.searchBar{
-    width: 50%;
-    height: 60%;
-    border-radius: 6px;
-    border: none;
-    margin-top: 0.65rem;
-    margin-left: 2rem;
-    background-color: #fff;
-    
+.searchBar {
+  width: 50%;
+  height: 60%;
+  border-radius: 6px;
+  border: none;
+  margin-top: 0.65rem;
+  margin-left: 2rem;
+  background-color: #fff;
 }
-mat-icon{
-    position: sticky;
-    top:18px;
+mat-icon {
+  position: sticky;
+  top: 18px;
   left: 50px;
 }
 /* .header>div{
@@ -30,8 +29,34 @@ mat-icon{
     padding: 0px;
     background-color: #fff;
 } */
-.heading{
+.heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10%;
+}
+.reqForm{
+    /* margin-top: 50px; */
+    border: 1px solid gray;
+}
+button{
+    background-color: transparent;
+    border: none;
+}
+
+mat-panel-description{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    /* align-items: stretch; */
+    align-content: space-between;
+    gap:10%;
+    justify-content: space-between;
+    /* border: 1px solid rebeccapurple; */
+    /* margin-left: -100px; */
+}
+mat-panel-description>p{
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    /* border: 1px solid red; */
 }
