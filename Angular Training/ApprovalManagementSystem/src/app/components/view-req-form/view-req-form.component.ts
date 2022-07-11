@@ -51,4 +51,11 @@ export class ViewReqFormComponent implements OnInit {
     this.dialog.open(EditReqComponent);
     this.requestService.reqID = id;
   }
+
+  public deleteReq(id:any){
+    this.requestService.deleteReq(id).subscribe(res=>{
+      this.route.navigate(['home'])
+      console.log('Element Delted');
+    })
+  }
 }

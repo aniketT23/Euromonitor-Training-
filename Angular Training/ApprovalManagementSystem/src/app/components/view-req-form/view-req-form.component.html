@@ -19,7 +19,7 @@
          <p> {{req.status}}</p>
           <div>
             <button (click)="openDialog(req.id)"><mat-icon>edit</mat-icon></button>
-            <button><mat-icon>delete</mat-icon></button>
+            <button (click)="deleteReq(req.id)"><mat-icon>delete</mat-icon></button>
           </div>
         </mat-panel-description>
       </mat-expansion-panel-header>

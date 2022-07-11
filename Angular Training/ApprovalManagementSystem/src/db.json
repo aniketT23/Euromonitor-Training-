@@ -29,7 +29,7 @@
       "estCost": 50000,
       "amount": 20000,
       "date": "2022-07-05",
-      "status":"active",
+      "status": "active",
       "id": 1
     },
     {
@@ -39,7 +39,7 @@
       "estCost": 5000,
       "amount": 1000,
       "date": "2022-07-07",
-      "status":"active",
+      "status": "active",
       "id": 2
     },
     {
@@ -49,7 +49,7 @@
       "estCost": 213,
       "amount": 212,
       "date": "2022-06-29",
-      "status":"active",
+      "status": "active",
       "id": 3
     },
     {
@@ -59,7 +59,7 @@
       "estCost": 23132,
       "amount": 123312,
       "date": "2022-07-07",
-      "status":"active",
+      "status": "active",
       "id": 4
     },
     {
@@ -69,7 +69,7 @@
       "estCost": 3213,
       "amount": 2312,
       "date": "2022-07-01",
-      "status":"active",
+      "status": "active",
       "id": 5
     },
     {
@@ -79,7 +79,7 @@
       "estCost": 3213,
       "amount": 2312,
       "date": "2022-07-01",
-      "status":"active",
+      "status": "active",
       "id": 6
     },
     {
@@ -89,7 +89,7 @@
       "estCost": 1231,
       "amount": 123123,
       "date": "2022-07-08",
-      "status":"active",
+      "status": "active",
       "id": 7
     },
     {
@@ -99,7 +99,7 @@
       "estCost": 312,
       "amount": 1323,
       "date": "2022-07-10",
-      "status":"active",
+      "status": "active",
       "id": 8
     },
     {
@@ -109,7 +109,7 @@
       "estCost": 13,
       "amount": 123,
       "date": "2022-07-06",
-      "status":"active",
+      "status": "active",
       "id": 9
     },
     {
@@ -119,7 +119,7 @@
       "estCost": 23,
       "amount": 2,
       "date": "2022-07-06",
-      "status":"active",
+      "status": "active",
       "id": 10
     },
     {
@@ -129,7 +129,7 @@
       "estCost": 221,
       "amount": 1212,
       "date": "2022-07-06",
-      "status":"active",
+      "status": "active",
       "id": 11
     },
     {
@@ -139,7 +139,7 @@
       "estCost": 212,
       "amount": 1212,
       "date": "2022-07-06",
-      "status":"active",
+      "status": "active",
       "id": 12
     },
     {
@@ -149,7 +149,7 @@
       "estCost": 1502,
       "amount": 1255,
       "date": "2022-07-06",
-      "status":"active",
+      "status": "active",
       "id": 16
     },
     {
@@ -159,27 +159,17 @@
       "estCost": 2311,
       "amount": 331,
       "date": "2022-07-01",
-      "status":"active",
+      "status": "active",
       "id": 17
     },
     {
-      "purpose": "Food & Drinks",
-      "discription": "avc",
-      "manager": "Akshay",
-      "estCost": 212,
-      "amount": 1,
-      "date": "2022-05-24",
-      "status":"active",
-      "id": 18
-    },
-    {
       "purpose": "Hotel",
-      "discription": "Reallocation",
+      "discription": "",
       "manager": "Akshay",
-      "estCost": 8963,
-      "amount": 8562,
+      "estCost": "10000",
+      "amount": "",
       "date": "2022-07-11",
-      "status":"active",
+      "status": "active",
       "id": 19
     }
   ]
