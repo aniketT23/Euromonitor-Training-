@@ -3,6 +3,29 @@
     <input class="searchBar" matInput placeholder="Search here" />
      <!-- <mat-icon>search</mat-icon> -->
 </div>
-<div>
-    
+<div  >
+    <table mat-table [dataSource]="data" class="viewRequest" class="mat-elevation-z8"
+    >
+
+    <ng-container matColumnDef="estCost">
+        <th mat-header-cell *matHeaderCellDef><strong>Employee Name</strong></th>
+        <td mat-cell *matCellDef="let row">{{row.estCost}}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="manager">
+        <th mat-header-cell *matHeaderCellDef><strong>Manager Name</strong></th>
+        <td mat-cell *matCellDef="let row">{{row.manager}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="purpose">
+        <th mat-header-cell *matHeaderCellDef><strong>Manager Name</strong></th>
+        <td mat-cell *matCellDef="let row">{{row.purpose}}</td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+      <!-- <tr mat-row *matRowDef="let row;columns: displayedColumns;" [routerLink]="['/request/',row.id]"></tr> -->
+    </table>
 </div>

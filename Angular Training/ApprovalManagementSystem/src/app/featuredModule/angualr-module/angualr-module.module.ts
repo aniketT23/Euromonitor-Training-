@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,6 +27,7 @@ import { NgModule } from '@angular/core';
     MatListModule,
     MatSelectModule,
     MatTableModule,
+    MatExpansionModule,
   ],
   exports: [
     MatGridListModule,
@@ -40,6 +42,7 @@ import { NgModule } from '@angular/core';
     MatListModule,
     MatSelectModule,
     MatTableModule,
+    MatExpansionModule,
   ],
 })
 export class AngualrModuleModule {}
