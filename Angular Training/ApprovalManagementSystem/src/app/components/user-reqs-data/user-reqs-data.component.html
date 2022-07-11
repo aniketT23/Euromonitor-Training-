@@ -6,5 +6,18 @@
     <p>Name</p>
     <p>Contact No: </p>
 </div>
+<div>
+    <mat-card-title>{{item.purpose}}</mat-card-title>
+    <mat-card-content>{{item.discription}}</mat-card-content>
+    <div class="cost">
+        <p>{{item.estCost}}</p>
+        <p>{{item.amount}}</p>
+        <p>{{item.date}}</p>
+    </div>
+    <mat-card-actions>
+        <button class="functions"><mat-icon>check</mat-icon></button>
+        <button  class="functions"><mat-icon>cancel</mat-icon></button>
+      </mat-card-actions>
+</div>
     </mat-card>
 </mat-card>

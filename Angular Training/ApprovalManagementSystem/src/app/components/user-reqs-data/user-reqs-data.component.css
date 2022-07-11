@@ -3,3 +3,7 @@
     grid-template-columns: repeat(3,30%);
     gap:2%
 }
+.functions{
+    background-color: transparent;
+    border: none;
+}
