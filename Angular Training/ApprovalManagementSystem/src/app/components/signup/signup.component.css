@@ -1,0 +1,71 @@
+mat-grid-tile {
+    background: #fff;
+    border-radius: 12px;
+  }
+  mat-grid-tile:nth-child(1) {
+    background-image: url("../../../assets/Sprinkle.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .container1 {
+    width: 80%;
+    position: relative;
+    top: 10%;
+    left: 10%;
+    border-radius: 12px;
+    -webkit-box-shadow: 11px 9px 6px -3px rgba(54, 92, 195, 0.62);
+    -moz-box-shadow: 11px 9px 6px -3px rgba(54, 92, 195, 0.62);
+    box-shadow: 11px 9px 6px -3px rgba(54, 92, 195, 0.62);
+  }
+  .loginCard {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+  }
+  button {
+    background-color: RGB(10, 55, 110);
+    color: #fff;
+  }
+  mat-form-field {
+    width: 60%;
+    position: relative;
+    left: 20%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  mat-card-footer {
+  
+    text-align: center;
+  }
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button {
+    width: 60%;
+  }
+  .imgBG {
+    position: relative;
+    top:6%;
+    margin: 10% 39%;
+    border-radius: 50%;
+    width: 20%;
+    height: 20%;
+    border: 1px solid grey;
+  }
+  mat-card-title {
+    text-align: center;
+  }
+  mat-card-subtitle {
+    text-align: center;
+  }
+  
