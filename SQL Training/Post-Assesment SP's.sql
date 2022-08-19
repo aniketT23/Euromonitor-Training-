@@ -8,7 +8,7 @@ if(@managerCount>1)
 begin
 if(@salaryInput>0)
 begin
-return update employees set salary=salary+@salaryInput where employee_id=@employeeId
+ update employees set salary=salary+@salaryInput where employee_id=@employeeId
 end
 else print 'Enter a valid salary'
 end
