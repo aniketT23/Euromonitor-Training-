@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -9,8 +9,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-data:FormGroup;
-  constructor(private fb:FormBuilder, private service:AuthenticationService) { }
+data:UntypedFormGroup;
+  constructor(private fb:UntypedFormBuilder, private service:AuthenticationService) { }
 
   ngOnInit(): void {
     this.data=this.fb.group({

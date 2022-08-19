@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 
 import { RequestsService } from 'src/app/services/requests.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-req-form.component.css'],
 })
 export class CreateReqFormComponent implements OnInit {
-  formData: FormGroup;
+  formData: UntypedFormGroup;
 
   purposeData: string[] = [
     'Travel',
@@ -23,7 +23,7 @@ export class CreateReqFormComponent implements OnInit {
   ];
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: Router,
     private requestService: RequestsService,
     private toastr: ToastrService

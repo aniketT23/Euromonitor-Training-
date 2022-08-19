@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 
 import { Requests } from 'src/app/models/requests.model';
 import { RequestsService } from 'src/app/services/requests.service';
@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
 })
 export class EditReqComponent implements OnInit {
   reqData = new Requests();
-  editForm: FormGroup;
+  editForm: UntypedFormGroup;
   constructor(
     public reqService: RequestsService,
     private route: Router,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {}
 
   ngOnInit(): void {
