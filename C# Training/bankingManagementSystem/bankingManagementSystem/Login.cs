@@ -18,19 +18,14 @@ namespace bankingManagementSystem
                 {
                     WriteLine($"Welcome {i.name} here are your Details:-");
                     i.getDeatils();
-                    var withdrwaamt = new Withdarw();
-                   var withdrawAmount= withdrwaamt.withdraw(i.amount);
-                    i.amount = withdrawAmount;
-                    WriteLine($" Your Updated Balance is {i.amount}");
-                    //var depositAmount = new Deposit();
-                    //var depositAmt = depositAmount.deposit();
-                    //i.amount += depositAmt;
-                    //WriteLine($"Your Updated Balance is {i.amount}");
+                    var selectFeature = new bankingFeatures();
+                    var newAmount = selectFeature.bankingfeatures(i.amount, i.accountType);
+                    i.amount = newAmount;
                     return;
                 }
                 else
                 {
-                  
+
                     WriteLine("Wrong Credentials!!");
                 }
 

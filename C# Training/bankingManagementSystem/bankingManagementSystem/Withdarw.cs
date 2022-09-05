@@ -11,12 +11,13 @@ namespace bankingManagementSystem
             if (amount < withdrawAmount)
             {
                 WriteLine("Insufficent Balance!!");
-                return 0;
+                return amount;
             }
             else
             {
 
-                amount -= withdrawAmount; ;
+                amount -= withdrawAmount;
+                WriteLine($" Your Updated Balance is {amount}");
                 return amount;
             }
 

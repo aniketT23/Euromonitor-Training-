@@ -25,13 +25,16 @@ namespace bankingManagementSystem
             Random randomNumber = new Random();
             int number = randomNumber.Next(10000, 99999);
             string accountNumber = "";
+            string accType = "";
             if (accountType == 1)
             {
                 accountNumber = "SAV" + number;
+                accType = "Saving";
             }
             else if (accountType == 2)
             {
                 accountNumber = "CURR" + number;
+                accType = "Current";
             }
             else
             {
@@ -41,33 +44,20 @@ namespace bankingManagementSystem
 
 
             List<RegisteredUsers> users = new List<RegisteredUsers>();
-            users.Add(new RegisteredUsers { accountNumber = accountNumber, name = name, email = email, age = age, phone = phone, password = password, amount=amount });
+            users.Add(new RegisteredUsers { accountNumber = accountNumber, name = name, email = email, age = age, phone = phone, password = password, amount=amount, accountType=accType });
           
             foreach (var i in users)
             {
                 if (i.accountNumber == accountNumber)
                 {
                     i.getDeatils();
+                    var selectFeature = new bankingFeatures();
+                    var newAmount = selectFeature.bankingfeatures(i.amount, i.accountType);
+                    i.amount = newAmount;
+                    return;
                 }
 
             }
-        }
-    }
-
-    public class RegisteredUsers
-    {
-        public string accountNumber;
-        public string name;
-        public string password;
-        public string email;
-        public string phone;
-        public int age;
-        public int amount;
-
-        public void getDeatils()
-        {
-
-            WriteLine(this.accountNumber + "    " + this.name + "    " + this.email + "    " + this.phone + "    " + this.age + "     "+ this.amount);
         }
     }
 
