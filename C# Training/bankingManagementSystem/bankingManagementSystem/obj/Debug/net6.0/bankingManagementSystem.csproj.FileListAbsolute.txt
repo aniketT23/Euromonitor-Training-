@@ -1,0 +1,17 @@
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\bin\Debug\net6.0\bankingManagementSystem.exe
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\bin\Debug\net6.0\bankingManagementSystem.deps.json
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\bin\Debug\net6.0\bankingManagementSystem.runtimeconfig.json
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\bin\Debug\net6.0\bankingManagementSystem.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\bin\Debug\net6.0\bankingManagementSystem.pdb
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.csproj.AssemblyReference.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.AssemblyInfoInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.AssemblyInfo.cs
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\refint\bankingManagementSystem.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.pdb
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.genruntimeconfig.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\ref\bankingManagementSystem.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\bankingManagementSystem\obj\Debug\net6.0\bankingManagementSystem.csproj.CopyComplete

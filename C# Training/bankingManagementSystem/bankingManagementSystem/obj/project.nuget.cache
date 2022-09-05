@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kW1KH1+Zyrwz2L65w26sHdnUar3zG92HyFZc4j5zfqOvEOsWwCJZuxeMyJnOPuUuWd2bvlvi5tu+gA8qczyQyQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aniket.tiwari\\Desktop\\Training\\C# Training\\bankingManagementSystem\\bankingManagementSystem\\bankingManagementSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

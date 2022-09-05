@@ -1,0 +1,17 @@
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\bin\Debug\net6.0\Sample.exe
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\bin\Debug\net6.0\Sample.deps.json
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\bin\Debug\net6.0\Sample.runtimeconfig.json
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\bin\Debug\net6.0\Sample.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\bin\Debug\net6.0\Sample.pdb
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.csproj.AssemblyReference.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.AssemblyInfoInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.AssemblyInfo.cs
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.csproj.CoreCompileInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\refint\Sample.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.pdb
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.genruntimeconfig.cache
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\ref\Sample.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\aniket.tiwari\Desktop\Training\C# Training\bankingManagementSystem\Sample\obj\Debug\net6.0\Sample.csproj.CopyComplete
