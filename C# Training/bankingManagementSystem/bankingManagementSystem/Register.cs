@@ -19,28 +19,30 @@ namespace bankingManagementSystem
             string password = ReadLine();
             WriteLine("Enter your Contact Number");
             string phone = ReadLine();
+            WriteLine("Enter your Initial amount to be Deposited");
+            int amount= Convert.ToInt32(ReadLine());
 
             Random randomNumber = new Random();
             int number = randomNumber.Next(10000, 99999);
-            string accountNumber="";
-            if(accountType == 1)
+            string accountNumber = "";
+            if (accountType == 1)
             {
                 accountNumber = "SAV" + number;
-            }else if(accountType == 2)
+            }
+            else if (accountType == 2)
             {
                 accountNumber = "CURR" + number;
             }
             else
             {
                 WriteLine("Please Choose a Valid Option!!");
+                return;
             }
-            
+
 
             List<RegisteredUsers> users = new List<RegisteredUsers>();
-            users.Add(new RegisteredUsers { accountNumber = accountNumber, name = name, email = email, age = age, phone = phone, password = password });
-            //users.Add(new RegisteredUsers { accountNumber = "SAV45452", name = "Rambhu", email = "rambhu12@gmail.com", age = 25, phone = "7986548695", password = "ramb@312" });
-            //users.Add(new RegisteredUsers { accountNumber = "SAV45477", name = "Shivam", email = "shivam345@gmail.com", age = 26, phone = "9946548695", password = "shiv@312" });
-            //users.Add(new RegisteredUsers { accountNumber = "SAV45474", name = "Vishnu", email = "mone007@gmail.com", age = 28, phone = "9978562485", password = "sankara@312" });
+            users.Add(new RegisteredUsers { accountNumber = accountNumber, name = name, email = email, age = age, phone = phone, password = password, amount=amount });
+          
             foreach (var i in users)
             {
                 if (i.accountNumber == accountNumber)
@@ -60,11 +62,12 @@ namespace bankingManagementSystem
         public string email;
         public string phone;
         public int age;
+        public int amount;
 
         public void getDeatils()
         {
 
-            WriteLine(this.accountNumber + "    " + this.name + "    " + this.email + "    " + this.phone + "    " + this.age);
+            WriteLine(this.accountNumber + "    " + this.name + "    " + this.email + "    " + this.phone + "    " + this.age + "     "+ this.amount);
         }
     }
 
