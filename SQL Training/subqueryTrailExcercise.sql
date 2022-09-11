@@ -42,7 +42,7 @@ select DEPARTMENT_ID from departments  where location_id= ( select LOCATION_ID f
 
  --Query 6
 
-  select EMPLOYEE_ID, CONCAT(first_name,' ',last_name) as 'Employee Name', SALARY, JOB_ID from employees1;
+  select EMPLOYEE_ID, CONCAT(first_name,' ',last_name) as 'Employee Name', SALARY, JOB_ID ,case when SALARY>=(select  AVG(SALARY) from employees1) then 'High' else 'Low' end as 'Salary Status' from employees1 ;
 
 
   --Query 7
