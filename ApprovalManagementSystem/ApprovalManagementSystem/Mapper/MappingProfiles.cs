@@ -11,6 +11,10 @@ namespace ApprovalManagementSystem.Api.Mapper
             CreateMap<ManagerDetailsDto,ManagerDetail> ();
             CreateMap<UploadFilesInfo, UploadFilesInfoDto>();
             CreateMap< UploadFilesInfoDto, UploadFilesInfo>();
+            CreateMap<UserDetail, UserDetailsDto>();
+            CreateMap<UserDetailsDto,UserDetail> ();
+            CreateMap<RequestsInfo, RequestsInfoDto>();
+            CreateMap<RequestsInfoDto, RequestsInfo>();
           
 
         }

@@ -9,8 +9,8 @@ namespace ApprovalManagementSystem.ServiceModel.DTO
     public class ManagerDetailsDto
     {
         //public int Id { get; set; }
-        public string UserCode { get; set; } = null!;
-        public string ManagerId { get; set; } = null!;
+        public int Id { get; set; }
+        public int ManagerId { get; set; }
         public int ApproveLimit { get; set; }
     }
 }

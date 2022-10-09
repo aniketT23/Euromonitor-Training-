@@ -19,14 +19,14 @@ namespace ApprovalManagementSystem.Api.Services
            return  _managerDetailsRepository.CreateManagerDetail(managerDetail);
         }
 
-        public async Task<ManagerDetail> GetManagerDetailsAsync(int managerId)
+        public async Task<ManagerDetail> GetManagerDetailsAsync(int managerCode)
         {
-            return await _managerDetailsRepository.GetManagerDetailsAsync(managerId);
+            return await _managerDetailsRepository.GetManagerDetailsAsync(managerCode);
         }
 
-        public async Task<ManagerDetail> GetManagerDetailsByuserCodeAsync(string managerCode)
+        public async Task<ManagerDetail> GetManagerDetailsByuserCodeAsync(int managerId)
         {
-           return await _managerDetailsRepository.GetManagerDetailsByuserCodeAsync(managerCode);
+           return await _managerDetailsRepository.GetManagerDetailsByuserCodeAsync(managerId);
         }
 
         public ICollection<ManagerDetail> GetManagersDetailsAsync()

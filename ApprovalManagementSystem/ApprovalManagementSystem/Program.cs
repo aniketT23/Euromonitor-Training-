@@ -24,6 +24,8 @@ builder.Services.AddScoped<IRequestsInfoService, RequestsInfoService>();
 builder.Services.AddScoped<IRequestsInfoRepository, RequestInfoRepository>();
 builder.Services.AddScoped<IUploadFilesInfoRepository, UploadFilesInfoRepository>();
 builder.Services.AddScoped<IUploadFilesInfoService,UploadFileInfoService>();
+builder.Services.AddScoped<IUserDetailsRepository, UserDetailsRepository>();
+builder.Services.AddScoped<IUserDetailsService, UserDetailsService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

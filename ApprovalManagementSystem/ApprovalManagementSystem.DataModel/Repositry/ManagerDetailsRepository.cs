@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,19 +22,32 @@ namespace ApprovalManagementSystem.DataModel.Repositry
         public bool CreateManagerDetail(ManagerDetail managerDetail)
         {
             _approvalManagementSystemContext.Add(managerDetail);
-            _approvalManagementSystemContext.SaveChanges();
+           
 
-            return true;
+            return Save();
         }
 
-        public async Task<ManagerDetail> GetManagerDetailsAsync(int managerId)
+        public async Task<ManagerDetail> GetManagerDetailsAsync(int managerCode)
         {
-            return await _approvalManagementSystemContext.ManagerDetails.Where(m => m.Id == managerId).FirstOrDefaultAsync();
+            //var data =  (from u in _approvalManagementSystemContext.UserDetails
+            //            join m in _approvalManagementSystemContext.ManagerDetails
+            //            on u.ManagerCode equals m.Id
+            //            select new UserDetail
+            //            {
+            //                UserId = u.UserId,
+            //                Firstname = u.Firstname,
+            //                Lastname = u.Lastname,
+            //                Contact = u.Contact,
+            //                ManagerCode = m.Id
+            //            }).ToListAsync();
+
+            //return  data.Where(m => m.ManagerCode == managerId).FirstOrDefaultAsync();
+            return await _approvalManagementSystemContext.ManagerDetails.Where(m => m.Id == managerCode).FirstOrDefaultAsync();
         }
 
-        public async Task<ManagerDetail> GetManagerDetailsByuserCodeAsync(string managerCode)
+        public async Task<ManagerDetail> GetManagerDetailsByuserCodeAsync(int managerID)
         {
-            return await _approvalManagementSystemContext.ManagerDetails.FindAsync(managerCode);
+            return await _approvalManagementSystemContext.ManagerDetails.Where(m => m.ManagerId == managerID).FirstOrDefaultAsync();
         }
 
         public ICollection<ManagerDetail> GetManagersDetailsAsync()

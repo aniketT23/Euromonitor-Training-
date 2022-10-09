@@ -36,29 +36,17 @@ namespace ApprovalManagementSystem.DataModel.Entities
             {
                 entity.ToTable("managerDetails");
 
-                entity.HasIndex(e => e.ManagerId, "UQ__managerD__47E0141EAE77AE10")
-                    .IsUnique();
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.ApproveLimit).HasColumnName("approveLimit");
 
-                entity.Property(e => e.ManagerId)
-                    .HasMaxLength(32)
-                    .HasColumnName("managerId")
-                    .IsFixedLength();
-
-                entity.Property(e => e.UserCode)
-                    .HasMaxLength(35)
-                    .IsUnicode(false)
-                    .HasColumnName("userCode")
-                    .HasComputedColumnSql("('EMI'+CONVERT([varchar](32),[id]))", true);
+                entity.Property(e => e.ManagerId).HasColumnName("managerId");
             });
 
             modelBuilder.Entity<RequestsInfo>(entity =>
             {
                 entity.HasKey(e => e.Requestid)
-                    .HasName("PK__requests__E3C6D249E2719054");
+                    .HasName("PK__requests__E3C6D24957ECEAD5");
 
                 entity.ToTable("requestsInfo");
 
@@ -73,10 +61,7 @@ namespace ApprovalManagementSystem.DataModel.Entities
 
                 entity.Property(e => e.EstimatedCost).HasColumnName("estimatedCost");
 
-                entity.Property(e => e.Managerid)
-                    .HasMaxLength(32)
-                    .HasColumnName("managerid")
-                    .IsFixedLength();
+                entity.Property(e => e.ManagerId).HasColumnName("managerId");
 
                 entity.Property(e => e.PlanDate)
                     .HasColumnType("date")
@@ -91,23 +76,25 @@ namespace ApprovalManagementSystem.DataModel.Entities
 
                 entity.HasOne(d => d.Manager)
                     .WithMany(p => p.RequestsInfos)
-                    .HasPrincipalKey(p => p.ManagerId)
-                    .HasForeignKey(d => d.Managerid)
+                    .HasForeignKey(d => d.ManagerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__requestsI__manag__32E0915F");
+                    .HasConstraintName("FK__requestsI__manag__412EB0B6");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.RequestsInfos)
                     .HasForeignKey(d => d.Userid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__requestsI__useri__31EC6D26");
+                    .HasConstraintName("FK__requestsI__useri__403A8C7D");
             });
 
             modelBuilder.Entity<UploadFilesInfo>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.UploadId)
+                    .HasName("PK__uploadFi__CADCD9EB51E946BC");
 
                 entity.ToTable("uploadFilesInfo");
+
+                entity.Property(e => e.UploadId).HasColumnName("uploadID");
 
                 entity.Property(e => e.Filename)
                     .HasMaxLength(150)
@@ -121,21 +108,17 @@ namespace ApprovalManagementSystem.DataModel.Entities
 
                 entity.Property(e => e.RequestId).HasColumnName("requestId");
 
-                entity.Property(e => e.UploadId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("uploadID");
-
                 entity.HasOne(d => d.Request)
-                    .WithMany()
+                    .WithMany(p => p.UploadFilesInfos)
                     .HasForeignKey(d => d.RequestId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__uploadFil__reque__34C8D9D1");
+                    .HasConstraintName("FK__uploadFil__reque__4316F928");
             });
 
             modelBuilder.Entity<UserDetail>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__userDeta__CB9A1CFFCF1B9AF3");
+                    .HasName("PK__userDeta__CB9A1CFF7C3C0A6D");
 
                 entity.ToTable("userDetails");
 
@@ -171,14 +154,17 @@ namespace ApprovalManagementSystem.DataModel.Entities
                     .IsUnicode(false)
                     .HasColumnName("lastname");
 
-                entity.Property(e => e.ManagerCode)
-                    .HasMaxLength(35)
-                    .IsUnicode(false)
-                    .HasColumnName("managerCode");
+                entity.Property(e => e.ManagerCode).HasColumnName("managerCode");
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(32)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.ManagerCodeNavigation)
+                    .WithMany(p => p.UserDetails)
+                    .HasForeignKey(d => d.ManagerCode)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__userDetai__manag__267ABA7A");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -9,43 +9,61 @@ namespace ApprovalManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ManagerDetailsController:Controller
+    public class ManagerDetailsController : Controller
     {
         private readonly IManagerDetailsService _managerDetailsService;
         private readonly IMapper _mapper;
 
-        public ManagerDetailsController(IManagerDetailsService managerDetailsService,IMapper mapper)
+        public ManagerDetailsController(IManagerDetailsService managerDetailsService, IMapper mapper)
         {
             _managerDetailsService = managerDetailsService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        [ProducesResponseType(200,Type=typeof(ICollection<ManagerDetail>))]
+        [ProducesResponseType(200, Type = typeof(ICollection<ManagerDetail>))]
         public IActionResult GetManagersDetails()
         {
-            var managers =  _mapper.Map<List<ManagerDetailsDto>>(_managerDetailsService.GetManagersDetailsAsync());
+            var managers = _mapper.Map<List<ManagerDetailsDto>>(_managerDetailsService.GetManagersDetailsAsync());
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            
+
             return Ok(managers);
         }
 
-        [HttpGet("{managerId}")]
+        [HttpGet("manager/{managerCode}")]
         [ProducesResponseType(200, Type = typeof(Task<ManagerDetail>))]
         [ProducesResponseType(400)]
 
-        public async Task<ActionResult<ManagerDetail>> GetManagerDetails(int managerId)
+        public async Task<ActionResult<ManagerDetail>> GetManagerDetail(int managerCode)
         {
-            if (!await _managerDetailsService.ManagerExistsAsync(managerId))
+            if (!await _managerDetailsService.ManagerExistsAsync(managerCode))
                 return NotFound();
-            var manager= await _mapper.Map<Task<ManagerDetail>>(_managerDetailsService.GetManagerDetailsAsync(managerId));
+            var manager = await (_managerDetailsService.GetManagerDetailsAsync(managerCode));
+            //var data = _mapper.Map<Task<ManagerDetailsDto>>(manager);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             return Ok(manager);
         }
+
+        [HttpGet("{managerId}")]
+
+        public async Task<ActionResult<ManagerDetail>> GetManagerById(int managerId)
+        {
+            if (!await _managerDetailsService.ManagerExistsAsync(managerId))
+                return NotFound();
+            var manager = await (_managerDetailsService.GetManagerDetailsAsync(managerId));
+          
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(manager);
+        }
+
+
+
 
         [HttpPost]
         [ProducesResponseType(204)]

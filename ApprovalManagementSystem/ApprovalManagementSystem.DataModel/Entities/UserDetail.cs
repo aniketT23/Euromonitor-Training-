@@ -18,8 +18,9 @@ namespace ApprovalManagementSystem.DataModel.Entities
         public string? Email { get; set; }
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
-        public string ManagerCode { get; set; } = null!;
+        public int ManagerCode { get; set; }
 
+        public virtual ManagerDetail ManagerCodeNavigation { get; set; } = null!;
         public virtual ICollection<RequestsInfo> RequestsInfos { get; set; }
     }
 }

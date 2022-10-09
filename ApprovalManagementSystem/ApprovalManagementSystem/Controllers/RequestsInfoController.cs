@@ -1,5 +1,8 @@
-﻿using ApprovalManagementSystem.Api.Services.Interface;
+﻿using ApprovalManagementSystem.Api.Services;
+using ApprovalManagementSystem.Api.Services.Interface;
 using ApprovalManagementSystem.DataModel.Entities;
+using ApprovalManagementSystem.ServiceModel.DTO;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApprovalManagementSystem.Api.Controllers
@@ -9,29 +12,52 @@ namespace ApprovalManagementSystem.Api.Controllers
     public class RequestsInfoController:Controller
     {
         private readonly IRequestsInfoService _requestsInfoService;
+        private readonly IMapper _mapper;
 
-        public RequestsInfoController(IRequestsInfoService requestsInfoService)
+        public RequestsInfoController(IRequestsInfoService requestsInfoService,IMapper mapper)
         {
             _requestsInfoService = requestsInfoService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<RequestsInfo>))]
+        [ProducesResponseType(200)]
         public IActionResult GetRequests()
         {
-            var requests=_requestsInfoService.GetRequestsInfo();
+            var requests=_mapper.Map<List<RequestsInfoDto>>(_requestsInfoService.GetRequestsInfo());
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             return Ok(requests);
         }
+        [HttpGet("{requestId}")]
+        public IActionResult GetRequestById(int requestId)
+        {
+            if (!_requestsInfoService.RequestExists(requestId))
+                return NotFound();
+            var request=_mapper.Map<RequestsInfoDto>(_requestsInfoService.GEtRequestById(requestId));
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(request);
+        }
 
         [HttpPost]
 
-        public IActionResult CreateRequest(RequestsInfo requestsInfo)
+        public IActionResult CreateRequest(RequestsInfoDto requestsInfo)
         {
-            var request = _requestsInfoService.CreateRequest(requestsInfo);
+            if (requestsInfo == null)
+                return BadRequest(ModelState);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var request = _mapper.Map<RequestsInfo>(requestsInfo);
+            if (!_requestsInfoService.CreateRequest(request))
+            {
+
+                ModelState.AddModelError("", "Something went wrong while saving Request");
+                return StatusCode(500, ModelState);
+            }
 
             return Ok(request);
         }
