@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sT/TNxeZ4wE0i58/CwLm7cyutzCvoSF9B+qxmw3qXfU=",
+  "Source": "ApprovalManagementSystem.Api",
+  "BasePath": "_content/ApprovalManagementSystem.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

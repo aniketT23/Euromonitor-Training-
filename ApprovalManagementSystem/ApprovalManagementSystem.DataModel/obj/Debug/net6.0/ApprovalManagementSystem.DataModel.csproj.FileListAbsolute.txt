@@ -1,0 +1,14 @@
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\bin\Debug\net6.0\ApprovalManagementSystem.DataModel.deps.json
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\bin\Debug\net6.0\ApprovalManagementSystem.DataModel.runtimeconfig.json
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\bin\Debug\net6.0\ApprovalManagementSystem.DataModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\bin\Debug\net6.0\ApprovalManagementSystem.DataModel.pdb
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.csproj.AssemblyReference.cache
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.AssemblyInfoInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.AssemblyInfo.cs
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.csproj.CoreCompileInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\refint\ApprovalManagementSystem.DataModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.pdb
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.genruntimeconfig.cache
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ref\ApprovalManagementSystem.DataModel.dll

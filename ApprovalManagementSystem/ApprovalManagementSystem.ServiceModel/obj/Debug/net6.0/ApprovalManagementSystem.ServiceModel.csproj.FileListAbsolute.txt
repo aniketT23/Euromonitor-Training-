@@ -1,0 +1,12 @@
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\bin\Debug\net6.0\ApprovalManagementSystem.ServiceModel.deps.json
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\bin\Debug\net6.0\ApprovalManagementSystem.ServiceModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\bin\Debug\net6.0\ApprovalManagementSystem.ServiceModel.pdb
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ApprovalManagementSystem.ServiceModel.csproj.AssemblyReference.cache
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ApprovalManagementSystem.ServiceModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ApprovalManagementSystem.ServiceModel.AssemblyInfoInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ApprovalManagementSystem.ServiceModel.AssemblyInfo.cs
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ApprovalManagementSystem.ServiceModel.csproj.CoreCompileInputs.cache
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ApprovalManagementSystem.ServiceModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\refint\ApprovalManagementSystem.ServiceModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ApprovalManagementSystem.ServiceModel.pdb
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.ServiceModel\obj\Debug\net6.0\ref\ApprovalManagementSystem.ServiceModel.dll

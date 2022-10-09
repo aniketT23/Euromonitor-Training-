@@ -1,35 +1,25 @@
 <div class="header">
-  <input class="searchBar" matInput placeholder="Search here" />
+  <input class="searchBar" matInput placeholder="Search here" id="filter-text-box"
+  (input)="onFilterTextBoxChanged()"
+  />
+
+  <button style="margin-left: 20px;" (click)="onPrintQuickFilterTexts()">
+   Search
+  </button>
   <!-- <mat-icon>search</mat-icon> -->
+
+  
+  <ag-grid-angular style="width: 100%; height: 100%;"
+[columnDefs]="columnDefs"  [defaultColDef]="defaultColDef"
+[rowData]="data"
+  [cacheQuickFilter]="true"
+      (gridReady)="onGridReady($event)"
+>
+
+
+
+
+</ag-grid-angular>
+
+
 </div>
-<mat-card class="reqForm">
-  <div class="heading">
-    <p *ngFor="let item of displayColumns">
-      <strong>{{ item }}</strong>
-    </p>
-  </div>
-  <mat-accordion *ngFor="let req of data">
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-description>
-          <p>{{req.id}}</p>
-         <p> {{req.estCost}}</p>
-         <p> {{req.manager}}</p>
-         <p>{{ req.purpose }}</p>
-         <p> {{req.status}}</p>
-          <div>
-            <button (click)="openDialog(req.id)"><mat-icon>edit</mat-icon></button>
-            <button (click)="deleteReq(req.id)"><mat-icon>delete</mat-icon></button>
-          </div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>{{ req.discription }}</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <mat-paginator
-    #paginator
-    [length]="100"
-    [pageSizeOptions]="[5, 10, 20]"
-    aria-label="Select page"
-  ></mat-paginator>
-</mat-card>

@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "EgmupF0NeCoe3eniGNbS5Ursi2dqoCKmqfnihBcwba04l+utydTIBpY4815BVtmQClPHf9bqpTLfhJTMmTCdxg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aniket.tiwari\\Desktop\\Training\\ApprovalManagementSystem\\ApprovalManagementSystem.ServiceModel\\ApprovalManagementSystem.ServiceModel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\automapper.extensions.expressionmapping\\6.0.0\\automapper.extensions.expressionmapping.6.0.0.nupkg.sha512",
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\aniket.tiwari\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
