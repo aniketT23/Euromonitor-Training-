@@ -13,14 +13,14 @@ namespace ApprovalManagementSystem.Api.Services
             _requestsInfoRepository = requestsInfoRepository;
         }
 
-        public bool CreateRequest(RequestsInfo request)
+        public async  Task<bool> CreateRequest(RequestsInfo request)
         {
-            return _requestsInfoRepository.CreateRequest(request);
+            return await _requestsInfoRepository.CreateRequest(request);
         }
 
-        public bool DeleteRequest(RequestsInfo request)
+        public async Task<bool> DeleteRequest(RequestsInfo request)
         {
-            throw new NotImplementedException();
+            return await _requestsInfoRepository.DeleteRequest(request);
         }
 
         public RequestsInfo GEtRequestById(int requestId)
@@ -38,9 +38,6 @@ namespace ApprovalManagementSystem.Api.Services
             return (_requestsInfoRepository.RequestExists(requestId));
         }
 
-        public bool Save()
-        {
-            return _requestsInfoRepository.Save();
-        }
+      
     }
 }

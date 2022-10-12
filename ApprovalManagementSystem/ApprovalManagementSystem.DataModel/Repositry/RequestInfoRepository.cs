@@ -17,16 +17,17 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             _approvalManagementSystemContext = approvalManagementSystemContext;
         }
 
-        public bool CreateRequest(RequestsInfo request)
+        public async Task<bool> CreateRequest(RequestsInfo request)
         {
             _approvalManagementSystemContext.Add(request);
             
-            return Save();
+            return await Save();
         }
 
-        public bool DeleteRequest(RequestsInfo request)
+        public async Task<bool> DeleteRequest(RequestsInfo request)
         {
-            throw new NotImplementedException();
+            _approvalManagementSystemContext.Remove(request);
+            return await Save();
         }
 
         public RequestsInfo GEtRequestById(int requestId)
@@ -44,10 +45,10 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             return _approvalManagementSystemContext.RequestsInfos.Any(r => r.Requestid == requestId);
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
-            var saved = _approvalManagementSystemContext.SaveChanges();
-            return saved > 0 ? true : false;
+            var saved =await  _approvalManagementSystemContext.SaveChangesAsync();
+            return  saved > 0 ? true : false;
         }
     }
 }

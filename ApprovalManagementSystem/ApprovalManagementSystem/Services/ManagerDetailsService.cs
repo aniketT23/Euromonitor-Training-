@@ -14,9 +14,9 @@ namespace ApprovalManagementSystem.Api.Services
             _managerDetailsRepository = managerDetailsRepository;
         }
 
-        public bool CreateManagerDetail(ManagerDetail managerDetail)
+        public async Task<bool> CreateManagerDetail(ManagerDetail managerDetail)
         {
-           return  _managerDetailsRepository.CreateManagerDetail(managerDetail);
+           return await _managerDetailsRepository.CreateManagerDetail(managerDetail);
         }
 
         public async Task<ManagerDetail> GetManagerDetailsAsync(int managerCode)
@@ -29,19 +29,19 @@ namespace ApprovalManagementSystem.Api.Services
            return await _managerDetailsRepository.GetManagerDetailsByuserCodeAsync(managerId);
         }
 
-        public ICollection<ManagerDetail> GetManagersDetailsAsync()
+        public async Task<ICollection<ManagerDetail>> GetManagersDetailsAsync()
         {
-            return _managerDetailsRepository.GetManagersDetailsAsync();
+            return await  _managerDetailsRepository.GetManagersDetailsAsync();
         }
 
-        public async Task<bool> ManagerExistsAsync(int managerId)
+        public async Task<bool> ManagerExistsAsync(int managerCode)
         {
-            return await _managerDetailsRepository.ManagerExistsAsync(managerId);
+            return await _managerDetailsRepository.ManagerExistsAsync(managerCode);
         }
 
-        public bool Save()
+        public async  Task<bool> UpdateManagerDetails(int managerCode,ManagerDetail managerDetail)
         {
-            return  _managerDetailsRepository.Save();
+           return await _managerDetailsRepository.UpdateManagerDetails(managerCode,managerDetail);  
         }
     }
 }

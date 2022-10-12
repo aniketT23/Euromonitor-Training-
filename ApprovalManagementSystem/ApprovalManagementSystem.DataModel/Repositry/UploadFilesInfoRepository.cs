@@ -16,6 +16,17 @@ namespace ApprovalManagementSystem.DataModel.Repositry
         {
             _approvalManagementSystemContext = approvalManagementSystemContext;
         }
+
+        public bool DeleteUploadFile(UploadFilesInfo uploadFilesInfo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UploadFilesInfo GetUploadFile(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<UploadFilesInfo> GetUploadFiles()
         {
             return _approvalManagementSystemContext.UploadFilesInfos.ToList();
@@ -26,6 +37,11 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             _approvalManagementSystemContext.Add(uploadFilesInfo);
             _approvalManagementSystemContext.SaveChanges();
             return true;
+        }
+
+        public bool UpdateUploadFile(UploadFilesInfo uploadFile)
+        {
+            throw new NotImplementedException();
         }
     }
 }

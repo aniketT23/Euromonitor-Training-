@@ -44,7 +44,7 @@ namespace ApprovalManagementSystem.Api.Controllers
 
         [HttpPost]
 
-        public IActionResult CreateRequest(RequestsInfoDto requestsInfo)
+        public async  Task<ActionResult> CreateRequest(RequestsInfoDto requestsInfo)
         {
             if (requestsInfo == null)
                 return BadRequest(ModelState);
@@ -52,7 +52,7 @@ namespace ApprovalManagementSystem.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var request = _mapper.Map<RequestsInfo>(requestsInfo);
-            if (!_requestsInfoService.CreateRequest(request))
+            if (!await _requestsInfoService.CreateRequest(request))
             {
 
                 ModelState.AddModelError("", "Something went wrong while saving Request");
@@ -60,6 +60,26 @@ namespace ApprovalManagementSystem.Api.Controllers
             }
 
             return Ok(request);
+        }
+
+        [HttpDelete("{requestId}")]
+
+        public async Task<ActionResult> DeleteRequest(int requestId)
+        {
+            if(requestId==null)
+                return BadRequest(ModelState);
+            if(!_requestsInfoService.RequestExists(requestId))
+                return NotFound(ModelState);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var requestTobeDeleted =  _requestsInfoService.GEtRequestById(requestId);
+            if(!await _requestsInfoService.DeleteRequest(requestTobeDeleted))
+            {
+                ModelState.AddModelError("", "Something went wrong while Deleting Request");
+            }
+            return NoContent();
+
         }
     }
 }

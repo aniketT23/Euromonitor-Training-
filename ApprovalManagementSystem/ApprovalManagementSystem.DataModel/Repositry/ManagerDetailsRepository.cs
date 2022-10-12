@@ -19,12 +19,12 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             _approvalManagementSystemContext = approvalManagementSystemContext;
         }
 
-        public bool CreateManagerDetail(ManagerDetail managerDetail)
+        public async Task<bool> CreateManagerDetail(ManagerDetail managerDetail)
         {
-            _approvalManagementSystemContext.Add(managerDetail);
+            await _approvalManagementSystemContext.AddAsync(managerDetail);   
            
 
-            return Save();
+            return await  Save();
         }
 
         public async Task<ManagerDetail> GetManagerDetailsAsync(int managerCode)
@@ -50,20 +50,36 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             return await _approvalManagementSystemContext.ManagerDetails.Where(m => m.ManagerId == managerID).FirstOrDefaultAsync();
         }
 
-        public ICollection<ManagerDetail> GetManagersDetailsAsync()
+        public async Task<ICollection<ManagerDetail>> GetManagersDetailsAsync()
         {
             return  _approvalManagementSystemContext.ManagerDetails.ToList();  
         }
 
-        public async Task<bool> ManagerExistsAsync(int managerId)
+        public async Task<bool> ManagerExistsAsync(int managerCode)
         {
-            return await _approvalManagementSystemContext.ManagerDetails.AnyAsync(m => m.Id == managerId);
+            return await _approvalManagementSystemContext.ManagerDetails.AnyAsync(m => m.Id == managerCode);
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
-            var saved= _approvalManagementSystemContext.SaveChanges();
+            var saved= await _approvalManagementSystemContext.SaveChangesAsync();
             return saved > 0 ? true : false;
+        }
+
+        public async Task<bool> UpdateManagerDetails(int managerCode,ManagerDetail managerDetail)
+        {
+            //_approvalManagementSystemContext.Update(managerDetail);
+
+            var data = await GetManagerDetailsAsync(managerCode);
+            if (data != null)
+            {
+                data.Id = managerCode;
+                data.ManagerId = managerDetail.Id;
+                data.ApproveLimit=managerDetail.ApproveLimit;
+            }
+            _approvalManagementSystemContext.Entry(data).State = EntityState.Modified;  
+
+            return await Save();
         }
     }
 }

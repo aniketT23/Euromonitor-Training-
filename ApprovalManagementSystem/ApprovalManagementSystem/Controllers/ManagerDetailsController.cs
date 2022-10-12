@@ -4,6 +4,7 @@ using ApprovalManagementSystem.DataModel.Entities;
 using ApprovalManagementSystem.ServiceModel.DTO;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace ApprovalManagementSystem.Api.Controllers
 {
@@ -21,45 +22,44 @@ namespace ApprovalManagementSystem.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ICollection<ManagerDetail>))]
-        public IActionResult GetManagersDetails()
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<ICollection<ManagerDetail>>> GetManagersDetails()
         {
-            var managers = _mapper.Map<List<ManagerDetailsDto>>(_managerDetailsService.GetManagersDetailsAsync());
-
+            var managers = await (_managerDetailsService.GetManagersDetailsAsync());
+            var data = _mapper.Map<List<ManagerDetailsDto>>(managers);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(managers);
+            return Ok(data);
         }
 
-        [HttpGet("manager/{managerCode}")]
+        [HttpGet("manager/{managerId}")]
         [ProducesResponseType(200, Type = typeof(Task<ManagerDetail>))]
         [ProducesResponseType(400)]
 
-        public async Task<ActionResult<ManagerDetail>> GetManagerDetail(int managerCode)
+        public async Task<ActionResult<ManagerDetail>> GetManagerDetail(int managerId)
+        {
+           
+            var manager = await (_managerDetailsService.GetManagerDetailsByuserCodeAsync(managerId));
+            var data = _mapper.Map<ManagerDetailsDto>(manager);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(data);
+        }
+
+        [HttpGet("{managerCode}")]
+
+        public async Task<ActionResult<ManagerDetail>> GetManagerById(int managerCode)
         {
             if (!await _managerDetailsService.ManagerExistsAsync(managerCode))
                 return NotFound();
             var manager = await (_managerDetailsService.GetManagerDetailsAsync(managerCode));
-            //var data = _mapper.Map<Task<ManagerDetailsDto>>(manager);
+            var data = _mapper.Map<ManagerDetailsDto>(manager);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(manager);
-        }
-
-        [HttpGet("{managerId}")]
-
-        public async Task<ActionResult<ManagerDetail>> GetManagerById(int managerId)
-        {
-            if (!await _managerDetailsService.ManagerExistsAsync(managerId))
-                return NotFound();
-            var manager = await (_managerDetailsService.GetManagerDetailsAsync(managerId));
-          
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            return Ok(manager);
+            return Ok(data);
         }
 
 
@@ -69,9 +69,9 @@ namespace ApprovalManagementSystem.Api.Controllers
         [ProducesResponseType(204)]
 
 
-        public ActionResult PostManagerDetail( [FromBody] ManagerDetailsDto managerDetail)
+        public async Task<ActionResult> PostManagerDetail( [FromBody] ManagerDetailsDto managerDetail)
         {
-            //return  _managerDetailsService.CreateManagerDetail(managerDetail);
+       
 
             if (managerDetail == null)
                 return BadRequest(ModelState);
@@ -79,9 +79,8 @@ namespace ApprovalManagementSystem.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var managerDetailMap = _mapper.Map<ManagerDetail>(managerDetail);
-            //_managerDetailsService.CreateManagerDetail(managerDetailMap);
-
-            if (!_managerDetailsService.CreateManagerDetail(managerDetailMap))
+          
+            if (!await _managerDetailsService.CreateManagerDetail(managerDetailMap))
             {
 
                 ModelState.AddModelError("", "Something went wrong while saving");
@@ -89,6 +88,28 @@ namespace ApprovalManagementSystem.Api.Controllers
             }
             
             return Ok("Successfully created");
+        }
+
+        [HttpPatch]
+
+        public async Task<ActionResult> UpdateMangerDetails(int mangerCode, [FromBody] ManagerDetailsDto updatedManagerDetails)
+        {
+            if(mangerCode ==null)
+                return BadRequest(ModelState);
+            if (updatedManagerDetails == null) 
+                return StatusCode(500, ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var managerDetail = _mapper.Map<ManagerDetail>(updatedManagerDetails);
+            if (!await _managerDetailsService.UpdateManagerDetails(mangerCode, managerDetail))
+            {
+
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok("Successfully Updated");
+
         }
 
     }

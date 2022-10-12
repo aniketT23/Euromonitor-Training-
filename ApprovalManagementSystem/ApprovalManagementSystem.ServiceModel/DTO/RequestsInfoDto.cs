@@ -15,5 +15,6 @@ namespace ApprovalManagementSystem.ServiceModel.DTO
         public DateTime? PlanDate { get; set; }
         public int? EstimatedCost { get; set; }
         public int? Advanceamount { get; set; }
+        public string? ReqStatus { get; set; }
     }
 }

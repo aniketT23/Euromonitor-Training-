@@ -11,6 +11,11 @@ namespace ApprovalManagementSystem.DataModel.Repositry.Interface
     {
         ICollection<UploadFilesInfo> GetUploadFiles();
 
+        UploadFilesInfo GetUploadFile(int id);
+
+        Task<UploadFilesInfo> UploadFileExists(int id);
+        bool UpdateUploadFile(UploadFilesInfo uploadFile);
+        bool DeleteUploadFile(UploadFilesInfo uploadFilesInfo);
         bool PostUploadFiles(UploadFilesInfo uploadFilesInfo);
     }
 }
