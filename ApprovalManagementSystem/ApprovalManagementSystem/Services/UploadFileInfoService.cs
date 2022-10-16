@@ -12,14 +12,39 @@ namespace ApprovalManagementSystem.Api.Services
         {
             _uploadFilesInfoRepository = uploadFilesInfoRepository;
         }
-        public ICollection<UploadFilesInfo> GetUploadFiles()
+
+        public async  Task<bool> DeleteUploadFile(UploadFilesInfo uploadFilesInfo)
         {
-            return _uploadFilesInfoRepository.GetUploadFiles();
+            throw new NotImplementedException();
         }
 
-        public bool PostUploadFiles(UploadFilesInfo uploadFilesInfo)
+        public async  Task<UploadFilesInfo> GetUploadFile(int id)
         {
-            return _uploadFilesInfoRepository.PostUploadFiles(uploadFilesInfo);
+            throw new NotImplementedException();
         }
+
+        public async  Task<ICollection<UploadFilesInfo>> GetUploadFiles()
+        {
+            return await  _uploadFilesInfoRepository.GetUploadFiles();
+        }
+
+        public async Task<bool> PostUploadFiles(UploadFilesInfo uploadFilesInfo)
+        {
+            return await _uploadFilesInfoRepository.PostUploadFiles(uploadFilesInfo);
+        }
+
+        public async Task<bool> UpdateUploadFile(UploadFilesInfo uploadFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async  Task<UploadFilesInfo> UploadFileExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+       
     }
 }

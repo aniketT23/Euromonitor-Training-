@@ -64,3 +64,8 @@ C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagem
 C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\ApprovalManagementSystem.ServiceModel.dll
 C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\ApprovalManagementSystem.DataModel.pdb
 C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\ApprovalManagementSystem.ServiceModel.pdb
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\Scrutor.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

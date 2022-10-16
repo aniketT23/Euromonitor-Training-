@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApprovalManagementSystem.ServiceModel.DTO
+namespace ApprovalManagementSystem.ServiceModel.DTO.Request
 {
-    public class UserDetailsDto
+    public class userCompleteDetailsDto
     {
         public int UserId { get; set; }
         public string? Password { get; set; }
@@ -17,5 +17,12 @@ namespace ApprovalManagementSystem.ServiceModel.DTO
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
         public int ManagerCode { get; set; }
+
+        //
+
+        public int ManagerId { get; set; }
+        public int ApproveLimit { get; set; }
+
+        public string? managerName { get; set; }
     }
 }

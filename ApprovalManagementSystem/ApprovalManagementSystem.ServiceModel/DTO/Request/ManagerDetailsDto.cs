@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApprovalManagementSystem.ServiceModel.DTO
+namespace ApprovalManagementSystem.ServiceModel.DTO.Request
 {
     public class ManagerDetailsDto
     {

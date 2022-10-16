@@ -1,6 +1,8 @@
 ﻿using ApprovalManagementSystem.Api.Services.Interface;
 using ApprovalManagementSystem.DataModel.Entities;
 using ApprovalManagementSystem.DataModel.Repositry.Interface;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
+using ApprovalManagementSystem.ServiceModel.DTO.Response;
 
 namespace ApprovalManagementSystem.Api.Services
 {
@@ -12,39 +14,45 @@ namespace ApprovalManagementSystem.Api.Services
         {
             _userDetailsRepository = userDetailsRepository;
         }
-        public bool CreateUser(UserDetail userDetail)
+
+        public async  Task<string> AuthenticateUser(loginDto userDetail)
         {
-            return _userDetailsRepository.CreateUser(userDetail);
+           return await _userDetailsRepository.AuthenticateUser(userDetail);
         }
 
-        public ICollection<UserDetail> GetAllUserDetails()
+        public async  Task<bool> CreateUser(UserDetail userDetail)
         {
-            return _userDetailsRepository.GetAllUserDetails();  
+            return await _userDetailsRepository.CreateUser(userDetail);
         }
 
-        public UserDetail GetUserById(int id)
+        public async Task<ICollection<UserDetail>> GetAllUserDetails()
         {
-            return _userDetailsRepository.GetUserById(id);
+            return await _userDetailsRepository.GetAllUserDetails();  
         }
 
-        public UserDetail GetUserByUsername(string username)
+        public async Task<UserDetail> GetUserById(int id)
         {
-            return (_userDetailsRepository.GetUserByUsername(username));
+            return await _userDetailsRepository.GetUserById(id);
         }
 
-        public bool Save()
+        public async Task<UserDetail> GetUserByUsername(string username)
         {
-            return _userDetailsRepository.Save();
+            return await (_userDetailsRepository.GetUserByUsername(username));
         }
 
-        public bool UpdateUser(UserDetail userDetail)
+        public async Task<userCompleteDetailsDto> CompleteUsersDetail(int userId)
         {
-            return _userDetailsRepository.UpdateUser(userDetail);
+            return await _userDetailsRepository.CompleteUsersDetail(userId);
         }
 
-        public bool UserExist(int userId)
+        public async Task<bool> UpdateUser(UserDetail userDetail)
         {
-            return _userDetailsRepository.UserExist(userId);
+            return await  _userDetailsRepository.UpdateUser(userDetail);
+        }
+
+        public async Task<bool> UserExist(int userId)
+        {
+            return await _userDetailsRepository.UserExist(userId);
         }
     }
 }

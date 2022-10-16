@@ -26,4 +26,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ApprovalManagementSystem.ServiceModel\ApprovalManagementSystem.ServiceModel.csproj" />
+  </ItemGroup>
+
 </Project>

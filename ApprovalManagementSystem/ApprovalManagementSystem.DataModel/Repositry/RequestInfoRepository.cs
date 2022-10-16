@@ -1,5 +1,7 @@
 ﻿using ApprovalManagementSystem.DataModel.Entities;
 using ApprovalManagementSystem.DataModel.Repositry.Interface;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,19 +32,69 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             return await Save();
         }
 
-        public RequestsInfo GEtRequestById(int requestId)
+        public async Task<RequestsInfo> GEtRequestById(int requestId)
         {
-            return _approvalManagementSystemContext.RequestsInfos.Where(r => r.Requestid == requestId).FirstOrDefault();
+            return await _approvalManagementSystemContext.RequestsInfos.Where(r => r.Requestid == requestId).FirstOrDefaultAsync();
         }
 
-        public ICollection<RequestsInfo> GetRequestsInfo()
+        public async Task<ICollection<CompleteRequestDetailsDto>> getRequestsByMangaerId(int managerId)
         {
-            return _approvalManagementSystemContext.RequestsInfos.ToList();
+            var data = (from r in _approvalManagementSystemContext.RequestsInfos
+                        join m in _approvalManagementSystemContext.UserDetails on r.ManagerId equals m.UserId
+                        join u in _approvalManagementSystemContext.UserDetails on r.Userid equals u.UserId
+
+                        select new CompleteRequestDetailsDto
+                        {
+                            ReqId = r.Requestid,
+                            ReqStatus = r.ReqStatus,
+                            Advanceamount = r.Advanceamount,
+                            Discription = r.Discription,
+                            PlanDate = r.PlanDate, 
+                            EstimatedCost = r.EstimatedCost,
+                            Purpose = r.Purpose,
+                            Userid = r.Userid,
+                            userName=u.Firstname,
+                            ManagerId=r.ManagerId,
+                            managerName=m.Firstname,
+
+
+                        }).Where(r=>r.ManagerId==managerId).ToListAsync();
+            return await data;
         }
 
-        public bool RequestExists(int requestId)
+        public async Task<ICollection<CompleteRequestDetailsDto>> GetRequestsByUserId(int userId)
         {
-            return _approvalManagementSystemContext.RequestsInfos.Any(r => r.Requestid == requestId);
+            var data = (from r in _approvalManagementSystemContext.RequestsInfos
+                        join m in _approvalManagementSystemContext.UserDetails on r.ManagerId equals m.UserId
+                        join u in _approvalManagementSystemContext.UserDetails on r.Userid equals u.UserId
+
+                        select new CompleteRequestDetailsDto
+                        {
+                            ReqId = r.Requestid,
+                            ReqStatus = r.ReqStatus,
+                            Advanceamount = r.Advanceamount,
+                            Discription = r.Discription,
+                            PlanDate = r.PlanDate,
+                            EstimatedCost = r.EstimatedCost,
+                            Purpose = r.Purpose,
+                            Userid = r.Userid,
+                            userName = u.Firstname,
+                            ManagerId = r.ManagerId,
+                            managerName = m.Firstname,
+
+
+                        }).Where(r => r.Userid == userId).ToListAsync();
+            return await data;
+        }
+
+        public async Task<ICollection<RequestsInfo>> GetRequestsInfo()
+        {
+            return await  _approvalManagementSystemContext.RequestsInfos.ToListAsync();
+        }
+
+        public async Task<bool> RequestExists(int requestId)
+        {
+            return await _approvalManagementSystemContext.RequestsInfos.AnyAsync(r => r.Requestid == requestId);
         }
 
         public async Task<bool> Save()

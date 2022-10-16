@@ -1,7 +1,7 @@
 ﻿using ApprovalManagementSystem.Api.Services;
 using ApprovalManagementSystem.Api.Services.Interface;
 using ApprovalManagementSystem.DataModel.Entities;
-using ApprovalManagementSystem.ServiceModel.DTO;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

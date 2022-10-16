@@ -1,5 +1,6 @@
 ﻿using ApprovalManagementSystem.DataModel.Entities;
-using ApprovalManagementSystem.ServiceModel.DTO;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
+using ApprovalManagementSystem.ServiceModel.DTO.Response;
 using AutoMapper;
 namespace ApprovalManagementSystem.Api.Mapper
 {
@@ -15,6 +16,8 @@ namespace ApprovalManagementSystem.Api.Mapper
             CreateMap<UserDetailsDto,UserDetail> ();
             CreateMap<RequestsInfo, RequestsInfoDto>();
             CreateMap<RequestsInfoDto, RequestsInfo>();
+            CreateMap<loginDto, UserDetail>();
+            CreateMap< UserDetailsDto, loginDto>();
           
 
         }

@@ -74,7 +74,7 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             if (data != null)
             {
                 data.Id = managerCode;
-                data.ManagerId = managerDetail.Id;
+             
                 data.ApproveLimit=managerDetail.ApproveLimit;
             }
             _approvalManagementSystemContext.Entry(data).State = EntityState.Modified;  

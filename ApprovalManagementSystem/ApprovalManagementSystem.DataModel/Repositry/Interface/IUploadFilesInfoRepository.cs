@@ -9,13 +9,13 @@ namespace ApprovalManagementSystem.DataModel.Repositry.Interface
 {
     public interface IUploadFilesInfoRepository
     {
-        ICollection<UploadFilesInfo> GetUploadFiles();
+        Task<ICollection<UploadFilesInfo>> GetUploadFiles();
 
-        UploadFilesInfo GetUploadFile(int id);
+        Task<UploadFilesInfo> GetUploadFile(int id);
 
         Task<UploadFilesInfo> UploadFileExists(int id);
-        bool UpdateUploadFile(UploadFilesInfo uploadFile);
-        bool DeleteUploadFile(UploadFilesInfo uploadFilesInfo);
-        bool PostUploadFiles(UploadFilesInfo uploadFilesInfo);
+        Task<bool> UpdateUploadFile(UploadFilesInfo uploadFile);
+        Task<bool> DeleteUploadFile(UploadFilesInfo uploadFilesInfo);
+        Task<bool> PostUploadFiles(UploadFilesInfo uploadFilesInfo);
     }
 }

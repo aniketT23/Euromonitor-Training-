@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "ApprovalManagementSystem.DataModel/1.0.0": {
         "dependencies": {
+          "ApprovalManagementSystem.ServiceModel": "1.0.0",
           "AutoMapper": "12.0.0",
           "AutoMapper.Extensions.ExpressionMapping": "6.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
@@ -520,6 +521,16 @@
             "fileVersion": "4.700.19.56404"
           }
         }
+      },
+      "ApprovalManagementSystem.ServiceModel/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "12.0.0",
+          "AutoMapper.Extensions.ExpressionMapping": "6.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0"
+        },
+        "runtime": {
+          "ApprovalManagementSystem.ServiceModel.dll": {}
+        }
       }
     }
   },
@@ -850,6 +861,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "ApprovalManagementSystem.ServiceModel/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -1,5 +1,6 @@
 ﻿using ApprovalManagementSystem.DataModel.Entities;
 using ApprovalManagementSystem.DataModel.Repositry.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,29 +18,34 @@ namespace ApprovalManagementSystem.DataModel.Repositry
             _approvalManagementSystemContext = approvalManagementSystemContext;
         }
 
-        public bool DeleteUploadFile(UploadFilesInfo uploadFilesInfo)
+        public async Task<bool> DeleteUploadFile(UploadFilesInfo uploadFilesInfo)
         {
             throw new NotImplementedException();
         }
 
-        public UploadFilesInfo GetUploadFile(int id)
+        public async  Task<UploadFilesInfo> GetUploadFile(int id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<UploadFilesInfo> GetUploadFiles()
+        public async Task<ICollection<UploadFilesInfo>> GetUploadFiles()
         {
-            return _approvalManagementSystemContext.UploadFilesInfos.ToList();
+            return await _approvalManagementSystemContext.UploadFilesInfos.ToListAsync();
         }
 
-        public bool PostUploadFiles(UploadFilesInfo uploadFilesInfo)
+        public async Task<bool> PostUploadFiles(UploadFilesInfo uploadFilesInfo)
         {
-            _approvalManagementSystemContext.Add(uploadFilesInfo);
-            _approvalManagementSystemContext.SaveChanges();
+            await _approvalManagementSystemContext.AddAsync(uploadFilesInfo);
+            await _approvalManagementSystemContext.SaveChangesAsync();
             return true;
         }
 
-        public bool UpdateUploadFile(UploadFilesInfo uploadFile)
+        public async Task<bool> UpdateUploadFile(UploadFilesInfo uploadFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<UploadFilesInfo> UploadFileExists(int id)
         {
             throw new NotImplementedException();
         }

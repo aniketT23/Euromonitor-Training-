@@ -827,6 +827,21 @@
             "rid": "win"
           }
         }
+      },
+      "ApprovalManagementSystem.ServiceModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "12.0.0",
+          "AutoMapper.Extensions.ExpressionMapping": "6.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ApprovalManagementSystem.ServiceModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApprovalManagementSystem.ServiceModel.dll": {}
+        }
       }
     }
   },
@@ -2092,10 +2107,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ApprovalManagementSystem.ServiceModel/1.0.0": {
+      "type": "project",
+      "path": "../ApprovalManagementSystem.ServiceModel/ApprovalManagementSystem.ServiceModel.csproj",
+      "msbuildProject": "../ApprovalManagementSystem.ServiceModel/ApprovalManagementSystem.ServiceModel.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ApprovalManagementSystem.ServiceModel >= 1.0.0",
       "AutoMapper >= 12.0.0",
       "AutoMapper.Extensions.ExpressionMapping >= 6.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
@@ -2131,7 +2152,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\aniket.tiwari\\Desktop\\Training\\ApprovalManagementSystem\\ApprovalManagementSystem.ServiceModel\\ApprovalManagementSystem.ServiceModel.csproj": {
+              "projectPath": "C:\\Users\\aniket.tiwari\\Desktop\\Training\\ApprovalManagementSystem\\ApprovalManagementSystem.ServiceModel\\ApprovalManagementSystem.ServiceModel.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

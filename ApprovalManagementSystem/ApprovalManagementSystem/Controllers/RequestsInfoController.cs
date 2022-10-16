@@ -1,9 +1,10 @@
 ﻿using ApprovalManagementSystem.Api.Services;
 using ApprovalManagementSystem.Api.Services.Interface;
 using ApprovalManagementSystem.DataModel.Entities;
-using ApprovalManagementSystem.ServiceModel.DTO;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace ApprovalManagementSystem.Api.Controllers
 {
@@ -22,25 +23,45 @@ namespace ApprovalManagementSystem.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(200)]
-        public IActionResult GetRequests()
+        public async Task<ActionResult<ICollection<RequestsInfo>>> GetRequests()
         {
-            var requests=_mapper.Map<List<RequestsInfoDto>>(_requestsInfoService.GetRequestsInfo());
-
+            var requests=await (_requestsInfoService.GetRequestsInfo());
+            var requestDto = _mapper.Map<List<RequestsInfoDto>>(requests);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(requests);
+            return Ok(requestDto);
         }
         [HttpGet("{requestId}")]
-        public IActionResult GetRequestById(int requestId)
+        public async Task<ActionResult<RequestsInfo>> GetRequestById(int requestId)
         {
-            if (!_requestsInfoService.RequestExists(requestId))
+            if (!await _requestsInfoService.RequestExists(requestId))
                 return NotFound();
-            var request=_mapper.Map<RequestsInfoDto>(_requestsInfoService.GEtRequestById(requestId));
+            var request= await (_requestsInfoService.GEtRequestById(requestId));
+            var reequestDto= _mapper.Map<RequestsInfoDto>(request);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            return Ok(request);
+            return Ok(reequestDto);
         }
+
+        [HttpGet("requestByMangerId")]
+
+        public async Task<ICollection<CompleteRequestDetailsDto>> GetRequestByManagerId(int managerId)
+        {
+        
+            var data= await _requestsInfoService.getRequestsByMangaerId(managerId);
+            return data;
+        }
+
+        [HttpGet("requestByUserId")]
+
+        public async Task<ICollection<CompleteRequestDetailsDto>> GetRequestByUserId(int userId)
+        {
+
+            var data = await _requestsInfoService.GetRequestsByUserId(userId);
+            return data;
+        }
+
 
         [HttpPost]
 
@@ -68,12 +89,12 @@ namespace ApprovalManagementSystem.Api.Controllers
         {
             if(requestId==null)
                 return BadRequest(ModelState);
-            if(!_requestsInfoService.RequestExists(requestId))
+            if(! await _requestsInfoService.RequestExists(requestId))
                 return NotFound(ModelState);
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var requestTobeDeleted =  _requestsInfoService.GEtRequestById(requestId);
+            var requestTobeDeleted = await  _requestsInfoService.GEtRequestById(requestId);
             if(!await _requestsInfoService.DeleteRequest(requestTobeDeleted))
             {
                 ModelState.AddModelError("", "Something went wrong while Deleting Request");

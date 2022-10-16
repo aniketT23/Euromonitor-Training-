@@ -1,6 +1,7 @@
 ﻿using ApprovalManagementSystem.Api.Services.Interface;
 using ApprovalManagementSystem.DataModel.Entities;
 using ApprovalManagementSystem.DataModel.Repositry.Interface;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
 
 namespace ApprovalManagementSystem.Api.Services
 {
@@ -23,19 +24,29 @@ namespace ApprovalManagementSystem.Api.Services
             return await _requestsInfoRepository.DeleteRequest(request);
         }
 
-        public RequestsInfo GEtRequestById(int requestId)
+        public async Task<RequestsInfo> GEtRequestById(int requestId)
         {
-            return _requestsInfoRepository.GEtRequestById(requestId);
+            return await _requestsInfoRepository.GEtRequestById(requestId);
         }
 
-        public ICollection<RequestsInfo> GetRequestsInfo()
+        public async Task<ICollection<CompleteRequestDetailsDto>> getRequestsByMangaerId(int managerId)
         {
-            return _requestsInfoRepository.GetRequestsInfo();
+            return await _requestsInfoRepository.getRequestsByMangaerId(managerId);
         }
 
-        public bool RequestExists(int requestId)
+        public async Task<ICollection<CompleteRequestDetailsDto>> GetRequestsByUserId(int userId)
         {
-            return (_requestsInfoRepository.RequestExists(requestId));
+            return await _requestsInfoRepository.GetRequestsByUserId(userId);
+        }
+
+        public async Task<ICollection<RequestsInfo>> GetRequestsInfo()
+        {
+            return await _requestsInfoRepository.GetRequestsInfo();
+        }
+
+        public async Task<bool> RequestExists(int requestId)
+        {
+            return await (_requestsInfoRepository.RequestExists(requestId));
         }
 
       

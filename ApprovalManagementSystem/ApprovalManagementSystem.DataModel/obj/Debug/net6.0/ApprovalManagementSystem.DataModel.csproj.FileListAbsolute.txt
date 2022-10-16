@@ -12,3 +12,6 @@ C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagem
 C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.pdb
 C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.genruntimeconfig.cache
 C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ref\ApprovalManagementSystem.DataModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\bin\Debug\net6.0\ApprovalManagementSystem.ServiceModel.dll
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\bin\Debug\net6.0\ApprovalManagementSystem.ServiceModel.pdb
+C:\Users\aniket.tiwari\Desktop\Training\ApprovalManagementSystem\ApprovalManagementSystem.DataModel\obj\Debug\net6.0\ApprovalManagementSystem.DataModel.csproj.CopyComplete

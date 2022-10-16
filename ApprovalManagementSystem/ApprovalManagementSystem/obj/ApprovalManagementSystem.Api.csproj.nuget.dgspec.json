@@ -27,7 +27,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\aniket.tiwari\\Desktop\\Training\\ApprovalManagementSystem\\ApprovalManagementSystem.ServiceModel\\ApprovalManagementSystem.ServiceModel.csproj": {
+                "projectPath": "C:\\Users\\aniket.tiwari\\Desktop\\Training\\ApprovalManagementSystem\\ApprovalManagementSystem.ServiceModel\\ApprovalManagementSystem.ServiceModel.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -217,9 +221,17 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[7.0.5, )"
             }
           },
           "imports": [

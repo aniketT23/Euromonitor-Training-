@@ -1,16 +1,22 @@
 ﻿using ApprovalManagementSystem.DataModel.Entities;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
+using ApprovalManagementSystem.ServiceModel.DTO.Response;
 
 namespace ApprovalManagementSystem.Api.Services.Interface
 {
     public interface IUserDetailsService
     {
-        ICollection<UserDetail> GetAllUserDetails();
+        Task<ICollection<UserDetail>> GetAllUserDetails();
 
-        UserDetail GetUserById(int id);
-        UserDetail GetUserByUsername(string username);
-        bool UserExist(int userId);
-        bool CreateUser(UserDetail userDetail);
-        bool UpdateUser(UserDetail userDetail);
-        bool Save();
+        Task<UserDetail> GetUserById(int id);
+        Task<UserDetail> GetUserByUsername(string username);
+
+        Task<bool> UserExist(int userId);
+        Task<bool> CreateUser(UserDetail userDetail);
+        Task<bool> UpdateUser(UserDetail userDetail);
+
+        Task<string> AuthenticateUser(loginDto userDetail);
+        Task<userCompleteDetailsDto> CompleteUsersDetail(int userId);
+
     }
 }

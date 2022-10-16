@@ -1,7 +1,7 @@
 ﻿using ApprovalManagementSystem.Api.Services;
 using ApprovalManagementSystem.Api.Services.Interface;
 using ApprovalManagementSystem.DataModel.Entities;
-using ApprovalManagementSystem.ServiceModel.DTO;
+using ApprovalManagementSystem.ServiceModel.DTO.Request;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +22,9 @@ namespace ApprovalManagementSystem.Api.Controllers
 
         [HttpGet]
 
-        public IActionResult GetUploadFiles()
+        public async Task<ActionResult<ICollection<UploadFilesInfo>>> GetUploadFiles()
         {
-           var files= _uploadFilesInfoService.GetUploadFiles();
+           var files=await _uploadFilesInfoService.GetUploadFiles();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -34,10 +34,10 @@ namespace ApprovalManagementSystem.Api.Controllers
 
         [HttpPost]
 
-        public IActionResult CreateUploadFiles(UploadFilesInfoDto createFile)
+        public async Task<ActionResult> CreateUploadFiles(UploadFilesInfoDto createFile)
         {
             var fileMap= _mapper.Map<UploadFilesInfo>(createFile);
-            var files = _uploadFilesInfoService.PostUploadFiles(fileMap);
+            var files =await  _uploadFilesInfoService.PostUploadFiles(fileMap);
 
             return Ok(files);
         }
