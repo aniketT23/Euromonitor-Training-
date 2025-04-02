@@ -53,14 +53,14 @@ jobs:
         token = os.environ['TOKEN']
         
         try:
+            # Token-only authentication (no username/password)
+            connection_string = f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};Encrypt=yes;TrustServerCertificate=no'
+        
             conn = pyodbc.connect(
-                driver='ODBC Driver 18 for SQL Server',
-                server=server,
-                database=database,
-                Encrypt='yes',
-                TrustServerCertificate='no',
-                Authentication='ActiveDirectoryServicePrincipal',  # Valid auth type
-                AccessToken=token
+                    connection_string,
+                    attrs_before={
+                    1256: token.encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
+                    }
             )
             df = pd.read_sql(query, conn)
             df.to_csv('results.csv', index=False)
