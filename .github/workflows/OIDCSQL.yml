@@ -53,27 +53,28 @@ jobs:
         # Get Azure AD token
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         echo $Token 
+        sqlcmd -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics -G -I -U app-client-id -P $Token
         
-        # Python script
-        python -c "
-        import pyodbc, os, pandas as pd
+        # # Python script
+        # python -c "
+        # import pyodbc, os, pandas as pd
         
-        try:
-            conn = pyodbc.connect(
-                driver='ODBC Driver 18 for SQL Server',  # Exact driver name
-                server=os.environ['SQL_SERVER'],
-                database=os.environ['DATABASE_NAME'],
-                Authentication='ActiveDirectoryPasswordless',
-                AccessToken='$TOKEN'
-            )
-            df = pd.read_sql(os.environ['SQL_QUERY'], conn)
-            df.to_csv('results.csv', index=False)
-            print('Query successful! First 5 rows:')
-            print(df.head())
-        except Exception as e:
-            print(f'Error: {e}')
-            raise
-        "
+        # try:
+        #     conn = pyodbc.connect(
+        #         driver='ODBC Driver 18 for SQL Server',  # Exact driver name
+        #         server=os.environ['SQL_SERVER'],
+        #         database=os.environ['DATABASE_NAME'],
+        #         Authentication='ActiveDirectoryPasswordless',
+        #         AccessToken='$TOKEN'
+        #     )
+        #     df = pd.read_sql(os.environ['SQL_QUERY'], conn)
+        #     df.to_csv('results.csv', index=False)
+        #     print('Query successful! First 5 rows:')
+        #     print(df.head())
+        # except Exception as e:
+        #     print(f'Error: {e}')
+        #     raise
+        # "
 
     - name: Upload Results
       uses: actions/upload-artifact@v4
