@@ -30,7 +30,7 @@ jobs:
     - name: Run SQL Query via Docker
       run: |
         token=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        sqlcmd -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics -G -A -P "$token" -Q "SELECT TOP 10 * FROM dbo.MarketSize"
+        az sql query -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics --access-token "$token" -Q "SELECT TOP 10 * FROM dbo.MarketSize"
 
         # Display results
         echo "Query Results:"
