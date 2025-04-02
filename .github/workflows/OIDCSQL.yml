@@ -10,8 +10,8 @@ jobs:
   query-database:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Required for OIDC
-      contents: read    # For saving results
+      id-token: write
+      contents: read
 
     steps:
     - name: Azure Login
@@ -21,27 +21,25 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Setup SQL Tools
+    - name: Install SQL Tools
       run: |
-        # Install Microsoft ODBC driver and SQL tools
+        # Add Microsoft repository
         curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
-        
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+
+        # Install tools
         sudo apt-get update
         sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 mssql-tools18
-        echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> $GITHUB_ENV
+        echo "export PATH=$PATH:/opt/mssql-tools18/bin" >> $GITHUB_ENV
+        source $GITHUB_ENV
+
 
     - name: Run SQL Query
       run: |
-        # Get access token
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
+        sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" -y 0 -s "," -o results.csv
         
-        # Execute query and save results
-        sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" \
-          -s "," -y 0 -o results.csv
-        
-        # Display results in logs
-        echo "Query Results:"
+        echo "Results:"
         cat results.csv
 
     - name: Upload Results
