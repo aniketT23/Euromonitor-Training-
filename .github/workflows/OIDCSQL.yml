@@ -1,0 +1,20 @@
+name: SQL Connect
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  connect-to-sql:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+    - name: 'Az CLI login'
+      uses: azure/login@v1
+      with:
+        client-id: 8a528a62-a6a2-4583-be40-3a272c4b2938
+        tenant-id: 89166950-3f6c-4a71-8207-1a2c6c0852e3
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: 'Run SQL query'
+      run: |
+        token=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
+        sqlcmd -S your-server.database.windows.net -d your-db -G -A -P "$token" -Q "SELECT TOP 10 * FROM Employe"
