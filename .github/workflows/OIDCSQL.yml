@@ -10,8 +10,8 @@ jobs:
   query-database:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
-      contents: read
+      id-token: write  # Required for OIDC
+      contents: read    # For saving results
 
     steps:
     - name: Azure Login
@@ -21,33 +21,30 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Get Azure AD Token
-      id: get-token
+    - name: Setup SQL Tools
       run: |
-        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
-        echo "Access Token (Base64 Encoded):"
-        echo $ACCESS_TOKEN | base64  # Encode to bypass GitHub masking
-
-    - name: Add Microsoft Package Repository
-      run: |
-        sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-        sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/prod.list)
+        # Install Microsoft ODBC driver and SQL tools
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
         
-    - name: Install SQLCMD
-      run: |
         sudo apt-get update
-        sudo apt-get install -y mssql-tools unixodbc-dev
-      
-    - name: Run SQL Query via Docker
-      run: |
-        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
-        sqlcmd -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics -G -I -C -Q "SELECT TOP 10 * FROM dbo.MarketSize"
+        sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 mssql-tools18
+        echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> $GITHUB_ENV
 
-        # Display results
+    - name: Run SQL Query
+      run: |
+        # Get access token
+        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
+        
+        # Execute query and save results
+        sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" \
+          -s "," -y 0 -o results.csv
+        
+        # Display results in logs
         echo "Query Results:"
         cat results.csv
 
-    - name: Upload results
+    - name: Upload Results
       uses: actions/upload-artifact@v4
       with:
         name: sql-results
