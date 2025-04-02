@@ -24,7 +24,7 @@ jobs:
         
     - name: Get Azure Access Token
       run: |
-        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
+        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query claims --output tsv)
         echo "Access Token (Base64 Encoded):"
         echo $ACCESS_TOKEN | base64  # Encode to bypass GitHub masking
 
@@ -57,40 +57,37 @@ jobs:
     - name: Execute Query
       run: |
         python3 -c "
-        import pyodbc, os, pandas as pd
-        from datetime import datetime
-        
+        import os
+        import pyodbc
+        import pandas as pd
+    
+          # Access environment variables properly
+        server = os.environ.get('SQL_SERVER')
+        database = os.environ.get('DATABASE_NAME')
+        query = os.environ.get('SQL_QUERY')
+        token = os.environ.get('TOKEN')
+    
         try:
-            # Entra MFA connection configuration
-            connection_string = (
-                f'DRIVER=ODBC Driver 18 for SQL Server;'
-                f'SERVER={os.environ["SQL_SERVER"]};'
-                f'DATABASE={os.environ["DATABASE_NAME"]};'
-                f'Authentication=ActiveDirectoryPasswordless;'
-            )
-            
-            # Establish connection using access token
+          # Connection string
             conn = pyodbc.connect(
-                connection_string,
-                attrs_before={
-                    1256: bytearray(os.environ['TOKEN'], 'utf-8')
-                }
+            driver='ODBC Driver 18 for SQL Server',
+            server=server,
+            database=database,
+            Authentication='ActiveDirectoryPasswordless',
+            attrs_before={1256: bytearray(token.encode('utf-8'))}
             )
-            
-            # Execute query
-            df = pd.read_sql(os.environ['SQL_QUERY'], conn)
-            df.to_csv('results.csv', index=False)
-            print('Query successful! First 5 rows:')
-            print(df.head())
-            
-        except pyodbc.Error as e:
-            print(f'SQL Error: {e}')
-            raise
+        
+        # Execute query
+        df = pd.read_sql(query, conn)
+        df.to_csv('results.csv', index=False)
+        print('First 5 rows:')
+        print(df.head())
+        
         except Exception as e:
-            print(f'General Error: {e}')
-            raise
+        print(f'Error: {str(e)}')
+        raise
         "
-
+    
     - name: Upload Results
       uses: actions/upload-artifact@v4
       with:
