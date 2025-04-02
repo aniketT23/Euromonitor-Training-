@@ -21,10 +21,32 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+    - name: Get Azure AD Token
+      id: get-token
+      run: |
+        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
+        echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
+
     - name: Run SQL Query via Docker
       run: |
-          docker run --rm -e TOKEN=$TOKEN mcr.microsoft.com/mssql-tools \
-          /opt/mssql-tools/bin/sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY"
+        docker run --rm \
+          -e SQL_SERVER="$SQL_SERVER" \
+          -e DATABASE_NAME="$DATABASE_NAME" \
+          -e SQL_QUERY="$SQL_QUERY" \
+          -e ACCESS_TOKEN="$TOKEN" \
+          mcr.microsoft.com/mssql-tools \
+          bash -c "/opt/mssql-tools/bin/sqlcmd -S \"$SQL_SERVER\" -d \"$DATABASE_NAME\" -Q \"$SQL_QUERY\" -G -A -P \"$ACCESS_TOKEN\""
+
+    - name: Save results
+      run: |
+        docker run --rm \
+          -v $(pwd):/results \
+          -e SQL_SERVER="$SQL_SERVER" \
+          -e DATABASE_NAME="$DATABASE_NAME" \
+          -e SQL_QUERY="$SQL_QUERY" \
+          -e ACCESS_TOKEN="$TOKEN" \
+          mcr.microsoft.com/mssql-tools \
+          bash -c "/opt/mssql-tools/bin/sqlcmd -S \"$SQL_SERVER\" -d \"$DATABASE_NAME\" -Q \"$SQL_QUERY\" -G -A -P \"$ACCESS_TOKEN\" -o /results/results.csv -y 0 -s \",\""
 
     - name: Upload results
       uses: actions/upload-artifact@v4
