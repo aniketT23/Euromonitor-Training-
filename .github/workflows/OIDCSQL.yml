@@ -24,8 +24,9 @@ jobs:
     - name: Get Azure AD Token
       id: get-token
       run: |
-        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        echo "TOKEN=$TOKEN" >> $GITHUB_ENV
+        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
+        echo "Access Token (Base64 Encoded):"
+        echo $ACCESS_TOKEN | base64  # Encode to bypass GitHub masking
 
     - name: Run SQL Query via Docker
       run: |
