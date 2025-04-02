@@ -4,59 +4,56 @@ on: [workflow_dispatch]
 env:
   SQL_SERVER: emi-qa-passportai-we-svm.database.windows.net
   DATABASE_NAME: GenAIStatistics
-  SQL_QUERY: "SELECT TOP 10 * FROM dbo.MarketSize"  # Your query here
+  SQL_QUERY: "SELECT TOP 10 * FROM dbo.MarketSize"
 
 jobs:
   query-database:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Required for OIDC auth
-      contents: read   # For checking out code if needed
-      
+      id-token: write
+      contents: read
+
     steps:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}  
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Install SQL Tools
       run: |
-        # Install SQL command line tools
-        curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-        curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+        # Add Microsoft package repository
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-archive-keyring.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/ubuntu/20.04/prod focal main" | sudo tee /etc/apt/sources.list.d/microsoft.list
+        
+        # Install packages
         sudo apt-get update
         sudo apt-get install -y mssql-tools unixodbc-dev
-        echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> $GITHUB_ENV
+        
+        # Add to PATH for current session
+        echo "::add-path::/opt/mssql-tools/bin"
 
     - name: Execute SQL Query
       run: |
-        # Get Azure AD access token for SQL Database
-        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
+        # Verify sqlcmd is accessible
+        which sqlcmd
+        sqlcmd -?
         
-        # Run query and format output
+        # Get token and run query
+        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         echo "Executing query: $SQL_QUERY"
         echo "--------------------------"
         sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" -s "|" -W -h-1
         echo "--------------------------"
-        echo "Query completed successfully"
-      
+
     - name: Save query results
-      if: always()  # Runs even if previous step fails
       run: |
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" -o results.csv -y 0 -s ","
-        
-        # For multi-line results, use this instead:
-        # sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" -o results.txt
-        
-      shell: bash
 
-    - name: Upload results as artifact
-      uses: actions/upload-artifact@v4  
+    - name: Upload results
+      uses: actions/upload-artifact@v4
       with:
-        name: sql-query-results
-        path: |
-          results.csv
-          # or results.txt if using the multi-line format
+        name: sql-results
+        path: results.csv
