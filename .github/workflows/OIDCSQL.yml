@@ -30,23 +30,16 @@ jobs:
     - name: Run SQL Query via Docker
       run: |
         docker run --rm \
-          -e SQL_SERVER="$SQL_SERVER" \
-          -e DATABASE_NAME="$DATABASE_NAME" \
-          -e SQL_QUERY="$SQL_QUERY" \
           -e ACCESS_TOKEN="$TOKEN" \
-          mcr.microsoft.com/mssql-tools \
-          bash -c "/opt/mssql-tools/bin/sqlcmd -S \"$SQL_SERVER\" -d \"$DATABASE_NAME\" -Q \"$SQL_QUERY\" -G -A -P \"$ACCESS_TOKEN\""
-
-    - name: Save results
-      run: |
-        docker run --rm \
-          -v $(pwd):/results \
-          -e SQL_SERVER="$SQL_SERVER" \
-          -e DATABASE_NAME="$DATABASE_NAME" \
-          -e SQL_QUERY="$SQL_QUERY" \
-          -e ACCESS_TOKEN="$TOKEN" \
-          mcr.microsoft.com/mssql-tools \
-          bash -c "/opt/mssql-tools/bin/sqlcmd -S \"$SQL_SERVER\" -d \"$DATABASE_NAME\" -Q \"$SQL_QUERY\" -G -A -P \"$ACCESS_TOKEN\" -o /results/results.csv -y 0 -s \",\""
+          mcr.microsoft.com/azure-cli \
+          bash -c "
+          apt-get update && apt-get install -y mssql-tools unixodbc-dev && \
+          echo 'export PATH=\"\$PATH:/opt/mssql-tools/bin\"' >> ~/.bashrc && \
+          source ~/.bashrc && \
+          sqlcmd -S \"$SQL_SERVER\" -d \"$DATABASE_NAME\" -G -A -P \"$ACCESS_TOKEN\" -Q \"$SQL_QUERY\" -o results.csv -y 0 -s ','
+          "
+        
+        cat results.csv
 
     - name: Upload results
       uses: actions/upload-artifact@v4
