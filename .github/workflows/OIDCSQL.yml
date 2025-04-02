@@ -20,9 +20,9 @@ jobs:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        client-id: 635d8b8a-9ac3-47e8-82ce-4867e37a8918
-        tenant-id: 251c4782-827b-4033-b7b5-12500263871f
-        subscription-id: 20ad1290-7497-4769-8dab-674852082c0c
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}  
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Install SQL Tools
       run: |
