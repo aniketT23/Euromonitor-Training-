@@ -27,12 +27,23 @@ jobs:
         ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
         echo "Access Token (Base64 Encoded):"
         echo $ACCESS_TOKEN | base64  # Encode to bypass GitHub masking
-        
 
     - name: Run SQL Query via Docker
       run: |
         ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
-        az sql query -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics --access-token "$ACCESS_TOKEN" -q "SELECT TOP 10 * FROM dbo.MarketSize"
+        az sql db show --name GenAIStatistics --resource-group MyResourceGroup --server emi-qa-passportai-we-svm.database.windows.net
+
+        # Display results
+        echo "Query Results:"
+        cat results.csv
+
+    - name: Install SQLCMD
+      run: sudo apt-get install -y mssql-tools unixodbc-dev
+      
+    - name: Run SQL Query via Docker
+      run: |
+        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
+        sqlcmd -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics -G -I -C -Q "SELECT TOP 10 * FROM dbo.MarketSize"
 
         # Display results
         echo "Query Results:"
