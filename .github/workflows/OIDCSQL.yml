@@ -54,7 +54,7 @@ jobs:
         
         try:
             # Token-only authentication (no username/password)
-            connection_string = f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};Encrypt=yes;TrustServerCertificate=no'
+            connection_string = f'DRIVER=ODBC Driver 18 for SQL Server=tcp:emi-qa-passportai-we-svm.database.windows.net,1433;Initial Catalog=GenAiStatistics;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";'
         
             conn = pyodbc.connect(
                     connection_string,
