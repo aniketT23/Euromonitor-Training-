@@ -21,28 +21,14 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-        
-    - name: Get Azure Access Token
-      run: |
-        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query claims --output tsv)
-        echo "Access Token (Base64 Encoded):"
-        echo $ACCESS_TOKEN | base64  # Encode to bypass GitHub masking
-
-
     - name: Install ODBC Driver
       run: |
-        # Clean existing Microsoft configurations
         sudo rm -f /etc/apt/sources.list.d/microsoft*.list
         sudo rm -f /usr/share/keyrings/microsoft*.gpg
-
-        # Add Microsoft repository
         curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-        # Install driver
         sudo apt-get update
         sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
-        odbcinst -q -d -n "ODBC Driver 18 for SQL Server"
 
     - name: Setup Python
       run: |
@@ -60,34 +46,29 @@ jobs:
         import os
         import pyodbc
         import pandas as pd
-    
-          # Access environment variables properly
-        server = os.environ.get('SQL_SERVER')
-        database = os.environ.get('DATABASE_NAME')
-        query = os.environ.get('SQL_QUERY')
-        token = os.environ.get('TOKEN')
-    
-        try:
-          # Connection string
-            conn = pyodbc.connect(
-            driver='ODBC Driver 18 for SQL Server',
-            server=server,
-            database=database,
-            Authentication='ActiveDirectoryPasswordless',
-            attrs_before={1256: bytearray(token.encode('utf-8'))}
-            )
         
-        # Execute query
-        df = pd.read_sql(query, conn)
-        df.to_csv('results.csv', index=False)
-        print('First 5 rows:')
-        print(df.head())
+        server = os.environ['SQL_SERVER']
+        database = os.environ['DATABASE_NAME']
+        query = os.environ['SQL_QUERY']
+        token = os.environ['TOKEN']
+        
+        try:
+            conn = pyodbc.connect(
+                driver='ODBC Driver 18 for SQL Server',
+                server=server,
+                database=database,
+                Authentication='ActiveDirectoryPasswordless',
+                attrs_before={1256: bytearray(token.encode('utf-8'))}
+            )
+            df = pd.read_sql(query, conn)
+            df.to_csv('results.csv', index=False)
+            print('First 5 rows:\\n', df.head())
         
         except Exception as e:
-        print(f'Error: {str(e)}')
-        raise
+            print(f'Error: {str(e)}')
+            raise
         "
-    
+
     - name: Upload Results
       uses: actions/upload-artifact@v4
       with:
