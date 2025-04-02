@@ -57,8 +57,10 @@ jobs:
                 driver='ODBC Driver 18 for SQL Server',
                 server=server,
                 database=database,
-                Authentication='ActiveDirectoryPasswordless',
-                attrs_before={1256: bytearray(token.encode('utf-8'))}
+                Encrypt='yes',
+                TrustServerCertificate='no',
+                Authentication='ActiveDirectoryServicePrincipal',  # Valid auth type
+                AccessToken=token
             )
             df = pd.read_sql(query, conn)
             df.to_csv('results.csv', index=False)
