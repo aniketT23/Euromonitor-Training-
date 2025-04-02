@@ -44,37 +44,52 @@ jobs:
         sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
         odbcinst -q -d -n "ODBC Driver 18 for SQL Server"
 
-    - name: Run Query with Python
+    - name: Setup Python
       run: |
-        # Install Python dependencies
-        python -m pip install --upgrade pip
+        sudo apt-get install -y python3-pip
         pip install pyodbc pandas
 
-        # Get Azure AD token
+    - name: Get Access Token
+      run: |
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        echo $Token 
-        sqlcmd -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics -G -I -U 635d8b8a-9ac3-47e8-82ce-4867e37a8918 -P $Token
+        echo "TOKEN=$TOKEN" >> $GITHUB_ENV
+
+    - name: Execute Query
+      run: |
+        python3 -c "
+        import pyodbc, os, pandas as pd
+        from datetime import datetime
         
-        # # Python script
-        # python -c "
-        # import pyodbc, os, pandas as pd
-        
-        # try:
-        #     conn = pyodbc.connect(
-        #         driver='ODBC Driver 18 for SQL Server',  # Exact driver name
-        #         server=os.environ['SQL_SERVER'],
-        #         database=os.environ['DATABASE_NAME'],
-        #         Authentication='ActiveDirectoryPasswordless',
-        #         AccessToken='$TOKEN'
-        #     )
-        #     df = pd.read_sql(os.environ['SQL_QUERY'], conn)
-        #     df.to_csv('results.csv', index=False)
-        #     print('Query successful! First 5 rows:')
-        #     print(df.head())
-        # except Exception as e:
-        #     print(f'Error: {e}')
-        #     raise
-        # "
+        try:
+            # Entra MFA connection configuration
+            connection_string = (
+                f'DRIVER=ODBC Driver 18 for SQL Server;'
+                f'SERVER={os.environ["SQL_SERVER"]};'
+                f'DATABASE={os.environ["DATABASE_NAME"]};'
+                f'Authentication=ActiveDirectoryPasswordless;'
+            )
+            
+            # Establish connection using access token
+            conn = pyodbc.connect(
+                connection_string,
+                attrs_before={
+                    1256: bytearray(os.environ['TOKEN'], 'utf-8')
+                }
+            )
+            
+            # Execute query
+            df = pd.read_sql(os.environ['SQL_QUERY'], conn)
+            df.to_csv('results.csv', index=False)
+            print('Query successful! First 5 rows:')
+            print(df.head())
+            
+        except pyodbc.Error as e:
+            print(f'SQL Error: {e}')
+            raise
+        except Exception as e:
+            print(f'General Error: {e}')
+            raise
+        "
 
     - name: Upload Results
       uses: actions/upload-artifact@v4
