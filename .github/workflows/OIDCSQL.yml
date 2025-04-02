@@ -1,9 +1,5 @@
-name: Azure SQL Query
+name: Azure SQL Query Runner
 on: [workflow_dispatch]
-
-permissions:
-  id-token: write  # Required for OIDC
-  contents: read   # For checking out code
 
 env:
   SQL_SERVER: emi-qa-passportai-we-svm.database.windows.net
@@ -13,10 +9,11 @@ env:
 jobs:
   query-database:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Required for OIDC auth
+      contents: read   # For checking out code if needed
+      
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
     - name: Azure Login
       uses: azure/login@v1
       with:
@@ -57,7 +54,7 @@ jobs:
       shell: bash
 
     - name: Upload results as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  
       with:
         name: sql-query-results
         path: |
