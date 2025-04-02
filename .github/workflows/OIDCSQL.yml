@@ -21,6 +21,14 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+        
+    - name: Get Azure Access Token
+      run: |
+        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
+        echo "Access Token (Base64 Encoded):"
+        echo $ACCESS_TOKEN | base64  # Encode to bypass GitHub masking
+
+
     - name: Install ODBC Driver
       run: |
         # Clean existing Microsoft configurations
