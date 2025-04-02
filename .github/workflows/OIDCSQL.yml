@@ -21,36 +21,10 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Install SQL Tools
+    - name: Run SQL Query via Docker
       run: |
-        # Add Microsoft package repository
-        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-archive-keyring.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/ubuntu/20.04/prod focal main" | sudo tee /etc/apt/sources.list.d/microsoft.list
-        
-        # Install packages
-        sudo apt-get update
-        sudo apt-get install -y mssql-tools unixodbc-dev
-        
-        # Add to PATH for current session
-        echo "::add-path::/opt/mssql-tools/bin"
-
-    - name: Execute SQL Query
-      run: |
-        # Verify sqlcmd is accessible
-        which sqlcmd
-        sqlcmd -?
-        
-        # Get token and run query
-        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        echo "Executing query: $SQL_QUERY"
-        echo "--------------------------"
-        sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" -s "|" -W -h-1
-        echo "--------------------------"
-
-    - name: Save query results
-      run: |
-        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY" -o results.csv -y 0 -s ","
+          docker run --rm -e TOKEN=$TOKEN mcr.microsoft.com/mssql-tools \
+          /opt/mssql-tools/bin/sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" -G -P "$TOKEN" -Q "$SQL_QUERY"
 
     - name: Upload results
       uses: actions/upload-artifact@v4
