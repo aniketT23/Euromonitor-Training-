@@ -53,7 +53,7 @@ jobs:
         # Get Azure AD token
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         echo $Token 
-        sqlcmd -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics -G -I -U app-client-id -P $Token
+        sqlcmd -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics -G -I -U 635d8b8a-9ac3-47e8-82ce-4867e37a8918 -P $Token
         
         # # Python script
         # python -c "
