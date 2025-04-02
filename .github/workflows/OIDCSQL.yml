@@ -27,11 +27,12 @@ jobs:
         ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
         echo "Access Token (Base64 Encoded):"
         echo $ACCESS_TOKEN | base64  # Encode to bypass GitHub masking
+        
 
     - name: Run SQL Query via Docker
       run: |
-        token=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        az sql query -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics --access-token "$token" -Q "SELECT TOP 10 * FROM dbo.MarketSize"
+        ACCESS_TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken --output tsv)
+        az sql query -S emi-qa-passportai-we-svm.database.windows.net -d GenAIStatistics --access-token "$ACCESS_TOKEN" -q "SELECT TOP 10 * FROM dbo.MarketSize"
 
         # Display results
         echo "Query Results:"
