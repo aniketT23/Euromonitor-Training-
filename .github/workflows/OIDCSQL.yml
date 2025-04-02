@@ -21,53 +21,64 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Install ODBC Driver
+    - name: Install ODBC Driver (Stable Version)
       run: |
-        sudo rm -f /etc/apt/sources.list.d/microsoft*.list
-        sudo rm -f /usr/share/keyrings/microsoft*.gpg
-        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
-        sudo apt-get update
-        sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
+        # Clean environment
+        sudo rm -rf /etc/apt/sources.list.d/microsoft*
+        sudo rm -f /usr/share/keyrings/microsoft*
 
-    - name: Setup Python
+        # Add Microsoft repository
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/20.04/prod focal main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+
+        # Install specific working version
+        sudo apt-get update
+        sudo apt-get install -y debconf-utils
+        echo "msodbcsql17 msodbcsql/ACCEPT_EULA boolean true" | sudo debconf-set-selections
+        sudo apt-get install -y msodbcsql17 unixodbc-dev
+        odbcinst -q -d
+
+    - name: Setup Python Environment
       run: |
         sudo apt-get install -y python3-pip
-        pip install pyodbc pandas
+        pip install pyodbc==4.0.39 pandas
 
     - name: Get Access Token
       run: |
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        echo "TOKEN=$TOKEN" >> $GITHUB_ENV
+        echo "TOKEN_LENGTH=${#TOKEN}" >> $GITHUB_ENV
+        echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
 
-    - name: Execute Query
+    - name: Execute Query (Stable Configuration)
       run: |
         python3 -c "
         import os
         import pyodbc
         import pandas as pd
         
-        server = os.environ['SQL_SERVER']
-        database = os.environ['DATABASE_NAME']
-        query = os.environ['SQL_QUERY']
-        token = os.environ['TOKEN']
+        print(f'Using pyodbc version: {pyodbc.version}')
+        print(f'Token length: {len(os.environ["TOKEN"])}')
         
         try:
-            # Token-only authentication (no username/password)
-            connection_string = f'DRIVER=ODBC Driver 18 for SQL Server;SERVER=tcp:emi-qa-passportai-we-svm.database.windows.net,1433;Initial Catalog=GenAiStatistics;Encrypt=yes;'
-        
             conn = pyodbc.connect(
-                    connection_string,
-                    attrs_before={
-                    1256: token.encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
-                    }
+                driver='ODBC Driver 17 for SQL Server',
+                server=os.environ['SQL_SERVER'],
+                database=os.environ['DATABASE_NAME'],
+                encrypt='yes',
+                trustservercertificate='no',
+                autocommit=True,
+                attrs_before={
+                    1256: os.environ['TOKEN'].encode('utf-8')
+                }
             )
-            df = pd.read_sql(query, conn)
+            print('Connection established successfully!')
+            
+            df = pd.read_sql(os.environ['SQL_QUERY'], conn)
             df.to_csv('results.csv', index=False)
-            print('First 5 rows:\\n', df.head())
-        
+            print('First 3 rows:', df.head(3))
+            
         except Exception as e:
-            print(f'Error: {str(e)}')
+            print(f'ERROR DETAILS: {str(e)}')
             raise
         "
 
