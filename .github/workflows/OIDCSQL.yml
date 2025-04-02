@@ -44,7 +44,8 @@ jobs:
 
         # Get Azure AD token
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-
+        echo $Token 
+        
         # Python script
         python -c "
         import pyodbc, os, pandas as pd
