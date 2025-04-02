@@ -21,25 +21,44 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+    - name: Install ODBC Driver
+      run: |
+        # Install Microsoft ODBC Driver 18
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+        
+        sudo apt-get update
+        sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
+        odbcinst -j  # Verify installation
+
     - name: Run Query with Python
       run: |
-        sudo apt-get install -y python3-pip
+        # Install Python dependencies
+        python -m pip install --upgrade pip
         pip install pyodbc pandas
 
+        # Get Azure AD token
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
 
-        python3 -c "
+        # Python script
+        python -c "
         import pyodbc, os, pandas as pd
-        conn = pyodbc.connect(
-        driver='{ODBC Driver 18 for SQL Server}',
-        server=os.environ['SQL_SERVER'],
-        database=os.environ['DATABASE_NAME'],
-        Authentication='ActiveDirectoryPasswordless',
-        AccessToken='$TOKEN'
-        )
-        df = pd.read_sql(os.environ['SQL_QUERY'], conn)
-        df.to_csv('results.csv', index=False)
-        print(df.to_markdown())
+        
+        try:
+            conn = pyodbc.connect(
+                driver='ODBC Driver 18 for SQL Server',  # Exact driver name
+                server=os.environ['SQL_SERVER'],
+                database=os.environ['DATABASE_NAME'],
+                Authentication='ActiveDirectoryPasswordless',
+                AccessToken='$TOKEN'
+            )
+            df = pd.read_sql(os.environ['SQL_QUERY'], conn)
+            df.to_csv('results.csv', index=False)
+            print('Query successful! First 5 rows:')
+            print(df.head())
+        except Exception as e:
+            print(f'Error: {e}')
+            raise
         "
 
     - name: Upload Results
