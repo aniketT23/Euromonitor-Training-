@@ -1,17 +1,16 @@
-name: SQl Connect
+name: Connect to Azure SQL (Bash + sqlcmd)
 on: [workflow_dispatch]
 
 env:
-  SQL_SERVER: emi-qa-numberstation-we-svm.database.windows.net
-  DATABASE_NAME: GenAIStatistics
-  SQL_QUERY: "SELECT TOP 10 * FROM dbo.Persons"
+  SQL_SERVER: "emi-qa-numberstation-we-svm.database.windows.net"
+  DATABASE_NAME: "GenAIStatistics"
+  SQL_QUERY: "SELECT TOP 10 * FROM dbo.MarketSize"
 
 jobs:
-  connect-to-sql:
+  query-sql:
     runs-on: ubuntu-latest
     permissions:
       id-token: write  # Required for OIDC
-      contents: read
 
     steps:
     - name: Azure Login (OIDC)
@@ -20,43 +19,44 @@ jobs:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        enable-AzPSSession: true  # Needed for token scopes
 
-    - name: Execute SQL Query
+    - name: Install sqlcmd and ODBC Driver
       run: |
-        pip install pyodbc azure-identity
-        import pyodbc
-        from azure.identity import DefaultAzureCredential
- 
-        # Azure SQL Configuration
-        SQL_SERVER = "emi-qa-numberstation-we-svm.database.windows.net"
-        DATABASE = "GenAIStatistics"
-         
-        # Get Access Token via Managed Identity
-        def get_access_token():
-            credential = DefaultAzureCredential()
-            token = credential.get_token("https://database.windows.net/.default")
-            return token.token
-         
-        # Connect to Azure SQL
-        def connect_to_azure_sql():
-            access_token = get_access_token()
-         
-            connection_string = f"""
-                DRIVER={{ODBC Driver 17 for SQL Server}};
-                SERVER={SQL_SERVER};
-                DATABASE={DATABASE};
-                Authentication=ActiveDirectoryAccessToken;
-            """
-         
-            conn = pyodbc.connect(connection_string, attrs_before={"AccessToken": access_token})
-            return conn
-         
-        # Execute a test query
-        try:
-            conn = connect_to_azure_sql()
-            cursor = conn.cursor()
-            cursor.execute("SELECT GETDATE()")  # Test query
-            print("Connected successfully! Current DB time:", cursor.fetchone()[0])
-            conn.close()
-        except Exception as e:
-            print("Connection failed:", e)
+        # Install ODBC Driver 18 + sqlcmd
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /usr/share/keyrings/microsoft.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+        sudo apt-get update
+        sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 mssql-tools
+        echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+        source ~/.bashrc
+
+    - name: Get Access Token
+      run: |
+        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
+        echo "TOKEN=$TOKEN" >> $GITHUB_ENV
+        echo "Token length: ${#TOKEN}"  # Debug
+
+    - name: Run SQL Query with sqlcmd
+      run: |
+        # Write token to a file (required for sqlcmd)
+        echo "$TOKEN" > token.txt
+        chmod 600 token.txt
+
+        # Execute query using token
+        sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" \
+          -G -A -N -l 30 \
+          -Y 30 -y 3000 \
+          -i <(echo "$SQL_QUERY") \
+          -f 65001 \
+          -P "$(cat token.txt)" \
+          -o results.txt
+
+        # Display results
+        cat results.txt
+
+    - name: Upload Results
+      uses: actions/upload-artifact@v4
+      with:
+        name: sql-results
+        path: results.txt
