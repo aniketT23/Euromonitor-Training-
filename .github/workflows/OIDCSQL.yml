@@ -81,7 +81,7 @@ jobs:
         
         # Connection string
         conn_str = (
-            f'DRIVER={{ODBC Driver 17 for SQL Server}};'
+            f'DRIVER={{ODBC Driver 18 for SQL Server}};'
             f'SERVER={sql_server};DATABASE={database};'
             'Encrypt=yes;TrustServerCertificate=no;')
         
