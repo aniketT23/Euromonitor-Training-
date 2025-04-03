@@ -47,36 +47,56 @@ jobs:
 
     - name: Execute Query
       run: |
-        python3 -c "
-        import os
         import pyodbc
-        import pandas as pd
-        
-        server = os.environ['SQL_SERVER']
-        database = os.environ['DATABASE_NAME']
-        query = os.environ['SQL_QUERY']
-        token = os.environ['TOKEN']
-        
+        import msal
+ 
+        # Azure AD Configuration
+        TENANT_ID = "your-tenant-id"
+        CLIENT_ID = "your-client-id"
+        SQL_SERVER = "your-sql-server.database.windows.net"
+        DATABASE = "your-database"
+        AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
+        SCOPE = ["https://database.windows.net//.default"]
+ 
+        # Get Access Token via OIDC (Device Code Flow)
+        def get_access_token():
+        app = msal.PublicClientApplication(CLIENT_ID, authority=AUTHORITY)
+        flow = app.initiate_device_flow(scopes=SCOPE)
+ 
+        if "message" in flow:
+              print(flow["message"])  # Prompt user to authenticate using device code
+        else:
+              raise Exception("Device Flow authentication failed")
+ 
+        token_response = app.acquire_token_by_device_flow(flow)
+        if "access_token" in token_response:
+            return token_response["access_token"]
+        else:
+        raise Exception(f"Could not acquire token: {token_response.get('error_description', token_response)}")
+ 
+        # Connect to Azure SQL Server
+        def connect_to_azure_sql():
+          access_token = get_access_token()
+ 
+          connection_string = f"""
+            DRIVER={{ODBC Driver 17 for SQL Server}};
+            SERVER={SQL_SERVER};
+            DATABASE={DATABASE};
+            Authentication=ActiveDirectoryAccessToken;
+          """
+ 
+        conn = pyodbc.connect(connection_string, attrs_before={"AccessToken": access_token})
+        return conn
+ 
+        # Execute a test query
         try:
-            # Passwordless connection using token
-            conn = pyodbc.connect(
-                driver='ODBC Driver 18 for SQL Server',
-                server=server,
-                database=database,
-                Encrypt='yes',
-                TrustServerCertificate='no',
-                attrs_before={
-                    1256: token.encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
-                }
-            )
-            df = pd.read_sql(query, conn)
-            df.to_csv('results.csv', index=False)
-            print('First 5 rows:\\n', df.head())
-        
+            conn = connect_to_azure_sql()
+            cursor = conn.cursor()
+            cursor.execute("SELECT GETDATE()")  # Test query
+            print("Connected successfully! Current DB time:", cursor.fetchone()[0])
+            conn.close()
         except Exception as e:
-            print(f'Error: {str(e)}')
-            raise
-        "
+            print("Connection failed:", e)
 
     - name: Upload Results
       uses: actions/upload-artifact@v4
