@@ -43,4 +43,4 @@ jobs:
         pip install pyodbc msal azure-identity
         
     - name: Execute SQL Query
-      run: python sql_serviceprinciple_connection.py
+      run: python ./sql_serviceprinciple_connection.py
