@@ -48,6 +48,7 @@ jobs:
 
     - name: Execute Query
       run: |
+        python3 -c "
         import pyodbc
         import msal
  
@@ -98,6 +99,7 @@ jobs:
             conn.close()
         except Exception as e:
             print("Connection failed:", e)
+        "
 
     - name: Upload Results
       uses: actions/upload-artifact@v4
