@@ -5,6 +5,8 @@ env:
   SQL_SERVER: emi-qa-passportai-we-svm.database.windows.net
   DATABASE_NAME: GenAIStatistics
   SQL_QUERY: "SELECT TOP 10 * FROM dbo.MarketSize"
+  TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
 
 jobs:
   query-database:
@@ -33,7 +35,8 @@ jobs:
     - name: Setup Python
       run: |
         sudo apt-get install -y python3-pip
-        pip install pyodbc pandas
+        # pip install pyodbc pandas
+        pip install msal pyodbc
 
     - name: Get Access Token
       run: |
@@ -45,20 +48,22 @@ jobs:
         python3 -c "
         import os
         import pyodbc
-        import pandas as pd
+        # import pandas as pd
         import msal
         
         server = os.environ['SQL_SERVER']
         database = os.environ['DATABASE_NAME']
         query = os.environ['SQL_QUERY']
         token = os.environ['TOKEN']
-        AUTHORITY = f"https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}"
+        tenant=os.environ['TENANT_ID']
+        clinet=os.environ['CLIENT_ID']
+        AUTHORITY = f"https://login.microsoftonline.com/{tenant}"
         SCOPES = ["https://database.windows.net//.default"]
         PORT = 1433
         
         try:
 
-            app = msal.PublicClientApplication(${{ secrets.AZURE_CLIENT_ID }}, authority=AUTHORITY)
+            app = msal.PublicClientApplication(clinet, authority=AUTHORITY)
             result = app.acquire_token_interactive(scopes=SCOPES)
             access_token = result["access_token"]
             connection_string =(
