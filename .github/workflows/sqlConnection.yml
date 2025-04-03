@@ -1,0 +1,62 @@
+name: SQl Connect
+on: [workflow_dispatch]
+
+env:
+  SQL_SERVER: emi-qa-numberstation-we-svm.database.windows.net
+  DATABASE_NAME: GenAIStatistics
+  SQL_QUERY: "SELECT TOP 10 * FROM dbo.Persons"
+
+jobs:
+  connect-to-sql:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Required for OIDC
+      contents: read
+
+    steps:
+    - name: Azure Login (OIDC)
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - name: Execute SQL Query
+      run: |
+        pip install pyodbc azure-identity
+        import pyodbc
+        from azure.identity import DefaultAzureCredential
+ 
+        # Azure SQL Configuration
+        SQL_SERVER = "emi-qa-numberstation-we-svm.database.windows.net"
+        DATABASE = "GenAIStatistics"
+         
+        # Get Access Token via Managed Identity
+        def get_access_token():
+            credential = DefaultAzureCredential()
+            token = credential.get_token("https://database.windows.net/.default")
+            return token.token
+         
+        # Connect to Azure SQL
+        def connect_to_azure_sql():
+            access_token = get_access_token()
+         
+            connection_string = f"""
+                DRIVER={{ODBC Driver 17 for SQL Server}};
+                SERVER={SQL_SERVER};
+                DATABASE={DATABASE};
+                Authentication=ActiveDirectoryAccessToken;
+            """
+         
+            conn = pyodbc.connect(connection_string, attrs_before={"AccessToken": access_token})
+            return conn
+         
+        # Execute a test query
+        try:
+            conn = connect_to_azure_sql()
+            cursor = conn.cursor()
+            cursor.execute("SELECT GETDATE()")  # Test query
+            print("Connected successfully! Current DB time:", cursor.fetchone()[0])
+            conn.close()
+        except Exception as e:
+            print("Connection failed:", e)
