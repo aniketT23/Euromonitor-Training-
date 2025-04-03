@@ -70,27 +70,27 @@ jobs:
           # The original code applies native endianness for encoding the length
           # prefix. My working assumption that also the length should be encoded
           # 'Little-endian', regardless of the CPU (and OS) this code is running on.
-          return struct.pack("<i", len(encoded_bytes)) + encoded_bytes
+          return struct.pack('<i', len(encoded_bytes)) + encoded_bytes
         # Azure credentials
-        client_id = "635d8b8a-9ac3-47e8-82ce-4867e37a8918"
-        tenant_id = "251c4782-827b-4033-b7b5-12500263871f"
-        sql_server = "emi-qa-numberstation-we-svm.database.windows.net" 
-        database = "GenAIStatistics"
+        client_id = '635d8b8a-9ac3-47e8-82ce-4867e37a8918'
+        tenant_id = '251c4782-827b-4033-b7b5-12500263871f'
+        sql_server = 'emi-qa-numberstation-we-svm.database.windows.net' 
+        database = 'GenAIStatistics'
         
         # Authenticate using Azure Identity
         credential = DefaultAzureCredential(managed_identity_client_id=client_id)
         
         # Get Access Token for Azure SQL
-        token = credential.get_token("https://database.windows.net/.default").token
-        print("hello")
+        token = credential.get_token('https://database.windows.net/.default').token
+        print('hello')
         # Connection string
         conn_str = (
-            f"DRIVER={{ODBC Driver 17 for SQL Server}};"
-            f"SERVER={sql_server};DATABASE={database};"
-            f"Encrypt=yes;TrustServerCertificate=no;")
+            f'DRIVER={{ODBC Driver 17 for SQL Server}};'
+            f'SERVER={sql_server};DATABASE={database};'
+            'Encrypt=yes;TrustServerCertificate=no;')
         
         try:
-            exptoken = ""
+            exptoken = ''
             for i in token:
                 exptoken += i
                 exptoken += chr(0)
@@ -98,15 +98,14 @@ jobs:
             # Connect to Azure SQL using the access token
             conn = pyodbc.connect(conn_str, attrs_before={1256: tokenstruct})
             cursor = conn.cursor()
-            print("Connected to Azure SQL Database!")
+            print('Connected to Azure SQL Database!')
         
             # Execute query
-            cursor.execute("SELECT top 10 * FROM dbo.MarketSize")
+            cursor.execute('SELECT top 10 * FROM dbo.MarketSize')
             for row in cursor.fetchall():
                 print(row)
         
             cursor.close()
             conn.close()
         except Exception as e:
-            print(f"Error: {e}")
-        "
+    print(f'Error: {e}')"
