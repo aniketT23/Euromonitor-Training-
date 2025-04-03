@@ -4,7 +4,7 @@ on: [workflow_dispatch]
 env:
   SQL_SERVER: emi-qa-passportai-we-svm.database.windows.net
   DATABASE_NAME: GenAIStatistics
-  SQL_QUERY: "SELECT TOP 10 * FROM dbo.MarketSize"
+  SQL_QUERY: "SELECT TOP 10 * FROM Persons"
 
 jobs:
   query-database:
@@ -21,7 +21,7 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Install ODBC Driver (Stable Version)
+    - name: Install ODBC Driver (Fixed)
       run: |
         # Clean environment
         sudo rm -rf /etc/apt/sources.list.d/microsoft*
@@ -29,16 +29,20 @@ jobs:
 
         # Add Microsoft repository
         curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/20.04/prod focal main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
 
-        # Install specific working version
+        # Install with forced dependencies
         sudo apt-get update
         sudo apt-get install -y debconf-utils
-        echo "msodbcsql17 msodbcsql/ACCEPT_EULA boolean true" | sudo debconf-set-selections
-        sudo apt-get install -y msodbcsql17 unixodbc-dev
-        odbcinst -q -d
+        echo "msodbcsql18 msodbcsql/ACCEPT_EULA boolean true" | sudo debconf-set-selections
+        sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
+        sudo apt-get install -y odbcinst
 
-    - name: Setup Python Environment
+        # Verify installation
+        odbcinst -q -d -n "ODBC Driver 18 for SQL Server"
+        ls -l /opt/microsoft/msodbcsql18/lib64/libmsodbcsql-*
+
+    - name: Setup Python
       run: |
         sudo apt-get install -y python3-pip
         pip install pyodbc pandas
@@ -46,37 +50,32 @@ jobs:
     - name: Get Access Token
       run: |
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
-        echo "TOKEN_LENGTH=${#TOKEN}" >> $GITHUB_ENV
-        echo "TOKEN=${TOKEN}" >> $GITHUB_ENV
+        echo "TOKEN=$TOKEN" >> $GITHUB_ENV
 
-    - name: Execute Query (Stable Configuration)
+    - name: Execute Query (Fixed Connection)
       run: |
         python3 -c "
         import os
         import pyodbc
         import pandas as pd
         
-        print(f'Using pyodbc version: {pyodbc.version}')
-        print(f'Token length: {len(os.environ["TOKEN"])}')
-        
         try:
+            # Use access token directly
             conn = pyodbc.connect(
-                driver='ODBC Driver 17 for SQL Server',
+                driver='ODBC Driver 18 for SQL Server',
                 server=os.environ['SQL_SERVER'],
                 database=os.environ['DATABASE_NAME'],
-                encrypt='yes',
-                trustservercertificate='no',
-                autocommit=True,
+                Encrypt='yes',
+                TrustServerCertificate='no',
                 attrs_before={
-                    1256: os.environ['TOKEN'].encode('utf-8')
+                    1256: os.environ['TOKEN'].encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
                 }
             )
-            print('Connection established successfully!')
-            
-            df = pd.read_sql(os.environ['SQL_QUERY'], conn)
-            df.to_csv('results.csv', index=False)
-            print('First 3 rows:', df.head(3))
-            
+            cursor = conn.cursor()
+            cursor.execute(os.environ['SQL_QUERY'])
+            print(cursor.fetchall())
+            "
+        
         except Exception as e:
             print(f'ERROR DETAILS: {str(e)}')
             raise
