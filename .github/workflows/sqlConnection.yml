@@ -19,22 +19,33 @@ jobs:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        enable-AzPSSession: true  # Needed for token scopes
 
-    - name: Install ODBC Driver
+    - name: Install sqlcmd and ODBC Driver
       run: |
-        sudo rm -f /etc/apt/sources.list.d/microsoft*.list
-        sudo rm -f /usr/share/keyrings/microsoft*.gpg
-        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+        # Install prerequisites
         sudo apt-get update
-        sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
+        sudo apt-get install -y curl apt-transport-https
+
+        # Add Microsoft repository
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /usr/share/keyrings/microsoft.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+
+        # Install ODBC Driver and sqlcmd
+        sudo apt-get update
+        sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 mssql-tools
+
+        # Add sqlcmd to PATH for current session
+        echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+        source ~/.bashrc
+
+        # Verify installation
+        which sqlcmd || echo "sqlcmd not found!"
 
     - name: Get Access Token
       run: |
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         echo "TOKEN=$TOKEN" >> $GITHUB_ENV
-        echo "Token length: ${#TOKEN}"  # Debug
+        echo "Token length: ${#TOKEN}"
 
     - name: Run SQL Query with sqlcmd
       run: |
@@ -43,12 +54,10 @@ jobs:
         chmod 600 token.txt
 
         # Execute query using token
-        sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" \
-          -G -A -N -l 30 \
-          -Y 30 -y 3000 \
-          -i <(echo "$SQL_QUERY") \
-          -f 65001 \
+        /opt/mssql-tools/bin/sqlcmd -S "$SQL_SERVER" -d "$DATABASE_NAME" \
+          -G -N -l 30 \
           -P "$(cat token.txt)" \
+          -Q "$SQL_QUERY" \
           -o results.txt
 
         # Display results
