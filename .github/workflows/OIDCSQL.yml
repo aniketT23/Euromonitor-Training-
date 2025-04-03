@@ -36,7 +36,12 @@ jobs:
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         echo "TOKEN=$TOKEN" >> $GITHUB_ENV
         echo "TOKEN_LENGTH=${#TOKEN}" >> $GITHUB_ENV
-
+        
+    - name: Setup Python
+      run: |
+        sudo apt-get install -y python3-pip
+        pip install pyodbc 
+        
     - name: Execute SQL Query
       run: |
         python3 -c "
