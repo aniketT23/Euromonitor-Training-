@@ -2,9 +2,9 @@ name: Azure SQL Query Runner
 on: [workflow_dispatch]
 
 env:
-  SQL_SERVER: emi-qa-numberstation-we-svm.database.windows.net
-  DATABASE_NAME: GenAIStatistics
-  SQL_QUERY: "SELECT TOP 10 * FROM Persons"
+  SQL_SERVER: emi-qa-passportai-we-svm.database.windows.net
+  DATABASE_NAME: GenAiStatistics
+  SQL_QUERY: "SELECT TOP 10 * FROM dbo.MarketSize"
 
 jobs:
   query-database:
@@ -21,26 +21,14 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: Install ODBC Driver (Fixed)
+    - name: Install ODBC Driver
       run: |
-        # Clean environment
-        sudo rm -rf /etc/apt/sources.list.d/microsoft*
-        sudo rm -f /usr/share/keyrings/microsoft*
-
-        # Add Microsoft repository
+        sudo rm -f /etc/apt/sources.list.d/microsoft*.list
+        sudo rm -f /usr/share/keyrings/microsoft*.gpg
         curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-        # Install with forced dependencies
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
         sudo apt-get update
-        sudo apt-get install -y debconf-utils
-        echo "msodbcsql18 msodbcsql/ACCEPT_EULA boolean true" | sudo debconf-set-selections
         sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev
-        sudo apt-get install -y odbcinst
-
-        # Verify installation
-        odbcinst -q -d -n "ODBC Driver 18 for SQL Server"
-        ls -l /opt/microsoft/msodbcsql18/lib64/libmsodbcsql-*
 
     - name: Setup Python
       run: |
@@ -52,26 +40,35 @@ jobs:
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         echo "TOKEN=$TOKEN" >> $GITHUB_ENV
 
-    - name: Run Python Script
+    - name: Execute Query
       run: |
         python3 -c "
-        import pyodbc
         import os
+        import pyodbc
+        import pandas as pd
         
-        # Use access token directly
-        conn = pyodbc.connect(
-            driver='ODBC Driver 18 for SQL Server',
-            server=os.environ['SQL_SERVER'],
-            database=os.environ['DATABASE_NAME'],
-            Encrypt='yes',
-            TrustServerCertificate='no',
-            attrs_before={
-                1256: os.environ['TOKEN'].encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
-            }
-        )
-        cursor = conn.cursor()
-        cursor.execute(os.environ['SQL_QUERY'])
-        print(cursor.fetchall())
+        server = os.environ['SQL_SERVER']
+        database = os.environ['DATABASE_NAME']
+        query = os.environ['SQL_QUERY']
+        token = os.environ['TOKEN']
+        
+        try:
+            conn = pyodbc.connect(
+                driver='ODBC Driver 18 for SQL Server',
+                server=server,
+                database=database,
+                Encrypt='yes',
+                TrustServerCertificate='no',
+                Authentication='ActiveDirectoryServicePrincipal',
+                AccessToken=token
+            )
+            df = pd.read_sql(query, conn)
+            df.to_csv('results.csv', index=False)
+            print('Success! First 5 rows:\\n', df.head())
+        
+        except Exception as e:
+            print(f'Error: {str(e)}')
+            raise
         "
 
     - name: Upload Results
