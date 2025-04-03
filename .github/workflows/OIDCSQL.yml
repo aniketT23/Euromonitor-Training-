@@ -39,6 +39,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pyodbc pandas
+        pip install msal
 
     - name: Get Access Token
       run: |
@@ -51,10 +52,10 @@ jobs:
         import msal
  
         # Azure AD Configuration
-        TENANT_ID = "your-tenant-id"
-        CLIENT_ID = "your-client-id"
-        SQL_SERVER = "your-sql-server.database.windows.net"
-        DATABASE = "your-database"
+        TENANT_ID = ${{ secrets.AZURE_TENANT_ID }}
+        CLIENT_ID = ${{ secrets.AZURE_CLIENT_ID }}
+        SQL_SERVER = "emi-qa-passportai-we-svm.database.windows.net"
+        DATABASE = "GenAiStatistics"
         AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
         SCOPE = ["https://database.windows.net//.default"]
  
@@ -92,7 +93,7 @@ jobs:
         try:
             conn = connect_to_azure_sql()
             cursor = conn.cursor()
-            cursor.execute("SELECT GETDATE()")  # Test query
+            cursor.execute("SELECT TOP 10 * FROM dbo.MarketSize")  # Test query
             print("Connected successfully! Current DB time:", cursor.fetchone()[0])
             conn.close()
         except Exception as e:
