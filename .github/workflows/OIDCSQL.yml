@@ -40,7 +40,7 @@ jobs:
     - name: Setup Python
       run: |
         sudo apt-get install -y python3-pip
-        pip install pyodbc 
+        pip install pyodbc msal
         
     - name: Execute SQL Query
       run: |
