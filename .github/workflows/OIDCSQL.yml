@@ -41,7 +41,7 @@ jobs:
     - name: Setup Python Environment
       run: |
         sudo apt-get install -y python3-pip
-        pip install pyodbc==4.0.39 pandas
+        pip install pyodbc pandas
 
     - name: Get Access Token
       run: |
