@@ -2,7 +2,7 @@ name: Azure SQL Query Runner
 on: [workflow_dispatch]
 
 env:
-  SQL_SERVER: emi-qa-passportai-we-svm.database.windows.net
+  SQL_SERVER: emi-qa-numberstation-we-svm.database.windows.net
   DATABASE_NAME: GenAIStatistics
   SQL_QUERY: "SELECT TOP 10 * FROM Persons"
 
@@ -52,33 +52,26 @@ jobs:
         TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
         echo "TOKEN=$TOKEN" >> $GITHUB_ENV
 
-    - name: Execute Query (Fixed Connection)
+    - name: Run Python Script
       run: |
         python3 -c "
-        import os
         import pyodbc
-        import pandas as pd
+        import os
         
-        try:
-            # Use access token directly
-            conn = pyodbc.connect(
-                driver='ODBC Driver 18 for SQL Server',
-                server=os.environ['SQL_SERVER'],
-                database=os.environ['DATABASE_NAME'],
-                Encrypt='yes',
-                TrustServerCertificate='no',
-                attrs_before={
-                    1256: os.environ['TOKEN'].encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
-                }
-            )
-            cursor = conn.cursor()
-            cursor.execute(os.environ['SQL_QUERY'])
-            print(cursor.fetchall())
-            "
-        
-        except Exception as e:
-            print(f'ERROR DETAILS: {str(e)}')
-            raise
+        # Use access token directly
+        conn = pyodbc.connect(
+            driver='ODBC Driver 18 for SQL Server',
+            server=os.environ['SQL_SERVER'],
+            database=os.environ['DATABASE_NAME'],
+            Encrypt='yes',
+            TrustServerCertificate='no',
+            attrs_before={
+                1256: os.environ['TOKEN'].encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
+            }
+        )
+        cursor = conn.cursor()
+        cursor.execute(os.environ['SQL_QUERY'])
+        print(cursor.fetchall())
         "
 
     - name: Upload Results
