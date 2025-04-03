@@ -78,7 +78,7 @@ jobs:
         
         # Get Access Token for Azure SQL
         token = credential.get_token('https://database.windows.net/.default').token
-        
+        print(token)
         # Connection string
         conn_str = (
             f'DRIVER={{ODBC Driver 18 for SQL Server}};'
