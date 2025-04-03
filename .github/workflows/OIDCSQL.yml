@@ -19,7 +19,7 @@ jobs:
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        # Remove subscription-id if not needed
 
     - name: Install ODBC Driver
       run: |
@@ -32,7 +32,7 @@ jobs:
 
     - name: Setup Python
       run: |
-        sudo apt-get install -y python3-pip
+        python -m pip install --upgrade pip
         pip install pyodbc pandas
 
     - name: Get Access Token
@@ -53,18 +53,20 @@ jobs:
         token = os.environ['TOKEN']
         
         try:
+            # Passwordless connection using token
             conn = pyodbc.connect(
                 driver='ODBC Driver 18 for SQL Server',
                 server=server,
                 database=database,
                 Encrypt='yes',
                 TrustServerCertificate='no',
-                Authentication='ActiveDirectoryServicePrincipal',
-                AccessToken=token
+                attrs_before={
+                    1256: token.encode('utf-8')  # SQL_COPT_SS_ACCESS_TOKEN
+                }
             )
             df = pd.read_sql(query, conn)
             df.to_csv('results.csv', index=False)
-            print('Success! First 5 rows:\\n', df.head())
+            print('First 5 rows:\\n', df.head())
         
         except Exception as e:
             print(f'Error: {str(e)}')
