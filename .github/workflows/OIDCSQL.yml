@@ -43,7 +43,7 @@ jobs:
 
     - name: Get Access Token
       run: |
-        TOKEN=$(az account get-access-token --resource https://database.windows.net --query accessToken -o tsv)
+        TOKEN=$(az account get-access-token --resource emi-qa-passportai-we-svm.database.windows.net --query accessToken -o tsv)
         echo "TOKEN=$TOKEN" >> $GITHUB_ENV
 
     - name: Execute Query
