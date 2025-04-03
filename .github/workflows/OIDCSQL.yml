@@ -21,6 +21,11 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+    - name: 'Run az commands'
+      run: |
+          az account show
+          az group list
+          
     - name: Install ODBC Driver
       run: |
         sudo rm -f /etc/apt/sources.list.d/microsoft*.list
